@@ -16,16 +16,14 @@
             <img src="images/logo.svg" alt="" class="logo"/>
             <h1>Register</h1>
             @if ($errors->any())
-                <div {{ $attributes }}>
-                    <ul class="errors">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            <ul class="errors">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
             @endif
             <div class="row">
-                <label for="name" ><img src="images/email.svg" alt=""></label>
+                <label for="name" ><img src="images/user_.svg" alt=""></label>
                 <input id="name"
                             name="name"
                             :value="old('name')"
@@ -53,7 +51,7 @@
             </div>
             <div class="row">
                 <label><img src="images/password.svg" alt=""></label>
-                <input type="text"
+                <input type="password"
                             placeholder="Confirm password"
                             type="password"
                             name="password_confirmation"

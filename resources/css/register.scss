@@ -64,6 +64,7 @@ form {
         font-size: var(--sz-under-medium);
         border: none;
         transition: .5s ease;
+        cursor: pointer;
 
         &:hover
         {
