@@ -17,13 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reg', function() {
-    return view('register');
+Route::get('/home', function() {
+    for($i = 0; $i < 5; $i++) {
+        $events[$i]['date'] = 'date' . $i;
+        $events[$i]['name'] = 'name' . $i;
+        $events[$i]['promoter'] = 'promoter' . $i;
+        $events[$i]['duration'] = 'duration' . $i;
+        $events[$i]['location'] = 'location' . $i;
+        $events[$i]['price'] = 'price' . $i;
+    }
+    return view('home/home', ['events' => $events]);
 });
 
 Route::get('/log', function() {
     return view('login');
-});
+})->name('promoter.become');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
