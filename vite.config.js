@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/global.scss',
+                'resources/css/auth.scss',
                 'resources/css/register.scss',
                 'resources/css/login.scss',
             ],
