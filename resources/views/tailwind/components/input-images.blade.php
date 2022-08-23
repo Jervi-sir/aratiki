@@ -1,12 +1,10 @@
 <div x-data="images()">
     <p x-text="message" />
-    <ul class="drag-container" id="items" @dragover="dragover($event)" >
-        <template x-for="item in items" :key="item.id">
-            <li x-text="item.text" class="draggable" @dragover="dragover($event)" @dragstart="dragstart($event)" @dragend="dragend($event)" draggable="true">
-                <span x-text="item.id"></span>
-            </li>
+    <div class="drag-container" @dragover="dragover($event)" >
+        <template x-for="(item, index) in items" :key="item.id">
+                <img :id="item.id" :src='item.img' class="draggable" @dragover="dragover($event)" @dragstart="dragstart($event)" @dragend="dragend($event)" draggable="true" />
         </template>
-    </ul>
+    </div>
 </div>
 <style>
     .drag-container {
@@ -23,25 +21,44 @@
         return {
             message: 'twinki',
             items: [
-                {id: 0, text:'text0'},
-                {id: 1, text:'text1'},
-                {id: 2, text:'text2'},
-                {id: 3, text:'text3'},
+                {id: 0, img:'https://fakeimg.pl/100/?text=1/'},
+                {id: 1, img:'https://fakeimg.pl/100/?text=2/'},
+                {id: 2, img:'https://fakeimg.pl/100/?text=3/'},
+                {id: 3, img:'https://fakeimg.pl/100/?text=4/'},
             ],
+            draggedElement: 0,
             dragstart(e) {
                 e.target.classList.add('dragging');
-                console.log(e.target.firstChild.innerHTML)
+                this.draggedElement = e.target.id;
             },
             dragend(e) {
                 e.target.classList.remove('dragging');
             },
             dragover(e) {
                 e.preventDefault();
-                //console.log(e.target)
-                //const afterElement = getDragAfterElement(e.clientY);
-                //const draggable = document.querySelector('.dragging');
-                //container.insertBefore(draggable, afterElement);
-                //container.appendChild(draggable);
+                var draggedOverEleIndex = e.target.id;
+                this.swapeInJson(this.draggedElement, draggedOverEleIndex);
+                ;
+            },
+            swapeInJson(selectedIndex, targetedEl) {
+                console.log(selectedIndex)
+                console.log(targetedEl)
+                var dataSelectedEle = this.items[selectedIndex]
+                this.items.splice(selectedIndex,1);
+                this.items.splice(targetedEl + 1, 0, dataSelectedEle);
+
+                //var i = this.items.length;
+                /*
+                while (i--) {
+                    if(selectedEle.indexOf(this.items[i].id)!=-1){
+                        var data = this.items[selectedEle.indexOf(this.items[i].id)];
+                        console.log(data);
+                        //this.items.splice(targetedEl, 0, data)
+                    }
+                }
+                */
+                console.log(this.items);
+
             }
         }
     }
