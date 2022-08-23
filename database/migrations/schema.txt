@@ -1,0 +1,75 @@
+Role:               ->hasMany(User)
+    name
+
+Keyword:            ->belongsToMany(Offer)
+    name
+
+User:               ->belongsTo(Role)       ->hasOne(Advertiser)        ->hasMany(Ticket)
+    role_id
+    name
+    email
+    password
+    location
+    images
+    details
+
+Advertiser:         ->belongsTo(User)       ->hasMany(Offer)
+    user_id
+    company_name
+    phone_number        //to verify through a call
+    is_verified
+    location
+    images
+    details
+
+Template:           ->hasMany(Offer)
+    template_name
+    type
+    source_code
+
+Offer:              ->belongsTo(Advertiser) ->hasMany(Template) ->hasMany(Ticket)   ->belongsToMany(Keyword)
+    advertiser_id
+    template_id
+    is_verified         //for review
+    is_active
+    campaign_name
+    campaign_starts
+    campaign_ends
+    tickets_left
+    location
+    price
+    nb_visited
+    votes
+    images
+    details
+
+Offer_Keyword:
+    offer_id
+    keyword_id
+
+Ticket:             ->belongsTo(Offer)      ->belongsTo(User)
+    user_id
+    offer_id
+    qrcode
+    type
+    place
+    details
+
+
+/*
+ * since idk how google optimize their searches,
+ * made this to search directly through it
+ */
+Search:
+    advertiser_id
+    offer_id
+    company_name
+    campaign_name
+    is_active
+    details
+    advertiser_details
+    location
+    price
+    keyword             //will update when the Keyword table changes
+
+

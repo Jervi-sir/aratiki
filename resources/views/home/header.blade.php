@@ -33,7 +33,7 @@
       </ul>
     </nav>
     <div class="login">
-      <a href="login.html" class="btn-login">Login</a>
-      <a href="register.html" class="btn-signup">Register</a>
+      <a href="{{ route('login') }}" class="btn-login">Login</a>
+      <a href="{{ route('register') }}" class="btn-signup">Register</a>
     </div>
   </header>

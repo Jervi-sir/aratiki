@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\TemplateSeeder;
+use Database\Seeders\AdvertiserSeeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,10 +19,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $role = new RoleSeeder();
+        //$user = new UserSeeder();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //$advertiser = new AdvertiserSeeder();
+        $template = new TemplateSeeder();
+
+        $role->run();
+        //$user->run();
+        //$advertiser->run();
+        $template->run();
+
     }
 }

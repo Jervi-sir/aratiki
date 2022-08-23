@@ -6,7 +6,7 @@
     </div>
     <div class="option">
       <h2>Wanna promote your events?</h2>
-      <a href="{{ route('promoter.become') }}" class="join-button"> Fill Your Request </a>
+      <a href="{{ route('get.advertiser.join') }}" class="join-button"> Fill Your Request </a>
       <h5>
         For <strong>FREE</strong> since it's all about helping people to reach
         out to you
