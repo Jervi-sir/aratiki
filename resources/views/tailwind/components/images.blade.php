@@ -29,8 +29,8 @@
 }
 
 .image-container {
-    width: 28.5vmin;
-    height: 28.5vmin;
+    width: 10em;
+    height: 10em;
     overflow: hidden;
     border-radius: 0.7rem;
     display: flex;
@@ -38,7 +38,7 @@
 
 .add-btn {
     display: flex;
-    height: 28.5vmin;
+    height: 9em;
 }
 
 .add-btn span {
@@ -50,6 +50,16 @@
 .image-container img {
     width: 100%;
     object-fit:cover;
+}
+
+@media only screen and (max-width: 400px) {
+  .images-list {
+    gap: 0;
+  }
+  .image-container {
+    width: 9em;
+    height: 9em;
+  }
 }
 
 </style>

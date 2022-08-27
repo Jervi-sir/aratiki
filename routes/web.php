@@ -38,15 +38,16 @@ Route::controller(HomeController::class)->group(function() {
 |--------------------------
 */
 Route::controller(AdvertiserController::class)->group(function() {
-    Route::get('/joinAdv', 'joinAdvertiserPage')->name('get.advertiser.join');                           //[done]
-    Route::post('/joinAdv', 'joinAdvertiser')->name('post.advertiser.join');                             //[done]
-    Route::get('/advertiser/addOffer', 'addOfferPage')->name('get.advertiser.addOffer');                //[done]
-    Route::post('/advertiser/addOffer', 'addOffer')->name('post.advertiser.addOffer');                  //[done]
-    Route::get('/advertiser/allMyOffers', 'manageOffers')->name('get.advertiser.allOffers');            //[done]
+    Route::get('/advertiser/addOffer', 'addOfferPage')->name('get.advertiser.addOffer');    //[done] make date picker, add google map api
+    Route::post('/advertiser/addOffer', 'addOffer')->name('post.advertiser.addOffer');  //[done] ba9i just compress images and maybe wilaya f file name
+
+    Route::get('/joinAdv', 'joinAdvertiserPage')->name('get.advertiser.join');                           //[]
+    Route::post('/joinAdv', 'joinAdvertiser')->name('post.advertiser.join');                             //[]
+    Route::get('/advertiser/allMyOffers', 'manageOffers')->name('get.advertiser.allOffers');            //[]
     Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[]
     //TODO: show by stats, lefts and location of purchasess
-    Route::get('/advertiser/editOffer/{id}', 'editOffer')->name('get.advertiser.editOffer');            //[done]
-    Route::post('/advertiser/editOffer/{id}', 'updateOffer')->name('update.advertiser.editOffer');      //[done]
+    Route::get('/advertiser/editOffer/{id}', 'editOffer')->name('get.advertiser.editOffer');            //[]
+    Route::post('/advertiser/editOffer/{id}', 'updateOffer')->name('update.advertiser.editOffer');      //[]
     //TODO: delete, change offer
     //Route::middleware(['auth', 'isAdvertiser'])->group( function() {});
 });
@@ -56,10 +57,10 @@ Route::controller(AdvertiserController::class)->group(function() {
 |--------------------------
 */
 Route::controller(UserController::class)->group(function() {
-    Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[done]
+    Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[]
     Route::post('upgradeToAdvertiser', 'upgrade')->name('user.upgrade');                                    //[]
-    Route::get('/getMyTickets', 'allMyTickets')->name('user.allTickets');                                   //[done]
-    Route::get('/getThisTicket/{qrcode}', 'getThisTicket')->name('user.thisTicket');                        //[done]
+    Route::get('/getMyTickets', 'allMyTickets')->name('user.allTickets');                                   //[]
+    Route::get('/getThisTicket/{qrcode}', 'getThisTicket')->name('user.thisTicket');                        //[]
     Route::post('/refund&={offer_id}', 'refund')->name('user.refund');                                      //[]
     //TODO: change below to post
     Route::post('/purchase&={offer_id}', 'purchase')->name('user.purchase');
@@ -72,8 +73,8 @@ Route::controller(UserController::class)->group(function() {
 |--------------------------
 */
 Route::controller(OfferController::class)->middleware(['auth'])->group(function() {
-    Route::get('/', 'index')->name('home');                             //[done]
-    Route::get('show/{id}', 'showOffer')->name('showOffer');            //[done]
+    Route::get('/', 'index')->name('home');                             //[]
+    Route::get('show/{id}', 'showOffer')->name('showOffer');            //[]
     Route::get('search&=', 'search')->name('search');                   //[]
 });
 /*
@@ -82,16 +83,16 @@ Route::controller(OfferController::class)->middleware(['auth'])->group(function(
 |--------------------------
 */
 Route::controller(AdminController::class)->group(function() {
-    Route::get('admin/addTemplate', [AdminController::class, 'addTemplatePage'])->name('admin.addTemplatePage');                    //[done]
+    Route::get('admin/addTemplate', [AdminController::class, 'addTemplatePage'])->name('admin.addTemplatePage');                    //[]
     Route::post('admin/addTemplate', [AdminController::class, 'addTemplate'])->name('admin.addTemplate');                           //[]
-    Route::get('admin/adv/nonVerified', [AdminController::class, 'listNonVerifiedAdv'])->name('admin.nonVerifiedAdv');              //[done]
-    Route::post('admin/adv/confirm/{id}', [AdminController::class, 'confirmAdv'])->name('admin.confirmAdv');                        //[done]
-    Route::post('admin/adv/unconfirm/{id}', [AdminController::class, 'unconfirmAdv'])->name('admin.unconfirmAdv');                  //[done]
-    Route::get('admin/adv/allAdvs', [AdminController::class, 'allAdv'])->name('admin.allAdv');                                      //[done]
-    Route::get('admin/adv/edit/{id}', [AdminController::class, 'editAdv'])->name('admin.editAdv');                                  //[done]
-    Route::get('admin/offer/nonVerifiedOffers', [AdminController::class, 'listNonVerifiedOffer'])->name('admin.nonVerifiedOffer');  //[done]
-    Route::get('admin/offer/allOffers', [AdminController::class, 'allOffers'])->name('admin.allOffers');                            //[done]
-    Route::post('admin/offer/confirm/{id}', [AdminController::class, 'confirmOffer'])->name('admin.confirmOffer');                  //[done]
+    Route::get('admin/adv/nonVerified', [AdminController::class, 'listNonVerifiedAdv'])->name('admin.nonVerifiedAdv');              //[]
+    Route::post('admin/adv/confirm/{id}', [AdminController::class, 'confirmAdv'])->name('admin.confirmAdv');                        //[]
+    Route::post('admin/adv/unconfirm/{id}', [AdminController::class, 'unconfirmAdv'])->name('admin.unconfirmAdv');                  //[]
+    Route::get('admin/adv/allAdvs', [AdminController::class, 'allAdv'])->name('admin.allAdv');                                      //[]
+    Route::get('admin/adv/edit/{id}', [AdminController::class, 'editAdv'])->name('admin.editAdv');                                  //[]
+    Route::get('admin/offer/nonVerifiedOffers', [AdminController::class, 'listNonVerifiedOffer'])->name('admin.nonVerifiedOffer');  //[]
+    Route::get('admin/offer/allOffers', [AdminController::class, 'allOffers'])->name('admin.allOffers');                            //[]
+    Route::post('admin/offer/confirm/{id}', [AdminController::class, 'confirmOffer'])->name('admin.confirmOffer');                  //[]
     //? Route::get('admin/offer/show/{id}', [AdminController::class, 'showOffer'])->name('admin.showOffer');
     //Route::middleware(['auth', 'isAdmin'])->group( function() {});
 });

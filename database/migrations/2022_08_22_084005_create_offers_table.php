@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            /*--[ necessary data ]--*/
             $table->foreignId('advertiser_id')->constrained();
             $table->foreignId('template_id')->constrained();
-
-            $table->boolean('is_verified')->default(0);
-            $table->boolean('is_active')->default(0);
 
             $table->string('campaign_name');
             $table->date('campaign_starts');
@@ -29,12 +27,23 @@ return new class extends Migration
             $table->string('location');
             $table->string('price');
 
-            $table->bigInteger('nb_visited')->default(0);
-            $table->bigInteger('votes')->default(0);
-
             $table->text('images');
             $table->string('phone_number');
             $table->longText('details');
+
+            /*--[ state data ]--*/
+            $table->boolean('is_verified')->default(0);
+            $table->boolean('is_active')->default(0);
+            $table->bigInteger('nb_visited')->default(0);
+            $table->bigInteger('votes')->default(0);
+
+            /*--[ advertiser data ]--*/
+            $table->string('company_name');
+            $table->longText('advertiser_details')->nullable();
+
+            /*--[ of search data ]--*/
+            $table->longText('for_search');
+
             $table->timestamps();
 
             //TODO:add total tickets

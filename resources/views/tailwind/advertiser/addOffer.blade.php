@@ -32,9 +32,9 @@
                     <!-- event type -->
                     @include('tailwind.components.select-option', ['label' => 'Type of event', 'request_name' => 'type', 'placeholder' => 'Select event type', 'request_name_2' => $templates])
                     <!-- total tickets -->
-                    @include('tailwind.components.input-spinner', ['request_name' => 'total_tickets', 'label' => 'Total tickets'])
+                    @include('tailwind.components.input-spinner', ['request_name' => 'total_tickets', 'label' => 'Total tickets', 'placeholder' => '0'])
                     <!-- Price -->
-
+                    @include('tailwind.components.input-price', ['request_name' => 'price', 'label' => 'Price for a Ticket in DA' , 'placeholder' => '00.00 DA'])
                     <!-- phonenumber  -->
                     @include('tailwind.components.phone-number', ['value' => $phone_number])
                     <!-- description -->

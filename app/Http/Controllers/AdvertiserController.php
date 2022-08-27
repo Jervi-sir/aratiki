@@ -54,57 +54,43 @@ class AdvertiserController extends Controller
     /*--------------------------------------------------------
     |   Add Offer
     ----------------------------------------------------------*/
-    public function addOfferPage()
-    {
+    public function addOfferPage() {
         $templates = Template::all();
-        $phone_number = '0558054300'; //user relation from advertiser()
+        $phone_number = Auth::user()->advertiser->phone_number;
         return view('tailwind.advertiser.addOffer', ['templates' => $templates, 'phone_number' => $phone_number]);
     }
 
     public function addOffer(Request $request)
     {
         $advertiser = Auth::user()->advertiser;
+
         /*-- Upload images --*/
+        $savedImages = [];
         foreach($request->file('images') as $image) {
             $extension = $image->extension();
-            //$filename = $advertiser->company_name . '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
-            $filename =  '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
+            $filename = str_replace(' ', '_', $advertiser->company_name) . '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
             //? Maybe add Location Wilaya in filename
             $image->move(public_path('thumbnails'), $filename);
-            dd($image);
+            array_push($savedImages, $filename);
         }
 
         $offer = new Offer();
-        //$offer->advertiser_id = $advertiser->id;
-        $offer->advertiser_id = 1;
+        $offer->advertiser_id = $advertiser->id;
         $offer->template_id = Template::find($request->type)->id;
         $offer->campaign_name = $request->campaign_name;
         $offer->campaign_starts = $request->date_start;
         $offer->campaign_ends = $request->date_end;
-        $offer->tickets_left = intval($request->tickets_left);
+        $offer->tickets_left = intval($request->total_tickets);
         $offer->location = $request->location;
         $offer->price = $request->price;
-        $offer->images = json_encode($request->images);
+        $offer->images = json_encode($savedImages);
         $offer->phone_number = $request->phone_number;
         $offer->details = $request->description;
+        $offer->company_name = $advertiser->company_name;
+        $offer->advertiser_details = $advertiser->advertiser_details;
+        $offer->for_search = '$request->for_search';    //?
 
-        dd($request);
         $offer->save();
-
-        $search = new Search();
-        $search->advertiser_id = $advertiser->id;
-        $search->offer_id = $offer->id;
-
-        $search->company_name = $advertiser->company_name;
-        $search->campaign_name = $offer->campaign_name;
-        //$search->is_active = $offer->id;
-        $search->details = $offer->details;
-        $search->advertiser_details = $advertiser->details;
-        $search->location = 'location';
-        $search->price = 'price';
-        $search->save();
-
-        dd($offer);
     }
 
 
