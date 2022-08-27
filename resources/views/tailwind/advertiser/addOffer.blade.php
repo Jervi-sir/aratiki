@@ -18,49 +18,27 @@
             <!-- Page Heading -->
             @include('tailwind.components.header', ['slot' => 'add Offer'])
             <!-- Page Content -->
-            <main>
-                <form action="{{ route('post.advertiser.addOffer')}}" method="POST" class="m-auto w-full max-w bg-white p-11 rounded-xl">
+            <main class="max-w-xl mx-auto">
+                <form action="{{ route('post.advertiser.addOffer')}}" enctype="multipart/form-data" method="POST" class="m-auto w-full max-w bg-white p-11 rounded-xl shadow-md px-8 pt-6 pb-8 mb-4">
                     @csrf
-                    <!-- images -->
-                    @include('tailwind.components.input-images')
-                    <!-- campaign_name -->
-                    @include('tailwind.components.input-text',
-                        [
-                            'label' => 'Campaign Name',
-                            'request_name' => 'campaign_name',
-                            'placeholder' => 'Your Brand'
-                        ])
-                    <!-- type -->
-                    @include('tailwind.components.select-option',
-                        [
-                            'label' => 'Type',
-                            'request_name' => 'type',
-                            'templates' => $templates
-                        ])
-                    <!-- campaign_starts -->
-                    @include('tailwind.components.input-date',
-                        [
-                            'label' => 'Campaign Start',
-                            'request_name' => 'campaign_starts',
-                        ])
-                    <!-- campaign_ends -->
-                    @include('tailwind.components.input-date',
-                        [
-                            'label' => 'Campaign Ends',
-                            'request_name' => 'campaign_ends',
-                        ])
-                    <!-- tickets_left -->
-                    @include('tailwind.components.input-spinner',
-                        [
-                            'label' => 'How many tickets',
-                            'request_name' => 'tickets_left',
-                        ])
-                    <!-- details -->
-                    @include('tailwind.components.textarea',
-                        [
-                            'label' => 'Details',
-                            'request_name' => 'details',
-                        ])
+                    <!-- Images -->
+                    @include('tailwind.components.images')
+                    <!-- Campaign name -->
+                    @include('tailwind.components.input-text', ['label' => 'Event name', 'request_name' => 'campaign_name', 'placeholder' => 'Please enter your Campaign name'])
+                    <!-- location -->
+                    @include('tailwind.components.input-text', ['label' => 'Location', 'request_name' => 'location', 'placeholder' => "Please enter event's location"])
+                    <!-- date picker  -->
+                    @include('tailwind.components.input-date', ['request_name_1' => 'date_start', 'request_name_2' => 'date_end'])
+                    <!-- event type -->
+                    @include('tailwind.components.select-option', ['label' => 'Type of event', 'request_name' => 'type', 'placeholder' => 'Select event type', 'request_name_2' => $templates])
+                    <!-- total tickets -->
+                    @include('tailwind.components.input-spinner', ['request_name' => 'total_tickets', 'label' => 'Total tickets'])
+                    <!-- Price -->
+
+                    <!-- phonenumber  -->
+                    @include('tailwind.components.phone-number', ['value' => $phone_number])
+                    <!-- description -->
+                    @include('tailwind.components.textarea', ['request_name' => 'description'])
                     <div class="md:flex md:items-center">
                       <div class="md:w-1/3 ml-auto">
                         <button class="w-full shadow bg-slate-800 hover:bg-slate-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">

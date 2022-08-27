@@ -17,7 +17,17 @@ class TemplateSeeder extends Seeder
     public function run()
     {
         DB::table('templates')->insert([
-            'template_name' => Str::random(10),
+            'template_name' => 'music event',
+            'type' => 'default',
+            'source_code' => 'default'
+        ]);
+        DB::table('templates')->insert([
+            'template_name' => 'camping event',
+            'type' => 'default',
+            'source_code' => 'default'
+        ]);
+        DB::table('templates')->insert([
+            'template_name' => 'bowling event',
             'type' => 'default',
             'source_code' => 'default'
         ]);

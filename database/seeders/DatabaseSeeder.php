@@ -19,13 +19,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $role = new RoleSeeder();
+        //$role = new RoleSeeder();
         //$user = new UserSeeder();
 
         //$advertiser = new AdvertiserSeeder();
         $template = new TemplateSeeder();
 
-        $role->run();
+        //$role->run();
         //$user->run();
         //$advertiser->run();
         $template->run();

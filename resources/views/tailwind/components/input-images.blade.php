@@ -1,13 +1,25 @@
-<div x-data="images()">
-    <p x-text="message" />
-    <div class="drag-container" @dragover="dragover($event)" >
-        <template x-for="(item, index) in items" :key="item.id">
-                <img :id="item.id" :src='item.img' class="draggable" @dragover="dragover($event)" @dragstart="dragstart($event)" @dragend="dragend($event)" draggable="true" />
+<div x-data="images">
+    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+        Images
+    </label>
+    <div class="image">
+        <template x-for="(image, index) in images">
+            <div class="show">
+                <img :src='image' @click="previewImages(this.src)" alt="">
+                <button class="remove" @click="removeImage(index)" type="button">del</button>
+            </div>
+        </template>
+        <label class="add-img" for="add-image"><span>+</span></label>
+        <input hidden type="file" id="add-image"  accept="image/png, image/jpeg"  multiple @change='addImage($event.target)'>
+    </div>
+    <div class="output">
+        <template x-for="comp in compresseds">
+            <input name="imageCompressed[]" type="text" :value='comp' hidden>
         </template>
     </div>
 </div>
 <style>
-    .drag-container {
+    .images-list {
         display:flex;
         gap: 5rem;
     }
@@ -16,60 +28,63 @@
     }
 </style>
 <script>
-    const container = document.querySelector('.drag-container');
     function images() {
         return {
             message: 'twinki',
-            items: [
-                {id: 0, img:'https://fakeimg.pl/100/?text=1/'},
-                {id: 1, img:'https://fakeimg.pl/100/?text=2/'},
-                {id: 2, img:'https://fakeimg.pl/100/?text=3/'},
-                {id: 3, img:'https://fakeimg.pl/100/?text=4/'},
-            ],
-            draggedElement: 0,
-            dragstart(e) {
-                e.target.classList.add('dragging');
-                this.draggedElement = e.target.id;
-            },
-            dragend(e) {
-                e.target.classList.remove('dragging');
-            },
-            dragover(e) {
-                e.preventDefault();
-                var draggedOverEleIndex = e.target.id;
-                this.swapeInJson(this.draggedElement, draggedOverEleIndex);
-                ;
-            },
-            swapeInJson(selectedIndex, targetedEl) {
-                console.log(selectedIndex)
-                console.log(targetedEl)
-                var dataSelectedEle = this.items[selectedIndex]
-                this.items.splice(selectedIndex,1);
-                this.items.splice(targetedEl + 1, 0, dataSelectedEle);
+            images: [],
+            compresseds: [],
 
-                //var i = this.items.length;
-                /*
-                while (i--) {
-                    if(selectedEle.indexOf(this.items[i].id)!=-1){
-                        var data = this.items[selectedEle.indexOf(this.items[i].id)];
-                        console.log(data);
-                        //this.items.splice(targetedEl, 0, data)
-                    }
+            setAsMainImg(e) {
+                var EleId = e.target.id;
+                var dataTemp = this.items[EleId];
+                this.items[EleId] = this.items[0];
+                this.items[0] = dataTemp;
+                console.log(this.items)
+            },
+            addImage(event) {
+                let max = 4;
+                if(this.images.length >= max) {
+                    console.log('only max are allowed');
+                    return;
                 }
-                */
-                console.log(this.items);
-
+                //preview images
+                this.previewImages(event, max);
+                //compress images
+                this.compressAllImages();
+            },
+            previewImages(event, max) {
+                for (let i = 0; i < event.files.length; i++) {
+                    this.images.push(URL.createObjectURL(event.files[i]));
+                }
+            },
+            removeImage(index) {
+                this.images.splice(index, 1);
+                this.compressAllImages();
+            },
+            compressAllImages(max = 4) {
+                this.compresseds = [];
+                const countImage = this.images.length;
+                for(var i = 0; i < countImage; i++) {
+                    if(i > max) {
+                        return;
+                    }
+                    var result = this.compressOneImage(this.images[i]);
+                    this.compresseds.push(result);
+                }
+                console.log(this.compresseds)
+            },
+            compressOneImage(blobURL) {
+                //input is blobURL
+                var imgEle = new Image();
+                imgEle.src = blobURL;
+                /*--- Create Canva ---*/
+                var canvas = document.createElement('canvas');
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(imgEle, 0, 0, imgEle.width, imgEle.height);
+                const srcEncoded = ctx.canvas.toDataURL("image/png", 0.9);
+                return srcEncoded;
             }
         }
     }
 
-    function getDragAfterElement(y) {
-        const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
-        return draggableElements.reduce((closest, child) => {
-            const box = child;
-        console.log(box);
-            const offset = y - box.top - box.height / 2;
-            return { offset: offset, element: child };
-        }, { offset: Number.NEGATIVE_INFINITY}).element;
-    }
 </script>

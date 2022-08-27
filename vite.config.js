@@ -11,7 +11,11 @@ export default defineConfig({
                 'resources/css/register.scss',
                 'resources/css/login.scss',
             ],
-            refresh: true,
+            //refresh: true,
+            refresh: [
+                'app/Http/Controllers/**'
+            ],
+
         }),
     ],
 });

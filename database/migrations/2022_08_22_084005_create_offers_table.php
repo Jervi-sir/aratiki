@@ -33,6 +33,7 @@ return new class extends Migration
             $table->bigInteger('votes')->default(0);
 
             $table->text('images');
+            $table->string('phone_number');
             $table->longText('details');
             $table->timestamps();
 

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 
 class AdvertiserController extends Controller
 {
@@ -56,24 +57,38 @@ class AdvertiserController extends Controller
     public function addOfferPage()
     {
         $templates = Template::all();
-        return view('tailwind.advertiser.addOffer', ['templates' => $templates]);
+        $phone_number = '0558054300'; //user relation from advertiser()
+        return view('tailwind.advertiser.addOffer', ['templates' => $templates, 'phone_number' => $phone_number]);
     }
 
     public function addOffer(Request $request)
     {
-        dd($request);
         $advertiser = Auth::user()->advertiser;
+        /*-- Upload images --*/
+        foreach($request->file('images') as $image) {
+            $extension = $image->extension();
+            //$filename = $advertiser->company_name . '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
+            $filename =  '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
+            //? Maybe add Location Wilaya in filename
+            $image->move(public_path('thumbnails'), $filename);
+            dd($image);
+        }
 
         $offer = new Offer();
-        $offer->advertiser_id = $advertiser->id;
-        //TODO: set template id
+        //$offer->advertiser_id = $advertiser->id;
+        $offer->advertiser_id = 1;
         $offer->template_id = Template::find($request->type)->id;
-        $offer->tickets_left = intval($request->tickets_left);
-        $offer->images = '$request->images';
-        $offer->details = $request->details;
         $offer->campaign_name = $request->campaign_name;
-        $offer->campaign_starts = $request->campaign_starts;
-        $offer->campaign_ends = $request->campaign_ends;
+        $offer->campaign_starts = $request->date_start;
+        $offer->campaign_ends = $request->date_end;
+        $offer->tickets_left = intval($request->tickets_left);
+        $offer->location = $request->location;
+        $offer->price = $request->price;
+        $offer->images = json_encode($request->images);
+        $offer->phone_number = $request->phone_number;
+        $offer->details = $request->description;
+
+        dd($request);
         $offer->save();
 
         $search = new Search();
