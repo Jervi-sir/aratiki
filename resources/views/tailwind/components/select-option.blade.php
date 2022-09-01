@@ -1,4 +1,4 @@
-<div class="md:flex md:items-center mb-6">
+<div class="md:items-center mb-6">
     <label class="block text-gray-700 text-sm font-bold mb-2" >
         {{ $label }}
     </label>

@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index() {
+        $offers = Offer::all();
 
-        for($i = 0; $i < 5; $i++) {
-            $events[$i]['date'] = 'date' . $i;
-            $events[$i]['name'] = 'name' . $i;
-            $events[$i]['promoter'] = 'promoter' . $i;
-            $events[$i]['duration'] = 'duration' . $i;
-            $events[$i]['location'] = 'location' . $i;
-            $events[$i]['price'] = 'price' . $i;
+        foreach($offers as $index=>$offer) {
+            $data['offers'][$index] = [
+                'date' => $offer->campaign_starts,
+                'duration' => $offer->duration,
+                'name' => $offer->campaign_name,
+                'promoter' => $offer->company_name,
+                'location' => $offer->location,
+                'price' => $offer->price,
+                'url' => route('showOffer', ['id' => $offer->id]),
+            ];
         }
-        return view('home/home', ['events' => $events]);
+
+        return view('home.home', ['events' => $data['offers']]);
     }
 }

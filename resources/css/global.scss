@@ -41,12 +41,26 @@ html {
 body {
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 header
 {
     padding: .8rem 1.8rem;
     background: #fff;
+}
+
+.bg-blue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #203354;
+
+    display: block;
+    width: 100vw;
+    height: 33vh;
+
 }
 
 /* ------------------------------------

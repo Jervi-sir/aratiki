@@ -1,0 +1,75 @@
+.search {
+    & {
+      padding: 0 var(--padding-body);
+    }
+
+    h1 {
+      font-family: var(--font-primary);
+      color: var(--color-white);
+      font-size: var(--sz-big);
+      margin: 0;
+      margin-bottom: .7rem;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: var(--border-radius-normal);
+      display: flex;
+      align-self: center;
+      align-items: center;
+      padding: 7px 0;
+      margin: auto;
+
+      input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: var(--font-primary);
+        font-size: var(--sz-small);
+
+        &::placeholder {
+          color: var(--color-white);
+          font-size: var(--sz-extra-small);
+        }
+      }
+
+          a
+          {
+              display: flex;
+              align-items: center;
+              background-color: var(--color-theme-light);
+              padding: .2rem calc(var(--padding-body) - .8rem);
+              margin-right: 10px;
+              gap: 5px;
+              text-decoration: none;
+              color: var(--color-theme);
+              font-family: var(--font-primary);
+              font-size: var(--sz-extra-small);
+              font-weight: 500;
+              border-radius: var(--border-radius-normal);
+
+              svg
+              {
+                  width: 70%;
+              }
+          }
+    }
+
+    button {
+      & {
+        background: transparent;
+        border: none;
+      }
+      svg {
+        display: flex;
+        width: 50%;
+        margin-left: 1rem;
+        align-items: center;
+
+        path {
+          fill: var(--color-true-white);
+        }
+      }
+    }
+  }

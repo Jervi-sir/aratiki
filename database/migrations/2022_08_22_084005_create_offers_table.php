@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('campaign_name');
             $table->date('campaign_starts');
             $table->date('campaign_ends');
+            $table->string('duration');
 
+            $table->bigInteger('total_tickets');
             $table->bigInteger('tickets_left');
             $table->string('location');
             $table->string('price');

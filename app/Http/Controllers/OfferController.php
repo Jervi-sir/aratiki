@@ -27,8 +27,7 @@ class OfferController extends Controller
     }
     public function index()
     {
-        $offers = Offer::where('is_active', 1)->get();
-        return view('tailwind.home', ['offers' => $offers]);
+        return redirect()->route('home');
     }
 
 

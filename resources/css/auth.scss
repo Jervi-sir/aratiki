@@ -7,9 +7,9 @@ html, body {
 .body-register, .body-login {
     display: flex;
     flex-direction: column-reverse;
-    height: 70%;
     align-items: center;
     justify-content: center;
+    padding: 0 10vmin;
     .logo {
         padding: 2.8rem 0;
     }
@@ -19,6 +19,7 @@ form {
     text-align: center;
     font-family: var(--font-primary);
     padding: var(--padding-body);
+    width: 100%;
     h1 {
         margin: 0;
         padding: 0;
@@ -87,7 +88,7 @@ form {
 
 .register {
     width: 100%;
-    height: 30%;
+    padding-bottom: 10vmin;
     align-items: center;
     display: flex;
     justify-content: center;

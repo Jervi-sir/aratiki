@@ -23,32 +23,35 @@ class AdvertiserController extends Controller
     public function joinAdvertiserPage()
     {
         //TODO: if already requests
-        return view('tailwind.advertiser.join');
+        return view('auth.join');
     }
 
     //? joined as a new one
     public function joinAdvertiser(Request $request)
     {
-        $user = new User();
-        $user->role_id = Role::where('name', 'advertiser')->first()->id;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        $user = Auth()->user();
+        if(!$user) {
+            $user = new User();
+            $user->role_id = Role::where('name', 'advertiser')->first()->id;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            event(new Registered($user));
+            Auth::login($user);
+        }
 
         $adv = new Advertiser();
         $adv->user_id = $user->id;
-        $adv->company_name = $request->company_name;
+        $adv->company_name = $request->name;
         $adv->phone_number = $request->phone_number;
-        $adv->details = $request->details;
+        $adv->details = $request->description;
         //TODO: $adv->images = $request->images;
         $adv->save();
 
-        event(new Registered($user));
 
-        Auth::login($user);
+
         return redirect(RouteServiceProvider::HOME);
-
     }
 
     /*--------------------------------------------------------
@@ -80,6 +83,7 @@ class AdvertiserController extends Controller
         $offer->campaign_name = $request->campaign_name;
         $offer->campaign_starts = $request->date_start;
         $offer->campaign_ends = $request->date_end;
+        $offer->total_tickets = intval($request->total_tickets);
         $offer->tickets_left = intval($request->total_tickets);
         $offer->location = $request->location;
         $offer->price = $request->price;
@@ -100,7 +104,29 @@ class AdvertiserController extends Controller
     public function manageOffers()
     {
         $offers = Auth::user()->advertiser->offers;
-        return view('tailwind.advertiser.allOffers', ['offers' => $offers]);
+        foreach($offers as $index=>$offer) {
+            $data['offers'][$index] = [
+                'offer_id' => $offer->id,
+                'main_image' => 'thumbnails/' . json_decode($offer->images)[0],
+                'campaign_name' => $offer->campaign_name,
+                'campaign_starts' => $offer->campaign_starts,
+                'campaign_ends' => $offer->campaign_ends,
+
+                'total_tickets' => $offer->total_tickets,
+                'tickets_sold' => $offer->total_tickets - $offer->tickets_left,
+
+                'location' => $offer->location,
+                'phone_number' => $offer->phone_number,
+                'price' => $offer->price,
+
+                'details' => substr($offer->details, 0, 5) . '...',
+
+                'is_verified' => $offer->is_verified,
+                'is_active' => $offer->is_active,
+            ];
+        }
+
+        return view('tailwind.advertiser.allOffers', ['offers' => $data['offers']]);
     }
 
     /*--------------------------------------------------------

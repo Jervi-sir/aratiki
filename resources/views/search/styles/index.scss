@@ -1,0 +1,135 @@
+.body-top {
+    //background: linear-gradient(180deg, #181E27 0%, rgba(32, 37, 46, 0.96748) 70%, rgba(255, 255, 255, 0) 70%);;
+    //background: linear-gradient(180deg,#203354 0%,#203354 39.31%, #f8f8f8 28.32%);
+
+    @import '../../home/styles/side_menu.scss';
+
+}
+
+/* ------------------------------------
+            Header
+------------------------------------*/
+@import '../../home/styles/header.scss';
+/* ------------------------------------
+            Search
+------------------------------------*/
+@import '../../home/styles/search.scss';
+/* ------------------------------------
+            Result-events
+------------------------------------*/
+.result-events {
+@import '../../home/styles/event_cards.scss';
+
+    .card-horizental-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        /*width: 200%;*/
+        overflow: unset;
+        overflow-x: unset;
+        white-space: nowrap;
+        gap: 1rem;
+    }
+
+    .card {
+        width: unset;
+    }
+}
+/* ------------------------------------
+            Categories
+------------------------------------*/
+@import '../../home/styles/categories.scss';
+/* ------------------------------------
+            Join us
+------------------------------------*/
+@import '../../home/styles/join.scss';
+/* ------------------------------------
+            Media Queries
+------------------------------------*/
+@media screen and (min-width: 800px) {
+    .body {
+        width: 800px;
+        margin: auto;
+    }
+
+    .body-top {
+        .search {
+            h1 {
+                font-size: var(--sz-large);
+            }
+            form {
+                input {
+                    font-size: var(--sz-big);
+                    &::placeholder {
+                        font-size: var(--sz-big);
+                    }
+                }
+                a {
+                    font-size: var(--sz-medium);
+                }
+            }
+        }
+    }
+
+    .popular-events {
+        .header {
+            h4 {
+                font-size: var(--sz-medium);
+            }
+            a {
+                font-size: calc(var(--sz-medium) - 2px);
+            }
+        }
+        .card-horizental-container {
+            /*width: 200%;*/
+            white-space: nowrap;
+            padding: 0 0 1.2rem 0;
+            .card-container {
+                .card {
+                    .details {
+                        .title {
+                            font-size: var(--sz-under-medium);
+                        }
+                        .promoter {
+                            font-size: var(--sz-small);
+                        }
+                        .duration {
+                            span {
+                              font-size: var(--sz-under-medium);
+                            }
+                        }
+                        .location {
+                            img {
+                              width: 14px;
+                            }
+                            span {
+                              font-size: var(--sz-under-medium);
+                            }
+                        }
+                        .price {
+                            span {
+                              font-size: var(--sz-under-medium);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .event-categories {
+        .category-horizental-container {
+          gap: 10px;
+
+          .category {
+            margin: 0;
+            display: flex;
+            padding: 15px 20px;
+            font-size: var(--sz-under-medium);
+            gap: 9px;
+          }
+        }
+    }
+
+}
+
+

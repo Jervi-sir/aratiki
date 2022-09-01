@@ -3,7 +3,7 @@
 
 ### Home
 - [x] welcome page
-- [ ] add view all
+- [x] add view all
 - [ ] fix "fill your request" Auth issue
 
 ### Offer

@@ -7,7 +7,7 @@
         type="text"
         placeholder="Enter your phone number"
         required
-        @keypress="validateNumber"
+        @keypress="validatePhone"
         @if ($value)
         value="{{$value}}"
         @endif
@@ -18,9 +18,9 @@
     function phoneNumber() {
         return {
             message: 'twinki',
-            validateNumber(event) {
+            validatePhone(event) {
                 let keyCode = event.keyCode;
-                if (keyCode < 46 || keyCode > 57) {
+                if ((keyCode < 48 || keyCode > 57) && keyCode != 43) {
                     event.preventDefault();
                 }
             },

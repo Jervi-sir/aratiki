@@ -1,0 +1,44 @@
+.join {
+    text-align: center;
+    font-family: var(--font-primary);
+    padding: 40px 0;
+    .option {
+      h2 {
+        font-size: var(--sz-big);
+        color: var(--color-theme);
+        margin: 0;
+        padding: 0;
+      }
+      h4 {
+        font-weight: 400;
+        color: var(--color-lighter);
+        margin: 0;
+        padding: 0;
+      }
+      .join-button {
+        background-color: var(--color-theme);
+        font-weight: 500;
+        font-family: var(--font-primary);
+        text-decoration: none;
+        color: var(--color-white);
+        flex: 1;
+        border-radius: var(--border-radius-normal);
+        margin: 0 var(--padding-body);
+        margin-top: 7px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        padding: 15px 20px;
+      }
+
+      h5 {
+        font-weight: 400;
+        font-size: var(--sz-small);
+        color: var(--color-lighter);
+
+        strong {
+          color: var(--color-green);
+        }
+      }
+    }
+}

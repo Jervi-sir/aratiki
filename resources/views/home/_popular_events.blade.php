@@ -5,10 +5,10 @@
     </div>
     <div class="card-horizental-container">
         @foreach ($events as $event)
-            @include('home.card', ['event' => $event])
+            @include('home._card', ['event' => $event])
         @endforeach
     </div>
 
     <!-- Categories -->
-    @include('home.categories')
+    @include('home._categories')
   </div>

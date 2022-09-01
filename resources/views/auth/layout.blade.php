@@ -10,6 +10,7 @@
     </title>
     @vite('resources/css/global.scss')
     @vite('resources/css/auth.scss')
+    @yield('head')
 </head>
 <body>
     @yield('body')

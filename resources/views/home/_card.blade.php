@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <div class="location">
-            <img src="images/location['svg" alt="" />
+            <img src="images/location.svg" alt="" />
             <span>{{ $event['location'] }}</span>
           </div>
           <div class="price">
