@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="images/icon.png"/>
     <title>Home</title>
     @vite('resources/css/global.scss')
+    @vite('resources/js/app.js')
     @vite('resources/views/home/styles/index.scss')
   </head>
   <body>
@@ -14,6 +15,14 @@
     <div x-data='forMenu' class="body">
         <div class="overlay"></div>
         @include('home._header')
+
+        @if (session()->has('hasNotification'))
+            <div class="notification" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 800)" x-transition.duration.500ms>
+                <img src="/images/success_check.svg" alt="">
+                <h3>Request sent Successfully</h3>
+                <h5>We will call you to confirm you registration</h5>
+            </div>
+        @endif
         <div class="body-top">
             <!-- Header -->
             @include('home._side_menu')

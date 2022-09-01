@@ -49,9 +49,8 @@ class AdvertiserController extends Controller
         //TODO: $adv->images = $request->images;
         $adv->save();
 
-
-
-        return redirect(RouteServiceProvider::HOME);
+        session()->flash('hasNotification' , true);
+        return redirect()->route('home');
     }
 
     /*--------------------------------------------------------

@@ -76,3 +76,40 @@ footer {
     font-size: var(--sz-extra-small);
 }
 
+
+/* ------------------------------------
+            Notification
+------------------------------------*/
+.notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+
+    background: #E2EDFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-primary);
+    padding: 50px;
+    box-shadow: rgba(32, 51, 84, 0.4) 0px 0px 0px 2px, rgba(32, 51, 84, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    h3 {
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 160.02%;
+        color: #203354;
+        margin: 0;
+        padding: 0;
+    }
+    h5 {
+        font-weight: 500;
+        font-size: 16px;
+        color: #636363;
+        margin: 0;
+        padding: 0;
+    }
+}
