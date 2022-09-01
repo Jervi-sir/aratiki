@@ -1,8 +1,10 @@
 .body-top {
-    //background: linear-gradient(180deg, #181E27 0%, rgba(32, 37, 46, 0.96748) 70%, rgba(255, 255, 255, 0) 70%);;
-    //background: linear-gradient(180deg,#203354 0%,#203354 39.31%, #f8f8f8 28.32%);
+    /*background: linear-gradient(180deg, #181E27 0%, rgba(32, 37, 46, 0.96748) 70%, rgba(255, 255, 255, 0) 70%);*/
+    /*background: linear-gradient(180deg,#203354 0%,#203354 39.31%, #f8f8f8 28.32%);*/
 
     @import '../../home/styles/side_menu.scss';
+    width: 1400px;
+    margin: auto;
 
 }
 
@@ -10,10 +12,36 @@
             Header
 ------------------------------------*/
 @import '../../home/styles/header.scss';
+header {
+    background-color: #DCE5F4;
+    .bg-header {
+        width: 1400px;
+        margin: auto;
+    }
+    img {
+        filter: unset;
+    }
+}
 /* ------------------------------------
             Search
 ------------------------------------*/
 @import '../../home/styles/search.scss';
+.search {
+    margin: 2rem 0 3rem 0;
+    padding: 0;
+    h1 {
+        color: #203354
+    }
+
+    form {
+        background: rgba(32, 51, 84, 0.3);
+
+    }
+}
+
+.search {
+    display: none
+}
 /* ------------------------------------
             Result-events
 ------------------------------------*/
@@ -22,7 +50,7 @@
 
     .card-horizental-container {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         /*width: 200%;*/
         overflow: unset;
         overflow-x: unset;
@@ -39,16 +67,17 @@
 ------------------------------------*/
 @import '../../home/styles/categories.scss';
 /* ------------------------------------
-            Join us
+            Offer
 ------------------------------------*/
-@import '../../home/styles/join.scss';
+@import 'offer.scss';
 /* ------------------------------------
             Media Queries
 ------------------------------------*/
+
 @media screen and (min-width: 500px) {
     .result-events {
         .card-horizental-container {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             /*width: 200%;*/
         }
     }
@@ -56,7 +85,6 @@
 
 @media screen and (min-width: 800px) {
     .body {
-        width: 800px;
         margin: auto;
     }
 
@@ -140,3 +168,5 @@
     }
 }
 
+
+@import '../../offer/styles/media.scss';

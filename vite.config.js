@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/auth.scss',
                 'resources/views/home/styles/index.scss',
                 'resources/views/search/styles/index.scss',
+                'resources/views/offer/styles/index.scss',
                 'resources/css/register.scss',
                 'resources/css/login.scss',
             ],

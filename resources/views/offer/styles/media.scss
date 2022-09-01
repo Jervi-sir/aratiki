@@ -1,0 +1,77 @@
+@media only screen and (max-width: 481px) {
+    header {
+        .bg-header {
+            width: 100%;
+            margin: auto;
+        }
+    }
+
+    .body-top {
+        width: unset;
+        padding: 1rem;
+    }
+
+    .offer-container {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 1rem;
+        .details {
+            .title {
+                font-size: 25px;
+            }
+            .promoter {
+                font-size: 15px;
+            }
+            .date-about {
+                flex-direction: column;
+                .date {
+                    display: none;
+                }
+                .line-vertical {
+                    display: none;
+                }
+                .about {
+                    h5 {
+                        font-size: 18px;
+                    }
+                    p {
+                        font-size: 15px;
+                    }
+                }
+            }
+            .timeline {
+                h3 {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+            }
+            .actions {
+                flex-direction: column;
+                gap: 1rem;
+                a {
+                    text-align: center;
+                }
+            }
+        }
+        .images {
+            .location {
+                font-size: 13px;
+            }
+        }
+    }
+
+
+    .result-events {
+        .card-horizental-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            overflow: hidden;
+            overflow-x: scroll;
+            white-space: nowrap;
+            gap: 0.1rem;
+            .card {
+                width: 240px;
+            }
+        }
+    }
+}

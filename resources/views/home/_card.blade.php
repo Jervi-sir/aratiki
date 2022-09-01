@@ -1,10 +1,14 @@
 <div class="card-container">
     <div class="card">
       <div class="image">
-        <img class="preview" src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="260" height="150" alt="" />
-        <a href="#" class="bookmark">
-          <img src="images/bookmark.svg" alt="" />
+        <a href="{{ $event['url'] }}" class="preview">
+            <img  src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="260" height="150" alt="" />
         </a>
+        @auth
+        <a href="#" class="bookmark">
+            <img src="images/bookmark.svg" alt="" />
+        </a>
+        @endauth
         <div class="date">
           <span>{{ $event['date'] }}</span>
         </div>
@@ -30,4 +34,4 @@
         </div>
       </div>
     </div>
-  </div>
+</div>

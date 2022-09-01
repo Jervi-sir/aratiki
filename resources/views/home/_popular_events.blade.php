@@ -11,4 +11,4 @@
 
     <!-- Categories -->
     @include('home._categories')
-  </div>
+</div>
