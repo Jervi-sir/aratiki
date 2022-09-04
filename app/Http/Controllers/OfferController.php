@@ -22,7 +22,6 @@ class OfferController extends Controller
                         ->orWhere('price', 'like', '%' . $keyword . '%')
                         ->get();
 
-        dd($search);
         $offers = Offer::all();
 
         foreach($offers as $index=>$offer) {

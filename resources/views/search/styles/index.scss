@@ -56,7 +56,7 @@
 
 @media screen and (min-width: 800px) {
     .body {
-        width: 800px;
+        width: 1400px;
         margin: auto;
     }
 
@@ -90,6 +90,7 @@
         }
         .card-horizental-container {
             /*width: 200%;*/
+            grid-template-columns: repeat(3, 1fr);
             white-space: nowrap;
             padding: 0 0 1.2rem 0;
             .card-container {
