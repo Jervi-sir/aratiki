@@ -14,8 +14,8 @@ return [
     */
 
     'paths' => [
-        //resource_path('views'),
-        app_path('DDD'),
+        resource_path('views'),
+        //pp_path('DDD'),
     ],
 
     /*
