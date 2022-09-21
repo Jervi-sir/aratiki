@@ -5,10 +5,17 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/_newDesign/_styles/global.scss',
+                'resources/_newDesign/home/style.scss',
+                'resources/_newDesign/_components/_footer/footer.scss',
                 'resources/css/register.scss',
                 'resources/css/login.scss',
             ],
-            refresh: true
+            refresh: [
+                'resources/routes/**',
+                'routes/**',
+                'resources/views/**',
+            ],
 
         }),
     ],

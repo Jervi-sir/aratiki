@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post announcement</title>
-    <link rel="stylesheet" href="../../global.css">
-    <link rel="stylesheet" href="Offer/Offer.css">
-    <link rel="stylesheet" href="media.css">
+    <title>Aratiki</title>
+
+    @vite('resources/_newDesign/_styles/global.scss')
+    @vite('resources/_newDesign/_components/_footer/footer.scss')
+
+    @yield('style-head')
+    @yield('script-head')
+
     <script src="script.js"></script>
     <script src="qrcode.js"></script>
 </head>
 <body>
     <div class="body">
-        <div w3-include-html="_menu/menu.html" w3-include-style="_menu/menu.css"></div>
-        <main>
-            <div class="content" w3-include-html="Post/index.html" w3-include-style="Post/Post.css"></div>
-        </main>
+
     </div>
-    <footer w3-include-html="_footer/footer.html" w3-include-style="_footer/footer.css"></footer>
+
+    @include('_newDesign._components._footer.footer')
+
     <script>
-        includeHTML();
         function qrCodeRun() {
             var qrcode = new QRCode(document.getElementById("qrcode"), {
                 text: "982-26sd-3265sad-ds",

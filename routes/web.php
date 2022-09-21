@@ -21,7 +21,7 @@ use App\Http\Controllers\AdvertiserController;
 
 
 Route::get('/test', function() {
-    return view('welcome');
+    return view('_newDesign.home.index');
 });
 
 Route::get('/add', function() {
