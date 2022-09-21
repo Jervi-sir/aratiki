@@ -1,4 +1,4 @@
-@extends('_layouts.master')
+@extends('_extra._layouts.master')
 
 @section('styles-head')
     @vite('resources/views/Advertiser/post/styles.scss')

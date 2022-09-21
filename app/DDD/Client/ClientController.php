@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\Offer;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     /*--------------------------------------------------------
     |   become an advertiser

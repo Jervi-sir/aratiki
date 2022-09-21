@@ -3,10 +3,11 @@
 use App\Models\Offer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdvertiserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use App\Http\Controllers\AdvertiserController;
 
 
 Route::get('/test', function() {
-    return view('home.index');
+    return view('Home.index');
 });
 
 Route::get('/add', function() {
@@ -84,7 +85,7 @@ Route::controller(AdvertiserController::class)->group(function() {
 |   User
 |--------------------------
 */
-Route::controller(UserController::class)->group(function() {
+Route::controller(ClientController::class)->group(function() {
     Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[]
     Route::post('upgradeToAdvertiser', 'upgrade')->name('user.upgrade');                                    //[]
     Route::get('/getMyTickets', 'allMyTickets')->name('user.allTickets');                                   //[]

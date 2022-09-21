@@ -1,14 +1,11 @@
-@extends('_layouts.master')
+@extends('_extra._layouts.master')
 
 @section('styles-head')
-    @vite('resources/views/Offer/results/styles.scss')
-    @vite('resources/views/_components/search/search.scss')
+    @vite('app/DDD/Offer/results/styles.scss')
 @endsection
 
 @section('body')
-
-@include('_components.search.search')
-
+@include('_extra._components.search.search')
 <div class="results-container">
     <label for="">
         <div class="nb-result">12 Found</div>

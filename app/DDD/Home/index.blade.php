@@ -1,7 +1,7 @@
-@extends('_layouts.master')
+@extends('_extra._layouts.master')
 
 @section('styles-head')
-    @vite('resources/views/home/styles.scss')
+    @vite('app/DDD/home/styles.scss')
 @endsection
 
 @section('body')

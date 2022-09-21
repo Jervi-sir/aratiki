@@ -1,4 +1,4 @@
-@vite('resources/views/_components/footer/footer.scss')
+@vite('app/DDD/_extra/_components/footer/footer.scss')
 <footer>
     <div class="top-container">
         <div class="left">

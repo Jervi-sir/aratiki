@@ -1,3 +1,4 @@
+@vite('app/DDD/_extra/_components/search/search.scss')
 <div class="search-container">
     <div class="search">
         <button>

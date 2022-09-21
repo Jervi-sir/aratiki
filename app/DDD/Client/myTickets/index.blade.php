@@ -1,7 +1,7 @@
-@extends('_layouts.master')
+@extends('_extra/_layouts.master')
 
 @section('styles-head')
-    @vite('resources/views/Client/myTickets/styles.scss')
+    @vite('app/DDD/Client/myTickets/styles.scss')
 @endsection
 
 @section('body')
@@ -64,5 +64,4 @@
         </div>
     </div>
 </div>
-
 @endsection

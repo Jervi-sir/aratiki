@@ -1,4 +1,4 @@
-@vite('resources/views/_components/head/head.scss')
+@vite('app/DDD/_extra/_components/head/head.scss')
 <div class="header-container mobile">
     <header>
         <a class="logo">

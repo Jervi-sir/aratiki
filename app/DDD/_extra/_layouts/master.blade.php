@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aratiki</title>
 
-    @vite('resources/views/_styles/global.scss')
+    @vite('app/DDD/_extra/_styles/global.scss')
     @yield('styles-head')
     @yield('script-head')
 
 </head>
 <body>
     <div class="body">
-        @include('_components/head/head')
+        @include('_extra/_components/head/head')
         @yield('body')
     </div>
 
-    @include('_components/footer/footer')
+    @include('_extra/_components/footer/footer')
 </body>
 </html>

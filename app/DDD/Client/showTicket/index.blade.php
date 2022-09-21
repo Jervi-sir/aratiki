@@ -1,7 +1,7 @@
-@extends('_layouts.master')
+@extends('_extra._layouts.master')
 
 @section('styles-head')
-    @vite('resources/views/Client/showTicket/styles.scss')
+    @vite('app/DDD/Client/showTicket/styles.scss')
 @endsection
 
 @section('script-head')
