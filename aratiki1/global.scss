@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    //background 
+    --color-background-one: #203354;
+    --color-background-two: #FCFFFF;
+    --color-background-light-one:#DCE5F4;
+    
+    //colors
+    --color-blue: #203354;
+    --color-blue-light: #20335441;
+    --color-white: #FCFFFF;
+    --color-true-white: #FFFFFF;
+    --color-white-grey: #F6FAFD;
+    --color-green: #388A41;
+    
+    //shadow
+    --shadow-one: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    --shadow-two: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+    //font family
+    --font-primary: 'Montserrat', sans-serif;
+
+    //font size 
+    --text-xs:	0.75rem; /* 12px */
+    --text-sm:	0.875rem; /* 14px */
+    --text-base:1rem; /* 16px */
+    --text-lg:	1.125rem; /* 18px */
+    --text-xl:	1.25rem; /* 20px */
+    --text-2xl:	1.5rem; /* 24px */
+    --text-3xl:	1.875rem; /* 30px */
+    --text-4xl: 2.25rem; /* 36px */
+    --text-5xl: 3rem; /* 48px */
+    --text-6xl: 3.75rem; /* 60px */
+    --text-7xl: 4.5rem; /* 72px */
+    --text-8xl: 6rem; /* 96px */
+    --text-9xl: 8rem; /* 128px */
+    
+    //margins 
+    --margin-body: 25px;
+
+    --color-theme-secondary: #DCE5F4;
+    --color-primary: #ee6352;
+    --color-secondary: #181E27;
+    --color-grey: #ECECEC;
+    --color-extra-lighter: #D3D3D3;
+    --color-lighter: #ADADAD;
+    --color-light: #7E838F;
+    --bg-color-popups: #FFFFFF;
+
+
+    //media width
+    --media-body-width: 1400px;
+
+}
+
+body {
+    font-family: var(--font-primary);
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background: #F8F8F8;
+    background: #ffffff;
+    background: #fafafa;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1;
+}
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+
+.bg-blue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #203354;
+
+    display: block;
+    width: 100%;
+    height: 33vh;
+
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+   
+*::-webkit-scrollbar-thumb {
+    background: #203354;
+    border-radius: 20px;
+}
+  
+*::-webkit-scrollbar-track {
+    background: #2033543d;
+    border-radius: 20px;
+}
+
+
+/* ------------------------------------
+            Notification
+------------------------------------*/
+.notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+
+    background: #E2EDFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-primary);
+    padding: 50px;
+    box-shadow: rgba(32, 51, 84, 0.4) 0px 0px 0px 2px, rgba(32, 51, 84, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    h3 {
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 160.02%;
+        color: #203354;
+        margin: 0;
+        padding: 0;
+    }
+    h5 {
+        font-weight: 500;
+        font-size: 16px;
+        color: #636363;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    main {
+        position: relative;
+        display: flex;
+        width: var(--media-body-width);
+        margin: auto;
+        .aside {
+            position: -webkit-sticky; /* for Safari */
+            position: sticky;
+            top: 0;
+            align-self: flex-start; 
+            
+            width: 15%;
+            padding-top: 0.8rem;
+            .location {
+                margin-top: var(--text-5xl);
+                display: flex;
+                flex-direction: column;
+                label {
+                    font-weight: 600;
+                    font-size: var(--text-xl);
+                    color: #203354;
+                }   
+                a {
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: var(--text-lg);
+                    color: var(--color-blue);
+                    opacity: 0.7;
+                    .nb {
+                        font-weight: 500;
+                        font-size: var(--text-base);
+
+                    }
+                } 
+            }
+        }
+
+        .content {
+            flex: 1;
+        }
+    }
+}

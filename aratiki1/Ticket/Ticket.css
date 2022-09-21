@@ -1,0 +1,88 @@
+.ticket-container {
+  transform: translateY(-50px);
+}
+.ticket-container .top-ticket, .ticket-container .bottom-ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+}
+.ticket-container .top-ticket {
+  padding-bottom: 0;
+}
+.ticket-container .bottom-ticket {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.ticket-container h1, .ticket-container h2, .ticket-container h3, .ticket-container h4, .ticket-container h5, .ticket-container h6 {
+  margin: 0;
+  padding: 0;
+}
+.ticket-container .cut {
+  width: 80%;
+  margin: auto;
+}
+.ticket-container .cut img {
+  width: 100%;
+}
+.ticket-container .action {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: var(--text-lg);
+  color: #203354;
+}
+.ticket-container .qrcode {
+  width: 200px;
+}
+.ticket-container .qrcode img {
+  width: 100%;
+}
+.ticket-container .price {
+  margin: 10px;
+  margin-bottom: 0;
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: #203354;
+}
+.ticket-container .title {
+  margin: 10px 0 0 0;
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: #203354;
+}
+.ticket-container .promoter {
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: #25262C;
+}
+.ticket-container .location {
+  margin: 5px;
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: #25262C;
+}
+.ticket-container .timeline {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.ticket-container .timeline .start, .ticket-container .timeline .end {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.ticket-container .timeline .start .hours, .ticket-container .timeline .end .hours {
+  font-weight: 600;
+  font-size: var(--text-xl);
+  color: #203354;
+}
+.ticket-container .timeline .start .date, .ticket-container .timeline .end .date {
+  font-weight: 400;
+  font-size: var(--text-sm);
+  color: #203354;
+}/*# sourceMappingURL=Ticket.css.map */

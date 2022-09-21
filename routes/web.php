@@ -19,6 +19,15 @@ use App\Http\Controllers\AdvertiserController;
 |
 */
 
+
+Route::get('/test', function() {
+    return view('welcome');
+});
+
+Route::get('/add', function() {
+        return view('offer.add');
+});
+
 Route::get('/ss', function() {
     $offers = Offer::all();
 

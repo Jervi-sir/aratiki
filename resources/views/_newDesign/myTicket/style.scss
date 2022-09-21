@@ -1,0 +1,186 @@
+//------ My Ticket style
+.profile-container {
+    background-color: #203354;
+    padding-bottom: 20px;
+    .profile-card {
+        padding: 20px;
+        width: 80%;
+        margin: 0 auto;
+        background: #FFFFFF;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .username {
+                    font-weight: 600;
+                    font-size: var(--text-base);
+                    color: #000000;
+                }
+                .phone {
+                    font-weight: 400;
+                    font-size: var(--text-xs);
+                    color: #000000;
+                }
+                .bio {
+                    font-weight: 400;
+                    font-size: var(--text-xs);
+                    color: #000000;
+                }
+            }
+
+            .right {
+                width: 80px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .total-n-edit {
+            display: flex;
+            justify-content: space-between;
+            .total-tickets {
+                font-weight: 400;
+                font-size: var(--text-xs);
+                color: #000000;
+                .nb-active {
+                    font-weight: 400;
+                    font-size: calc(var(--text-xs) - 0.20rem);
+                    color: #000000;
+                }
+            }
+
+            .edit-btn {
+                width: 80px;
+                text-align: center;
+                font-weight: 400;
+                font-size: var(--text-sm);
+                color: #558A20;
+            }
+        }
+    }
+}
+
+
+.ticket-list {
+    padding: 0 30px;
+    margin-top: 20px;
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        font-weight: 600;
+        font-size: var(--text-base);
+        color: #000000;
+
+        .nb-active {
+            font-weight: 400;
+            font-size: var(--text-xs);
+        }
+    }
+
+    .ticket {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        background: #FFFFFF;
+        border-radius: 10px;
+        padding: 0 20px;
+        gap: 15px;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+            margin-right: auto;
+            .title {
+                font-weight: 600;
+                font-size: var(--text-base);
+                color: #000000;
+            }
+            .promoter {
+                font-weight: 400;
+                font-size: var(--text-xs);
+                color: #000000;
+            }
+            .location {
+                font-weight: 500;
+                font-size: var(--text-xs);
+                color: #000000;
+            }
+            .timeline {
+                margin-top: auto;
+                display: flex;
+                align-items: center;
+
+                gap: 5px;
+                font-weight: 400;
+                font-size: calc(var(--text-xs) - 0.1rem);
+                color: #203354;
+            }
+        }
+        .cut {
+            img {
+                height: 100%;
+            }
+        }
+        .right {
+            display: flex;
+            padding: 10px 0;
+            gap: 10px;
+            align-items: center;
+            .date {
+
+                .day {
+                    font-weight: 700;
+                    font-size: var(--text-3xl);
+                    color: #203354;
+                }
+                .month {
+                    font-weight: 700;
+                    font-size: var(--text-xs);
+                    color: #203354;
+
+                }
+                .separator {
+                    width: 80%;
+                    height: 2px;
+                    margin: auto;
+                    background-color: #203354;
+                }
+                .time {
+                    font-weight: 700;
+                    font-size: 7px;
+                    color: #203354;
+                }
+            }
+            .separator {
+                width: 3px;
+                height: 50%;
+                margin: auto;
+                background-color: #203354;
+            }
+
+            .qrcode {
+                img {
+                    width: 80px;
+                }
+                .price {
+                    font-weight: 700;
+                    font-size: var(--text-xs);
+                    color: #203354;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

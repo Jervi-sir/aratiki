@@ -1,0 +1,148 @@
+form {
+  padding: 2em;
+  padding-top: 1em;
+}
+form .images-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form .images-input label {
+  cursor: pointer;
+}
+form .images-input .main-img {
+  position: relative;
+  background: #E2EDFF;
+  border: 3px dashed rgba(32, 51, 84, 0.6);
+  border-radius: 10px;
+  height: 200px;
+}
+form .images-input .main-img label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+form .images-input .main-img label .plus {
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  color: #203354;
+}
+form .images-input .main-img label .text {
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: #828282;
+}
+form .images-input .optional-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+form .images-input .optional-img-container .optional-img {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  color: #203354;
+  background: #E2EDFF;
+  border: 3px dashed #CECECE;
+  border-radius: 10px;
+}
+form .images-input .optional-img-container .optional-img label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+form .input-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+form .input-container label {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #203354;
+}
+form .input-container label .required {
+  color: #FF7168;
+}
+form .input-container input, form .input-container select, form .input-container textarea {
+  border: 1.5px solid #203354;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+form .input-container input::-moz-placeholder, form .input-container select::-moz-placeholder, form .input-container textarea::-moz-placeholder {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #203354;
+}
+form .input-container input:-ms-input-placeholder, form .input-container select:-ms-input-placeholder, form .input-container textarea:-ms-input-placeholder {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #203354;
+}
+form .input-container input, form .input-container input::placeholder, form .input-container select, form .input-container select::placeholder, form .input-container textarea, form .input-container textarea::placeholder {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #203354;
+}
+form .input-container textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+form hr {
+  height: 2px;
+  background: #203354;
+}
+form .create-button {
+  margin-top: 40px;
+  background: #203354;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #FFFFFF;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.preview {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
+.preview .preview-image-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.preview .preview-image-container .preview-image {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.preview .preview-image-container .preview-image img {
+  width: 100%;
+}
+.preview .remove {
+  position: absolute;
+  z-index: 99;
+  background-color: transparent;
+  border: none;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  padding: 0;
+}
+.preview .remove img {
+  width: 100%;
+}/*# sourceMappingURL=Post.css.map */
