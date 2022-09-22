@@ -3,7 +3,7 @@
     <div class="main-img">
         <!-- preview -->
         <div x-show="preview['0']['filled']" class="preview">
-            <button type="button" class="remove">
+            <button type="button" class="remove" @click="removeImage(0)">
                     <img src="../../images/remove.svg" alt="">
             </button>
             <div class="preview-image-container">
@@ -21,7 +21,7 @@
     <div class="optional-img-container">
         <div class="optional-img">
             <div x-show="preview['1']['filled']" class="preview">
-                <button type="button" class="remove">
+                <button type="button" class="remove" @click="removeImage(1)">
                         <img src="../../images/remove.svg" alt="">
                 </button>
                 <div class="preview-image-container">
@@ -36,7 +36,7 @@
         </div>
         <div class="optional-img">
             <div x-show="preview['2']['filled']" class="preview">
-                <button type="button" class="remove">
+                <button type="button" class="remove" @click="removeImage(2)">
                         <img src="../../images/remove.svg" alt="">
                 </button>
                 <div class="preview-image-container">
@@ -51,7 +51,7 @@
         </div>
         <div class="optional-img">
             <div x-show="preview['3']['filled']" class="preview">
-                <button type="button" class="remove">
+                <button type="button" class="remove" @click="removeImage(3)">
                         <img src="../../images/remove.svg" alt="">
                 </button>
                 <div class="preview-image-container">
@@ -66,7 +66,7 @@
         </div>
         <div class="optional-img">
             <div x-show="preview['4']['filled']" class="preview">
-                <button type="button" class="remove">
+                <button type="button" class="remove" @click="removeImage(4)">
                         <img src="../../images/remove.svg" alt="">
                 </button>
                 <div class="preview-image-container">
@@ -81,14 +81,14 @@
         </div>
 
         <!-- client input -->
-        <input id="main-img"    type="file" x-on:change="setImage($event.target, 0)" hidden>
-        <input id="second-img"  type="file" x-on:change="setImage($event.target, 1)" hidden>
-        <input id="third-img"   type="file" x-on:change="setImage($event.target, 2)" hidden>
-        <input id="fourth-img"  type="file" x-on:change="setImage($event.target, 3)" hidden>
-        <input id="fifth-img"   type="file" x-on:change="setImage($event.target, 4)" hidden>
+        <input id="main-img"    type="file" accept="image/*" x-on:change="setImage($event.target, 0)" required hidden>
+        <input id="second-img"  type="file" accept="image/*" x-on:change="setImage($event.target, 1)" hidden>
+        <input id="third-img"   type="file" accept="image/*" x-on:change="setImage($event.target, 2)" hidden>
+        <input id="fourth-img"  type="file" accept="image/*" x-on:change="setImage($event.target, 3)" hidden>
+        <input id="fifth-img"   type="file" accept="image/*" x-on:change="setImage($event.target, 4)" hidden>
 
         <!-- compressed images -->
-        <input name="images[0]" type="text" :value="preview['0']['source']" hidden>
+        <input name="images[0]" type="text" :value="preview['0']['source']" required hidden>
         <input name="images[1]" type="text" :value="preview['1']['source']" hidden>
         <input name="images[2]" type="text" :value="preview['2']['source']" hidden>
         <input name="images[3]" type="text" :value="preview['3']['source']" hidden>
@@ -106,6 +106,11 @@
                 2: { source: '', filled: false },
                 3: { source: '', filled: false },
                 4: { source: '', filled: false },
+            },
+
+            removeImage(whichOne) {
+                this.preview[whichOne]['source'] = '';
+                this.preview[whichOne]['filled'] = false;
             },
 
             setImage(file, whichOne) {

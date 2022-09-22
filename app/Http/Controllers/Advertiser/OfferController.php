@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Advertiser;
 
-use App\Http\Controllers\Controller;
+use DateTime;
 
+use Carbon\Carbon;
 use App\Models\Offer;
 use App\Models\Template;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Storage;
 
 class OfferController extends Controller
 {
@@ -19,43 +21,74 @@ class OfferController extends Controller
     public function addOfferPage() {
         $templates = Template::all();
         $phone_number = Auth::user()->advertiser->phone_number;
-        return view('Advertiser.post.index', ['templates' => $templates, 'phone_number' => $phone_number]);
+        return view('Advertiser.post.index', 
+            [
+                'types' => $templates, 
+                'phone_number' => $phone_number
+            ]
+        );
     }
+
+    
 
     public function addOffer(Request $request) {
-        dd($request);
-        $advertiser = Auth::user()->advertiser;
+        $user = Auth::user();
+        $advertiser = $user->advertiser;
 
-        /*-- Upload images --*/
         $savedImages = [];
-        foreach($request->file('images') as $image) {
-            $extension = $image->extension();
-            $filename = str_replace(' ', '_', $advertiser->company_name) . '__' . $request->campaign_name . '__' . date("Y_m_d") . '__' . Carbon::now()->timestamp . '.' . $extension;
+        /*-- Upload images --*/
+        foreach($request->images as $image) {
             //? Maybe add Location Wilaya in filename
-            $image->move(public_path('thumbnails'), $filename);
-            array_push($savedImages, $filename);
-        }
+            if($image) {
+                $file = explode( ',', $image)[1];
+                $filename = str_replace(' ', '_', $advertiser->company_name) . '__' . 
+                                $request->campaign_name . '__' . 
+                                date("Y_m_d") . '__' . 
+                                Carbon::now()->timestamp . 
+                                '.png';
+                $filePath = str_replace(' ', '_', $user->name) . '/' . $filename;
+                Storage::disk('public')->put($filePath, base64_decode($file));
+                array_push($savedImages, $filename);
+            }
 
+        }
         $offer = new Offer();
+        /*--[ foreign keys ]--*/
         $offer->advertiser_id = $advertiser->id;
-        $offer->template_id = Template::find($request->type)->id;
-        $offer->campaign_name = $request->campaign_name;
-        $offer->campaign_starts = $request->date_start;
-        $offer->campaign_ends = $request->date_end;
-        $offer->total_tickets = intval($request->total_tickets);
-        $offer->tickets_left = intval($request->total_tickets);
+        $offer->template_id = $this->getTemplateId($request->type, $request->other_type);
+        /*--[ specific details ]--*/
+        $offer->event_name = $request->event_name;
         $offer->location = $request->location;
-        $offer->price = $request->price;
+        $offer->map_location = $request->map_location;
+        $offer->description = $request->description;
         $offer->images = json_encode($savedImages);
+        /*--[ date ]--*/
+        $offer->event_starts = $request->event_starts;
+        $offer->event_ends = $request->event_ends;
+        $offer->duration = $this->getDateDifferencet($request->event_starts, $request->event_ends);
+        /*--[ tickets ]--*/
+        if($request->containVIP) {
+            $offer->price_vip = $request->price_vip;
+            $offer->total_tickets_vip = intval($request->ticket_vip_amount);
+            $offer->tickets_left_vip = intval($request->ticket_vip_amount);
+        }
+        $offer->price_economy = $request->price_economy;
+        $offer->total_tickets_economy = intval($request->ticket_economy_amount);
+        $offer->tickets_left_economy = intval($request->ticket_economy_amount);
+        $offer->payment_type_id = $request->payment_type;
+        $offer->payment_type_name = 'paymentType';
+        /*--[ advertiser data ]--*/
+        $offer->promoter_name = $advertiser->company_name;
+        $offer->promoter_details = $advertiser->advertiser_details;
         $offer->phone_number = $request->phone_number;
-        $offer->details = $request->description;
-        $offer->company_name = $advertiser->company_name;
-        $offer->advertiser_details = $advertiser->advertiser_details;
-        $offer->for_search = '$request->for_search';    //?
+        /*--[ of search data ]--*/
+        $offer->for_search = $this->createKeyword($offer);    //?
 
         $offer->save();
-    }
 
+
+        return view();
+    }
 
     /*--------------------------------------------------------
     |   []  get list of all offers
@@ -133,5 +166,51 @@ class OfferController extends Controller
         $offer->save();
 
         return back();
+    }
+
+   
+
+
+    function getDateDifferencet($start, $end) {
+        $start = new DateTime($start);
+        $end = new DateTime($end);
+        $duration = $start->diff($end);
+        $durationFinal = '';
+        $days = $duration->format('%d');
+        $hours = $duration->format('%h');
+        if($hours != 0) {
+            $durationFinal = $hours . ' hours';
+        }
+        if($days != 0) {
+            $durationFinal = $days . ' days';
+        }
+
+        return $durationFinal;
+    }
+
+    function createKeyword($offer) {
+        $isVIP = $offer->price_vip ? 'vip' : '';
+
+        $keywords = $offer->location . ' ' . 
+            $offer->event_name . ' ' . 
+            $offer->promoter_name . ' ' . 
+            $offer->promoter_details . ' ' . 
+            'economic ' . 
+            $isVIP;
+    
+        return Str::of(strtolower($keywords))->replaceMatches('/ {2,}/', ' ')->value;      
+    }
+
+    function getTemplateId($templateId, $textIfNew = '') {
+        if($templateId == 'other') {
+            $template = new Template();
+            $template->template_name = $textIfNew;
+            $template->type = 'other';
+            $template->source_code = 'other';
+            $template->save();
+            return $template->id;
+        }
+
+        return Template::find($templateId)->id;
     }
 }
