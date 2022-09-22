@@ -7,6 +7,7 @@
     <title>Aratiki</title>
 
     @vite('resources/views/_extra/_styles/global.scss')
+    @vite('resources/js/app.js')
     @yield('styles-head')
     @yield('script-head')
 

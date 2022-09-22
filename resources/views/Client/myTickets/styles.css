@@ -1,0 +1,169 @@
+.profile-container {
+  background-color: #203354;
+  padding-bottom: 20px;
+}
+.profile-container .profile-card {
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-container .profile-card .details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-container .profile-card .details .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.profile-container .profile-card .details .left .username {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: #000000;
+}
+.profile-container .profile-card .details .left .phone {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: #000000;
+}
+.profile-container .profile-card .details .left .bio {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: #000000;
+}
+.profile-container .profile-card .details .right {
+  width: 80px;
+}
+.profile-container .profile-card .details .right img {
+  width: 100%;
+}
+.profile-container .profile-card .total-n-edit {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-container .profile-card .total-n-edit .total-tickets {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: #000000;
+}
+.profile-container .profile-card .total-n-edit .total-tickets .nb-active {
+  font-weight: 400;
+  font-size: calc(var(--text-xs) - 0.2rem);
+  color: #000000;
+}
+.profile-container .profile-card .total-n-edit .edit-btn {
+  width: 80px;
+  text-align: center;
+  font-weight: 400;
+  font-size: var(--text-sm);
+  color: #558A20;
+}
+
+.ticket-list {
+  padding: 0 30px;
+  margin-top: 20px;
+}
+.ticket-list label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: #000000;
+}
+.ticket-list label .nb-active {
+  font-weight: 400;
+  font-size: var(--text-xs);
+}
+.ticket-list .ticket {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-one);
+  border-radius: 10px;
+  padding: 0 20px;
+  gap: 15px;
+}
+.ticket-list .ticket .left {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  margin-right: auto;
+}
+.ticket-list .ticket .left .title {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: #000000;
+}
+.ticket-list .ticket .left .promoter {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: #000000;
+}
+.ticket-list .ticket .left .location {
+  font-weight: 500;
+  font-size: var(--text-xs);
+  color: #000000;
+}
+.ticket-list .ticket .left .timeline {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 400;
+  font-size: calc(var(--text-xs) - 0.1rem);
+  color: #203354;
+}
+.ticket-list .ticket .cut img {
+  height: 100%;
+}
+.ticket-list .ticket .right {
+  display: flex;
+  padding: 10px 0;
+  gap: 10px;
+  align-items: center;
+}
+.ticket-list .ticket .right .date .day {
+  font-weight: 700;
+  font-size: var(--text-3xl);
+  color: #203354;
+}
+.ticket-list .ticket .right .date .month {
+  font-weight: 700;
+  font-size: var(--text-xs);
+  color: #203354;
+}
+.ticket-list .ticket .right .date .separator {
+  width: 80%;
+  height: 2px;
+  margin: auto;
+  background-color: #203354;
+}
+.ticket-list .ticket .right .date .time {
+  font-weight: 700;
+  font-size: 7px;
+  color: #203354;
+}
+.ticket-list .ticket .right .separator {
+  width: 3px;
+  height: 50%;
+  margin: auto;
+  background-color: #203354;
+}
+.ticket-list .ticket .right .qrcode img {
+  width: 80px;
+}
+.ticket-list .ticket .right .qrcode .price {
+  font-weight: 700;
+  font-size: var(--text-xs);
+  color: #203354;
+  text-align: center;
+}/*# sourceMappingURL=styles.css.map */

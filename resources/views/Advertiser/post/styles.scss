@@ -15,8 +15,9 @@ form {
             background: #E2EDFF;
             border: 3px dashed rgba(32, 51, 84, 0.6);
             border-radius: 10px;
-            height: 200px;
-
+            height: 300px;
+            display: flex;
+            
             label {
                 display: flex;
                 flex-direction: column;
@@ -133,6 +134,7 @@ form {
         position: relative;
         height: 100%;
         overflow: hidden;
+        border-radius: 10px;
         .preview-image {
             position: absolute;
             top: 50%;
@@ -155,5 +157,12 @@ form {
         img {
             width: 100%;
         }
+    }
+}
+
+.optional-img {
+    .preview .preview-image-container .preview-image {
+        top: unset;
+        transform: unset;
     }
 }

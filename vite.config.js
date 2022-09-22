@@ -33,6 +33,9 @@ export default defineConfig({
                 'resources/views/css/register.scss',
                 'resources/views/css/login.scss',
 
+                //------ [ Script ]
+                'resources/js/app.js',
+
             ],
             refresh: [
                 'resources/views/**',

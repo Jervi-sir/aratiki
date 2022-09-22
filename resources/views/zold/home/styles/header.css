@@ -1,0 +1,220 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 30, 39, 0.6666666667);
+  z-index: 1;
+  display: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--color-theme);
+  z-index: 1000;
+  height: 40px;
+  transition: 0.5s ease;
+}
+header img {
+  filter: brightness(0) invert(1);
+}
+header path {
+  fill: var(--color-true-white);
+}
+header.active {
+  background-color: var(--color-true-white);
+  transition: 0.5s ease;
+  position: fixed;
+  height: 91vh;
+}
+header.active path {
+  fill: var(--color-theme) !important;
+}
+header .logo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+header .logo svg {
+  width: 30%;
+}
+header .logo svg path {
+  fill: #fff;
+}
+header .logo a {
+  display: flex;
+  align-items: center;
+}
+header .logo .close {
+  display: none;
+}
+header .logo .close svg {
+  width: 100%;
+}
+header .logo .close.active {
+  display: flex;
+}
+header .logo .hamburger {
+  display: none;
+}
+header .logo .hamburger svg {
+  width: 100%;
+}
+header .logo .hamburger.active {
+  display: flex;
+}
+header .login {
+  display: none;
+  gap: 15px;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+header .login.active {
+  display: flex;
+}
+header .login .btn-login {
+  font-family: var(--font-primary);
+  font-size: var(--sz-under-medium);
+  font-weight: 500;
+  background: var(--color-theme);
+  border: 1.8px solid var(--color-theme);
+  padding: 0.65rem 1.8rem;
+  text-decoration: none;
+  color: var(--color-true-white);
+  border-radius: var(--border-radius-normal);
+  transition: 0.5s ease;
+}
+header .login .btn-login:hover {
+  color: var(--color-theme);
+  background-color: var(--color-theme-secondary);
+  transition: 0.5s ease;
+}
+header .login .btn-signup {
+  font-family: var(--font-primary);
+  font-size: var(--sz-under-medium);
+  font-weight: 500;
+  background: none;
+  text-decoration: none;
+  border: 1.8px solid var(--color-theme);
+  padding: 0.65rem 1.4rem;
+  color: var(--color-theme);
+  border-radius: var(--border-radius-normal);
+  transition: 0.5s ease;
+}
+header .login .btn-signup:hover {
+  color: var(--color-true-white);
+  background-color: var(--color-theme);
+  transition: 0.5s ease;
+}
+header .user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  align-self: flex-end;
+  justify-content: space-between;
+  transition: 0.5 ease;
+}
+header .user .dropdown {
+  background: var(--color-true-white);
+  width: 200px;
+  height: 400px;
+  position: absolute;
+  top: 65px;
+  right: 29px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  border: solid 0.18rem var(--color-true-white);
+  height: 0;
+  display: none;
+  transition: 0.5s ease;
+}
+header .user .dropdown ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+  padding-top: 0.1rem;
+  margin: 0;
+  transition: 0.5s ease;
+}
+header .user .dropdown ul li {
+  border-top: solid 1px var(--color-theme-light);
+  list-style: none;
+  padding-top: 1rem;
+}
+header .user .dropdown ul li:nth-child(1) {
+  border-top: none;
+}
+header .user .dropdown ul li a {
+  font-weight: 500;
+  font-size: var(--sz-small);
+  font-family: var(--font-primary);
+  color: var(--color-lighter);
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+header .user .dropdown ul li a:hover {
+  color: var(--color-theme);
+  transition: 0.5s ease;
+}
+header .user span {
+  font-family: var(--font-primary);
+  color: var(--color-true-white);
+  font-size: calc(var(--sz-extra-small));
+  font-weight: 700;
+  max-width: 88px;
+  width: 100%;
+}
+header .user a svg path {
+  fill: var(--color-true-white);
+}
+header nav {
+  z-index: 1000;
+}
+header nav ul {
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+header nav ul.links {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  height: 55vh;
+  transition: 0.5s ease;
+}
+header nav ul.links.active {
+  display: flex;
+}
+header nav ul li {
+  list-style: none;
+}
+header nav ul li a {
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: rgba(24, 30, 39, 0.6666666667);
+  font-size: calc(var(--sz-big));
+  transition: 0.5s ease;
+}
+header nav ul li a.active {
+  color: var(--color-theme);
+  font-weight: 700;
+}
+header nav ul li a:hover {
+  color: var(--color-theme);
+  font-weight: 700;
+  transition: 0.5s ease;
+}/*# sourceMappingURL=header.css.map */

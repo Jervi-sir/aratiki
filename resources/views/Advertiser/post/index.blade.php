@@ -5,69 +5,10 @@
 @endsection
 
 @section('body')
-<form action="{{ route('post.advertiser.addOffer') }}" enctype="multipart/form-data">
+<form action="{{ route('post.advertiser.addOffer') }}" method="POST" >
     @csrf
     <!-- Images Input -->
-    <div class="images-input">
-        <div class="main-img">
-            <!-- preview -->
-            <div class="preview">
-                <button type="button" class="remove">
-                        <img src="../../images/remove.svg" alt="">
-                </button>
-                <div class="preview-image-container">
-                    <div class="preview-image">
-                        <img src="../../images/Rectangle.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <label for="main-img">
-                <span class="plus">+</span>
-                <span class="text">Add Cover Photos</span>
-            </label>
-            <input id="main-img" type="file" hidden>
-        </div>
-
-        <div class="optional-img-container">
-            <div class="optional-img">
-                <!-- preview -->
-                <div class="preview">
-                    <button type="button" class="remove">
-                            <img src="../../images/remove.svg" alt="">
-                    </button>
-                    <div class="preview-image-container">
-                        <div class="preview-image">
-                            <img src="../../images/Rectangle.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <label for="second-img">
-                    <span class="plus">+</span>
-                </label>
-            </div>
-            <div class="optional-img">
-                <label for="third-img">
-                    <span class="plus">+</span>
-                </label>
-            </div>
-            <div class="optional-img">
-                <label for="fourth-img">
-                    <span class="plus">+</span>
-                </label>
-            </div>
-            <div class="optional-img">
-                <label for="fifth-img">
-                    <span class="plus">+</span>
-                </label>
-            </div>
-
-            <input id="second-img" type="file" hidden>
-            <input id="third-img" type="file" hidden>
-            <input id="fourth-img" type="file" hidden>
-            <input id="fifth-img" type="file" hidden>
-        </div>
-    </div>
-
+   @include('Advertiser.post.imagesInput')
 
     <!-- Event Names -->
     <div class="input-container">

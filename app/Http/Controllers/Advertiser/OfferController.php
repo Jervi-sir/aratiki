@@ -23,6 +23,7 @@ class OfferController extends Controller
     }
 
     public function addOffer(Request $request) {
+        dd($request);
         $advertiser = Auth::user()->advertiser;
 
         /*-- Upload images --*/

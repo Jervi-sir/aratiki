@@ -1,0 +1,15 @@
+footer {
+  margin-top: auto;
+  padding: 30px;
+}
+footer .top-container, footer .social-container {
+  display: none;
+}
+footer .bottom-container {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-align: center;
+  color: var(--color-blue);
+}/*# sourceMappingURL=footer.css.map */
