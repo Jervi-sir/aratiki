@@ -16,6 +16,7 @@ class OfferController extends Controller
     ----------------------------------------------------------*/
     public function showOffer($id)
     {
+        $offers = Offer::all();
         $offer = Offer::find($id);
 
         $data['offer'] = [
@@ -43,7 +44,26 @@ class OfferController extends Controller
             'phone_number' => $offer->phone_number, //[]
             //'url' => route('showOffer', ['id' => $offer->id]),
         ];
+        
+        foreach($offers as $index=>$offer) {
+            $data['suggestions'][$index] = [
+                'image' => '/media/' . json_decode($offer->images)[0],
+                'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
+                'duration' => $offer->duration,
+                'event_name' => $offer->event_name, //[x]
+                'promoter_name' => $offer->promoter_name, //[x]
+                'location' => $offer->location,
+                'price_vip' => $offer->price_vip, //[x]
+                'price_economy' => $offer->price_economy, //[x]
+                'url' => route('showOffer', ['id' => $offer->id]),
+            ];
+        }
 
-        return view('Offer.show.index', ['offer' => $data['offer']]);
+        return view('Offer.show.index', 
+            [
+                'offer' => $data['offer'],
+                'suggestions' => $data['suggestions'],
+            ]
+        );
     }
 }

@@ -129,44 +129,48 @@
 <div class="more-offers">
     <label for="">More Events</label>
     <div class="offer-list">
+        @foreach ($suggestions as $item)
         <div class="card">
             <div class="image">
-                <div class="location">
-                    <img src="../../images/flag.svg" alt="">
-                    <span>Oran</span>
-                </div>
+                @auth
                 <div class="bookmark">
                     <img src="../../images/bookmark.svg" alt="">
                 </div>
-                <div class="preview">
-                    <img src="../../images/Rectangle.png" alt="">
-                </div>
-                <div class="date">
-                    April 01
+                @endauth
+                <a class="preview" href="{{ $item['url'] }}">
+                    <img src="{{ env('APP.ENV') .  $item['image'] }}" alt="">
+                </a>
+                <div class="date-container">
+                    <div class="date">
+                        {{ $item['date'] }}
+                    </div>
                 </div>
             </div>
 
-            <div class="title">
-                Forbidden Festival
-            </div>
-            <div class="promoter-duration">
-                <div class="promoter">
-                    By Leopanthera
+            <div class="details">
+                <div class="title-promoter-duration">
+                    <div class="title-promoter">
+                        <div class="title">{{ $item['event_name'] }}</div>
+                        <div class="promoter">By {{ $item['promoter_name'] }}</div>
+                    </div>
+                    <div class="duration">
+                        {{ $item['duration'] }}
+                    </div>
                 </div>
-                <div class="duration">
-                    1 day
+                <div class="location-price">
+                    <div class="location">
+                        <img src="../../images/location.svg" alt="">
+                        <span>{{ $item['location'] }}</span>
+                    </div>
+                    <div class="price">
+                        {{ $item['price_economy'] }} <small>DA</small>
+                    </div>
                 </div>
-            </div>
-            <div class="view-price">
-                <a href="#" class="view-button">
-                    View More
-                </a>
-                <span class="price">
-                    2000 D.A
-                </span>
             </div>
 
         </div>
+        @endforeach
+
     </div>
 
     <div class="tickets-spinner">
