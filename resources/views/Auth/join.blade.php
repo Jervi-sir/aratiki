@@ -1,4 +1,5 @@
 @extends('auth.layout')
+{{-- [] --}}
 
 @section('title')
 Become an Advertiser

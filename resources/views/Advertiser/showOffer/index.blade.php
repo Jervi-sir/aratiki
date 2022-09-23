@@ -1,10 +1,11 @@
 @extends('_extra._layouts.master')
-
+{{-- [done] --}}
 @section('title')
     {{ $offer['event_name'] }} -Edit
 @endsection
 
 @section('styles-head')
+    @vite('resources/views/Offer/show/styles.scss')
     @vite('resources/views/Advertiser/showOffer/styles.scss')
 @endsection
 
@@ -58,6 +59,7 @@
             <h1>{{ $offer['event_name'] }}</h1>
             <span>{{ $offer['type'] }}</span>
         </div>
+        
         <div class="promoter-phone">
             <!-- Promoter -->
             <div class="event-promoter">
@@ -221,7 +223,7 @@
             <div class="decor"></div>
         </div>
 
-        <a href="" class="edit-byn">Edit details</a>
+        <a href="" class="edit-btn">Edit details</a>
     </div>
 </div>
 @endsection

@@ -1,4 +1,5 @@
 @extends('_extra._layouts.master')
+{{-- [] --}}
 
 @section('styles-head')
     @vite('resources/views/Offer/show/styles.scss')
@@ -14,13 +15,13 @@
             <div class="main-images">
                 <div class="location">
                     <img src="../../images/flag.svg" alt="">
-                    <span>Location, location</span>
+                    <span>{{ 'media/' . $offer['location'] }}</span>
                 </div>
                 <div class="bookmark">
                     <img src="../../images/bookmark.svg" alt="">
                 </div>
                 <div class="preview">
-                    <img src="../../images/Rectangle.png" alt="">
+                    <img src="{{ env('APP.ENV') }}{{ '/media/' . $offer['images'][0] }}" alt="">
                 </div>
                 <div class="nav-images">
                     <div class="left">
@@ -29,7 +30,7 @@
                         <div id="images3" class="select-image"></div>
                     </div>
                     <div class="date">
-                        April 01
+                        {{ $offer['date'] }}
                     </div>
                     <div class="right">
                         <div id="images4" class="select-image"></div>
@@ -38,19 +39,11 @@
                 </div>
             </div>
             <div class="secondary-images">
+                @foreach ($offer['images'] as $item)
                 <div class="thumbnail">
-                    <img src="../../images/Rectangle.png" alt="">
+                    <img src="{{ env('APP.ENV') }}{{ '/media/' . $item }}" alt="">
                 </div>
-                <div class="thumbnail">
-                    <img src="../../images/Rectangle.png" alt="">
-                </div>
-                <div class="thumbnail">
-                    <img src="../../images/Rectangle.png" alt="">
-                </div>
-                <div class="thumbnail">
-                    <img src="../../images/Rectangle.png" alt="">
-                </div>
-
+                @endforeach
             </div>
 
         </div>
@@ -59,22 +52,33 @@
     <div class="left-container">
         <!-- Title -->
         <div class="event-title">
-            <h1>TeDX - Oran</h1>
+            <h1>{{ $offer['event_name'] }}</h1>
+            <span>{{ $offer['type'] }}</span>
         </div>
-        <!-- Promoter -->
-        <div class="event-promoter">
-            <span>By</span>
-            <img src="../../images/promoter.png" alt="">
-            <span>promoter name</span>
+
+        <div class="promoter-phone">
+            <!-- Promoter -->
+            <div class="event-promoter">
+                <span>By</span>
+                <img src="../../images/promoter.png" alt="">
+                <span>{{ $offer['promoter_name'] }}</span>
+            </div>
+            <!-- Phone number -->
+            <div class="event-phone">
+                <img src="../../images/phone_number.svg" alt="">
+                <div class="separator"></div>
+                <span>{{ $offer['phone_number'] }}</span>
+            </div>
         </div>
         <!-- Date -->
         <div class="event-date">
-            <span>April 01, 09:00 PM</span>
+            <span>{{ $offer['event_starts'] }}</span>
+            <span>{{ $offer['duration'] }}</span>
         </div>
         <!-- About -->
         <div class="event-about">
             <label for="">About</label>
-            <p>Lorem ipsum dolor sit amet, ignota percipit insolens nam te. Et pro clita aliquando, at ridens eleifend pri. Pro decore liberavisse te, nam adhuc aeque at. Dicant laudem et eam.</p>
+            <p>{{ $offer['description'] }}</p>
         </div>
         <!-- Timeline -->
         <div class="event-timeline">
@@ -85,7 +89,7 @@
                 </div>
                 <div class="right">
                     <img src="../../images/clock.svg" alt="">
-                    <span>April 01, 09:00PM</span>
+                    <span>{{ $offer['event_starts'] }}</span>
                 </div>
             </div>
             <div class="timeline">
@@ -94,20 +98,27 @@
                 </div>
                 <div class="right">
                     <img src="../../images/clock.svg" alt="">
-                    <span>April 01, 09:00PM</span>
+                    <span>{{ $offer['event_ends'] }}</span>
                 </div>
             </div>
         </div>
         <!-- Price n tickets -->
         <form class="buy">
             <div class="amounts">
-                <div class="tickets">
-                    <button type="button" class="minus">-</button>
-                    <input type="number" name="" id="" value="1">
-                    <button type="button" class="plus">+</button>
+                
+                <div class="price vip">
+                    <div>
+                        {{ $offer['price_economy'] }} 
+                        <small>D.A</small>
+                    </div>
+                    <span>VIP</span>
                 </div>
-                <div class="price">
-                    <div class="total">1000 D.A</div>
+                <div class="price economy">
+                    <div>
+                        {{ $offer['price_economy'] }} 
+                        <small>D.A</small>
+                    </div>
+                    <span>Economic</span>
                 </div>
             </div>
 
@@ -158,5 +169,10 @@
         </div>
     </div>
 
+    <div class="tickets-spinner">
+        <button type="button" class="minus">-</button>
+        <input type="number" name="" id="" value="1">
+        <button type="button" class="plus">+</button>
+    </div>
 </div>
 @endsection

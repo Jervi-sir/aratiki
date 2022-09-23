@@ -13,8 +13,8 @@ use App\Http\Controllers\Offer\HomeController as HomeController;
 |--------------------------
 */
 Route::controller(HomeController::class)->group(function() {
-    Route::get('/', 'index');
-    Route::get('/home', 'home')->name('home');
+    Route::get('/', 'index');                   //[x]
+    Route::get('/home', 'home')->name('home');  //[x]
 });
 
 /*

@@ -39,6 +39,8 @@ class SearchController extends Controller
             ];
         }
 
+        dd($data['offers']);
+
         return view('search.search', ['events' => $data['offers']]);
         return view('result');
     }

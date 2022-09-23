@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Offer;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\Offer;
+use App\Models\Template;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class OfferController extends Controller
@@ -17,6 +18,32 @@ class OfferController extends Controller
     {
         $offer = Offer::find($id);
 
-        return view('Offer.show.index', ['offer' => $offer]);
+        $data['offer'] = [
+            'type' => Template::find($offer->template_id)->template_name, //[x]
+
+            'event_name' => $offer->event_name, //[x]
+            'location' => $offer->location, //[x]
+            'map_location' => $offer->map_location, //[x]
+            'description' => $offer->description, //[x]
+            'images' => json_decode($offer->images), //[x]
+
+            'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
+            'event_starts' => date('M d, g:i A' ,strtotime($offer->event_starts)), //[x]
+            'event_ends' => date('M d, g:i A' ,strtotime($offer->event_ends)), //[x]
+            'duration' => $offer->duration, //[x]
+
+            'price_vip' => $offer->price_vip, //[x]
+            'tickets_left_vip' => $offer->tickets_left_vip, //[x]
+            'price_economy' => $offer->price_economy, //[x]
+            'tickets_left_economy' => $offer->tickets_left_economy, //[x]
+            'payment_type_name' => $offer->payment_type_name, //[]
+
+            'promoter_name' => $offer->promoter_name, //[x]
+            'promoter_details' => $offer->promoter_details, //[]
+            'phone_number' => $offer->phone_number, //[]
+            //'url' => route('showOffer', ['id' => $offer->id]),
+        ];
+
+        return view('Offer.show.index', ['offer' => $data['offer']]);
     }
 }

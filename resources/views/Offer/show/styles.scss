@@ -1,8 +1,4 @@
 
-.offer-container, .more-offers {
-    transform: translateY(-50px);
-}
-
 .offer-container {
     display: flex;
     flex-direction: column;
@@ -114,37 +110,71 @@
                 margin: 0;
                 font-weight: 700;
                 font-size: var(--text-3xl);
-                color: #203354;
+                color: var(--color-blue);
             }
         }
 
-        .event-promoter {
+        .promoter-phone {
             display: flex;
-            flex-direction: row;
             align-items: center;
-            gap: 5px;
-
-            img {
-                border-radius: 100%;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            .event-promoter {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+    
+                img {
+                    border-radius: 100%;
+                }
+                span {
+                    font-weight: 400;
+                    font-size: var(--text-sm);
+                    color: #C4C4C4;
+                }
             }
-            span {
-                font-weight: 400;
-                font-size: var(--text-sm);
-                color: #C4C4C4;
+            .event-phone {
+                display: flex;
+                gap: 5px;
+                img {
+                    filter: invert(100%);
+                    width: 12px;
+                }
+                .separator {
+                    background: var(--color-blue);
+                    width: 1px;
+                    border-radius: 20px;
+                }
+                span {
+                    font-weight: 600;
+                    font-size: var(--text-xs);
+                    color: var(--color-blue);
+                }
             }
         }
 
         .event-date {
-            font-weight: 700;
-            font-size: var(--text-xl);
-            color: #203354;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            span {
+                font-weight: 700;
+                font-size: var(--text-xl);
+                color: var(--color-blue);
+                &:last-of-type {
+                    font-weight: 500;
+                    font-size: var(--text-sm);
+                }
+            }
         }
 
         .event-about {
             label {
                 font-weight: 600;
                 font-size: var(--text-base);
-                color: #203354;
+                color: var(--color-blue);
             }
 
             p {
@@ -162,7 +192,7 @@
             label {
                 font-weight: 600;
                 font-size: var(--text-base);
-                color: #203354;
+                color: var(--color-blue);
             }
             .timeline {
                 display: flex;
@@ -198,52 +228,26 @@
             .amounts {
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
-                .tickets {
+                align-items: center; 
+
+                .price {
+                    font-weight: 700;
+                    font-size: var(--text-3xl);
                     display: flex;
-                    button {
+                    flex-direction: column;
+                    &.vip {
+                        color: var(--color-blue);
+                        opacity: 0.7;
+                    }
+                    &.economy {
+                        color: var(--color-blue);
+                    }
+                    span {
                         font-weight: 500;
-                        font-size: var(--text-lg);
-                        color: #203354;
-                        border: 1px solid #203354;
-                        border-radius: 4.19641px;
-                        width: 40px;
-                        height: 40px;
-
-                        &.plus {
-                            background: #203354;
-                            color: #FFFFFF;
-                        }
-
-                        &.minus {
-                            background: transparent;
-                            color: #203354;
-                        }
-                    }
-
-                    input {
-                        width: 40px;
+                        font-size: var(--text-sm);
                         text-align: center;
-                        border: none;
-                    }
-
-                    /* Chrome, Safari, Edge, Opera */
-                    input::-webkit-outer-spin-button,
-                    input::-webkit-inner-spin-button {
-                        -webkit-appearance: none;
-                        margin: 0;
-                    }
-                    /* Firefox */
-                    input[type=number] {
-                        -moz-appearance: textfield;
                     }
                 }
-            }
-
-            .price {
-                font-weight: 700;
-                font-size: var(--text-3xl);
-                color: #203354;
             }
 
             .request {
@@ -260,6 +264,46 @@
         }
     }
 
+}
+
+.tickets-spinner {
+    display: flex;
+    button {
+        font-weight: 500;
+        font-size: var(--text-lg);
+        color: #203354;
+        border: 1px solid #203354;
+        border-radius: 4.19641px;
+        width: 40px;
+        height: 40px;
+
+        &.plus {
+            background: #203354;
+            color: #FFFFFF;
+        }
+
+        &.minus {
+            background: transparent;
+            color: #203354;
+        }
+    }
+
+    input {
+        width: 40px;
+        text-align: center;
+        border: none;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
 }
 
 

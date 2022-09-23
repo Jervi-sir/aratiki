@@ -1,4 +1,5 @@
 @extends('auth.layout')
+{{-- [done] --}}
 
 @section('title')
 register

@@ -1,4 +1,5 @@
 @extends('_extra._layouts.master')
+{{-- [] --}}
 
 @section('styles-head')
     @vite('resources/views/Client/showTicket/styles.scss')
