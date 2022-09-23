@@ -7,6 +7,7 @@ export default defineConfig({
             input: [
                 //------ [ Global ]
                 'resources/views/_extra/_styles/global.scss',
+                'resources/views/errors/styles.scss',
                 //------ [ Media ]
 
                 //------ [ Components ]

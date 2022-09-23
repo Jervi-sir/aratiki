@@ -22,8 +22,7 @@ class OfferController extends Controller
     public function editOffer($id)  {
         $offer = Offer::find($id);
         if($offer->advertiser->id != Auth::user()->advertiser->id) {
-            return redirect('/');
-            //TODO: redirect to 404
+            return abort(404);
         }
         
         $data['offer'] = [

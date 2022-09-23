@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
+    //font family
+    --font-primary: 'Inter', sans-serif;
+
+
     //background
     --color-background-one: #203354;
     --color-background-two: #FCFFFF;
@@ -23,8 +28,6 @@
     --shadow-one: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     --shadow-two: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 
-    //font family
-    --font-primary: 'Montserrat', sans-serif;
 
     //font size
     --text-xs:	0.75rem; /* 12px */
