@@ -33,8 +33,8 @@
                 <span>Welcome,</span>
                 <span class="username">Jervi</span>
             </div>
-            <img class="user-image" src="../images/user.svg" alt="">
-            <img src="../images/arrow_down.svg" alt="">
+            <img class="user-image" src="../../images/user.svg" alt="">
+            <img src="../../images/arrow_down.svg" alt="">
         </div>
     </header>
     <h1></h1>

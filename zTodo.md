@@ -35,3 +35,5 @@
 - [ ] add like system
 - [ ] add comment system
 
+# Quick fixes
+- rename all return to view correctly

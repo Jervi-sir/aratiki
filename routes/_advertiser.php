@@ -22,7 +22,7 @@ Route::controller(AdvertiserOffer::class)->middleware(['auth'])->group(function(
     Route::post('/advertiser/addOffer', 'addOffer')->name('post.advertiser.addOffer');  //[x] ba9i wilaya f file name, google api
 
     Route::get('/advertiser/allMyOffers', 'manageOffers')->name('get.advertiser.allOffers');            //[]
-    Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[]
-    Route::get('/advertiser/editOffer/{id}', 'editOffer')->name('get.advertiser.editOffer');            //[]
+    Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[x]
+    Route::get('/advertiser/editOffer/{id}', 'editOffer')->name('get.advertiser.editOffer');            //[-]
     Route::post('/advertiser/editOffer/{id}', 'updateOffer')->name('update.advertiser.editOffer');      //[]
 });

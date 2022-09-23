@@ -95,6 +95,12 @@ form {
                         accent-color: #5FBE7B !important;
                         transition: 0.2s;
                     }
+                     
+                    &.orange-border {
+                        box-shadow: 0 0 0 2px #ffa500;
+                        accent-color: #ffa500 !important;
+                        transition: 0.2s;
+                    }
                 }
             }
         }
@@ -164,6 +170,11 @@ form {
 .green-border {
     border: 1.5px solid #5FBE7B !important;
     outline: 1.5px solid #5FBE7B !important;
+}
+
+.orange-border {
+    border: 1.5px solid #ffa500 !important;
+    outline: 1.5px solid #ffa500 !important;
 }
 
 .preview {
