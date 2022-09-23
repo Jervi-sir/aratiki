@@ -69,23 +69,6 @@ Route::controller(AdminController::class)->group(function() {
     //Route::middleware(['auth', 'isAdmin'])->group( function() {});
 });
 
-
-Route::get('/ss', function() {
-    $offers = Offer::all();
-    foreach($offers as $index=>$offer) {
-        $data['offers'][$index] = [
-            'date' => $offer->campaign_starts,
-            'duration' => $offer->duration,
-            'name' => $offer->campaign_name,
-            'promoter' => $offer->company_name,
-            'location' => $offer->location,
-            'price' => $offer->price,
-            'url' => route('showOffer', ['id' => $offer->id]),
-        ];
-    }
-    return view('offer.offer', ['events' => $data['offers']]);
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

@@ -7,15 +7,20 @@ use App\Models\Template;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
     /*--------------------------------------------------------
     |   []  show a single offer
     ----------------------------------------------------------*/
-    public function showOffer($id)
-    {
+    public function showOffer($id) {
+        if(Auth()) {
+            $isOwner = Auth()->user()->advertiser->offers->find($id);
+            if($isOwner) {
+                return redirect()->route('get.advertiser.offer', ['id' => $id]);
+            }
+        }
         $offers = Offer::all();
         $offer = Offer::find($id);
 

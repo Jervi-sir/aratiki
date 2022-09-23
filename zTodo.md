@@ -10,6 +10,7 @@
 ### Advertiser
 - [x] post
 - [x] show offer
+- [x] show offer as advertiser
 - [ ] edit offer
 - [ ] list all posted offer
 - [ ] delete offer (if no one has purchased the offer)
