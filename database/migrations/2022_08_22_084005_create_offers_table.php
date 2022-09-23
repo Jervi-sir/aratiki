@@ -26,9 +26,9 @@ return new class extends Migration
             $table->longText('description'); //[x] 
             $table->longText('images'); //[x] 
 
-            /*--[ date ]--*/
-            $table->date('event_starts'); //[x] 
-            $table->date('event_ends'); //[x] 
+            /*--[ dateTime ]--*/
+            $table->dateTime ('event_starts'); //[x] 
+            $table->dateTime ('event_ends'); //[x] 
             $table->string('duration'); //[x] 
 
             /*--[ tickets ]--*/

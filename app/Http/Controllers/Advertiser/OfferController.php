@@ -41,14 +41,14 @@ class OfferController extends Controller
             //? Maybe add Location Wilaya in filename
             if($image) {
                 $file = explode( ',', $image)[1];
-                $filename = str_replace(' ', '_', $advertiser->company_name) . '__' . 
+                $filename = '/' . str_replace(' ', '_', $advertiser->company_name) . '__' . 
                                 $request->campaign_name . '__' . 
                                 date("Y_m_d") . '__' . 
                                 Carbon::now()->timestamp . 
                                 '.png';
                 $filePath = str_replace(' ', '_', $user->name) . '/' . $filename;
                 Storage::disk('public')->put($filePath, base64_decode($file));
-                array_push($savedImages, $filename);
+                array_push($savedImages, $filePath);
             }
 
         }
@@ -86,8 +86,8 @@ class OfferController extends Controller
 
         $offer->save();
 
+        return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);
 
-        return view();
     }
 
     /*--------------------------------------------------------
@@ -123,15 +123,48 @@ class OfferController extends Controller
     /*--------------------------------------------------------
     |   []  show an offer
     ----------------------------------------------------------*/
-    public function showOffer($id)
-    {
+    public function showOffer($id)  {
+
         $advertiser = Auth::user()->advertiser;
-        $offers = $advertiser->offers();
-        $offer = $offers->find($id);
+        $offer = Offer::find($id);
 
-        //TODO: if u arent the owner
-        dd($offer);
+        //if not owner
+        if($offer->advertiser_id != $advertiser->id) {
+            return view('showOffer', ['id' => $id]);
+        }
 
+        $data['offer'] = [
+            'type' => Template::find($offer->template_id)->template_name, //[x]
+
+            'event_name' => $offer->event_name, //[x]
+            'location' => $offer->location, //[x]
+            'map_location' => $offer->map_location, //[x]
+            'description' => $offer->description, //[x]
+            'images' => json_decode($offer->images), //[x]
+            'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
+            'event_starts' => date('M d, g:i A' ,strtotime($offer->event_starts)), //[x]
+            'event_ends' => date('M d, g:i A' ,strtotime($offer->event_ends)), //[x]
+            'duration' => $offer->duration, //[x]
+            'price_vip' => $offer->price_vip, //[x]
+            'total_tickets_vip' => $offer->total_tickets_vip, //[x]
+            'tickets_left_vip' => $offer->tickets_left_vip, //[x]
+            'price_economy' => $offer->price_economy, //[x]
+            'total_tickets_economy' => $offer->total_tickets_economy, //[x]
+            'tickets_left_economy' => $offer->tickets_left_economy, //[x]
+            'payment_type_id' => $offer->payment_type_id, //[]
+            'payment_type_name' => $offer->payment_type_name, //[]
+            'promoter_name' => $offer->promoter_name, //[x]
+            'promoter_details' => $offer->promoter_details, //[]
+            'phone_number' => $offer->phone_number, //[]
+            'is_verified' => $offer->is_verified, //[]
+            'is_active' => $offer->is_active, //[]
+            'nb_visited' => $offer->nb_visited, //[]
+            'votes' => $offer->votes, //[]
+            'created_at' => date('d M Y', strtotime($offer->created_at)), //[]
+            //'url' => route('showOffer', ['id' => $offer->id]),
+        ];
+
+        return view('Advertiser.showOffer.index', ['offer' => $data['offer']]);
     }
 
     /*--------------------------------------------------------

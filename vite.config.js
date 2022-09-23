@@ -17,6 +17,7 @@ export default defineConfig({
 
                 //------ [ Advertiser ]
                 'resources/views/Advertiser/post/styles.scss',
+                'resources/views/Advertiser/showOffer/styles.scss',
 
                 //------ [ Client ]
                 'resources/views/Client/myTickets/styles.scss',
@@ -27,7 +28,7 @@ export default defineConfig({
                 'resources/views/Offer/show/styles.scss',
 
                 //------ [ Home ]
-                'resources/views/home/styles.scss',
+                'resources/views/Home/styles.scss',
 
                 //------ [ Auth ]
                 'resources/views/css/register.scss',

@@ -12,7 +12,7 @@ use App\Http\Controllers\Advertiser\OfferController as AdvertiserOffer;
 |--------------------------
 */
 Route::controller(AdvertoserJoin::class)->middleware(['guest'])->group(function() {
-    Route::get('/joinAdv', 'joinAdvertiserPage')->name('get.advertiser.join');                           //[]
+    Route::get('/joinAdv', 'joinAdvertiserPage')->name('advertiser.join');                           //[]
     Route::post('/joinAdv', 'joinAdvertiser')->name('post.advertiser.join');                             //[]
 });
 
@@ -24,7 +24,8 @@ Route::controller(AdvertiserOffer::class)->middleware(['auth'])->group(function(
     Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[]
     Route::get('/advertiser/editOffer/{id}', 'editOffer')->name('get.advertiser.editOffer');            //[]
     Route::post('/advertiser/editOffer/{id}', 'updateOffer')->name('update.advertiser.editOffer');      //[]
-    //TODO: show by stats, lefts and location of purchasess
+    //TODO: show with stats, lefts and location of purchasess
     //TODO: delete, change offer
     //Route::middleware(['auth', 'isAdvertiser'])->group( function() {});
+
 });
