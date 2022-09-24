@@ -3,42 +3,27 @@
 namespace App\Http\Controllers\Advertiser;
 
 use App\Models\Offer;
-use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
-require 'helper.php';
-require 'upload.php';
+require dirname(__DIR__) . '\zHelpers\helper.php';
+require dirname(__DIR__) . '\zHelpers\upload.php';
+require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class AddOfferController extends Controller
 {
     /*--------------------------------------------------------
-    |   [done]  Add Offer       
+    |   [done]  Add Offer
     ----------------------------------------------------------*/
     public function addOfferPage() {
-        $categories = Category::all();
-        $payments = Payment::all();
-
+       
         $data['categories'] = [];
         $data['phone_number'] = Auth::user()->advertiser->phone_number;
         
-        foreach ($categories as $index => $item) {
-            $data['categories'][$index] = [
-                'id' => $item->id,
-                'name' => $item->name,
-                'type' => $item->type,
-            ];
-        }
-
-        foreach ($payments as $index => $item) {
-            $data['payments'][$index] = [
-                'id' => $item->id,
-                'name' => $item->name,
-                'token' => $item->token,
-            ];
-        }
+        $data['categories'] = listAllCategories();
+        $data['payments'] = listAllPayments();
 
         return view('Advertiser.post.index', 
             [
@@ -72,7 +57,7 @@ class AddOfferController extends Controller
         /*--[ date ]--*/
         $offer->event_starts = $request->event_starts;
         $offer->event_ends = $request->event_ends;
-        $offer->duration = getDateDifferencet($request->event_starts, $request->event_ends);
+        $offer->duration = getDateDifference($request->event_starts, $request->event_ends);
         /*--[ tickets ]--*/
         if($request->containVIP == "on") {
             $offer->hasVip = true;
@@ -89,11 +74,9 @@ class AddOfferController extends Controller
         $offer->advertiser_details = $advertiser->details;
         $offer->phone_number = $request->phone_number;
         /*--[ of search data ]--*/
-        $offer->for_search = createKeyword($offer);    //?
-
+        $offer->for_search = createKeyword($offer);
         $offer->save();
 
         return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);
-
     }
 }

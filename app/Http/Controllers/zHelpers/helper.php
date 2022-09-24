@@ -4,13 +4,12 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 
 /*---------
-|   getDateDifferencet($start, $end) return string date human readable
+|   getDateDifference($start, $end) return string date human readable
 |   createKeyword($offer) return string of keywords
 |   getCategoryId($templateId, $textIfNew = '') return id of category
 ----------*/
 
-
-function getDateDifferencet($start, $end) {
+function getDateDifference($start, $end) {
     $start = new DateTime($start);
     $end = new DateTime($end);
     $duration = $start->diff($end);

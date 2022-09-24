@@ -6,36 +6,30 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Offer;
-use App\Models\Category;
+require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class HomeController extends Controller
 {
+    /*--------------------------------------------------------
+    |   [x]  get list of all offers
+    ----------------------------------------------------------*/
     public function home() {
         $offers = Offer::all();
-        $categories = Category::all();
 
+        $data['categories'] = listAllCategories();
         $data['offers'] = [];
-        $data['categories'] = [];
 
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],
-                'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
+                'date' => date('M d' ,strtotime($offer->event_starts)), 
                 'duration' => $offer->duration,
-                'event_name' => $offer->event_name, //[x]
-                'advertiser_name' => $offer->advertiser_name, //[x]
+                'event_name' => $offer->event_name, 
+                'advertiser_name' => $offer->advertiser_name, 
                 'location' => $offer->location,
-                'price_vip' => $offer->price_vip, //[x]
-                'price_economy' => $offer->price_economy, //[x]
+                'hasVip' => $offer->hasVip, 
+                'price_economy' => $offer->price_economy, 
                 'url' => route('showOffer', ['id' => $offer->id]),
-            ];
-        }
-
-        foreach($categories as $index=>$category) {
-            $data['categories'][$index] = [
-                'name' => $category->name,
-                'type' => $category->type,
-                'url' => '$category->name',
             ];
         }
 

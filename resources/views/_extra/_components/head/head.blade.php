@@ -1,7 +1,7 @@
 @vite('resources/views/_extra/_components/head/head.scss')
 <div class="header-container mobile">
     <header>
-        <a class="logo">
+        <a href="{{ route('homepage') }}" class="logo">
             <img src="../../images/Logo.svg" alt="">
         </a>
         <button class="hamburger">

@@ -23,14 +23,12 @@ use App\Http\Controllers\AdminController;
 */
 require __DIR__.'/_advertiser.php';
 
-
 /*
 |--------------------------
 |   Client
 |--------------------------
 */
 require __DIR__.'/_client.php';
-
 
 /*
 |--------------------------
@@ -39,15 +37,12 @@ require __DIR__.'/_client.php';
 */
 require __DIR__.'/_offer.php';
 
-
 /*
 |--------------------------
 |   Auth
 |--------------------------
 */
 require __DIR__.'/auth.php';
-
-
 
 /*
 |--------------------------

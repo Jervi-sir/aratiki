@@ -13,7 +13,7 @@ use App\Http\Controllers\Offer\HomeController as HomeController;
 |--------------------------
 */
 Route::controller(HomeController::class)->group(function() {
-    Route::get('/', 'index');                   //[x]
+    Route::get('/', 'index')->name('homepage');                   //[x]
     Route::get('/home', 'home')->name('home');  //[x]
 });
 

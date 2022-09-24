@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
-require 'upload.php';
-require 'helper.php';
-require 'helperDB.php';
+require dirname(__DIR__) . '\zHelpers\upload.php';
+require dirname(__DIR__) . '\zHelpers\helper.php';
+require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class EditOfferController extends Controller
 {
@@ -82,7 +82,7 @@ class EditOfferController extends Controller
         /*--[ date ]--*/
         $offer->event_starts = $request->event_starts;
         $offer->event_ends = $request->event_ends;
-        $offer->duration = getDateDifferencet($request->event_starts, $request->event_ends);
+        $offer->duration = getDateDifference($request->event_starts, $request->event_ends);
         /*--[ tickets ]--*/
         if($request->containVIP) {
             $offer->price_vip = $request->price_vip;

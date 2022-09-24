@@ -53,7 +53,7 @@
         <!-- Title -->
         <div class="event-title">
             <h1>{{ $offer['event_name'] }}</h1>
-            <span>{{ $offer['type'] }}</span>
+            <span>{{ $offer['category'] }}</span>
         </div>
 
         <div class="promoter-phone">
@@ -61,7 +61,7 @@
             <div class="event-promoter">
                 <span>By</span>
                 <img src="../../images/promoter.png" alt="">
-                <span>{{ $offer['promoter_name'] }}</span>
+                <span>{{ $offer['advertiser_name'] }}</span>
             </div>
             <!-- Phone number -->
             <div class="event-phone">
@@ -108,7 +108,7 @@
                 
                 <div class="price vip">
                     <div>
-                        {{ $offer['price_economy'] }} 
+                        {{ $offer['price_vip'] }} 
                         <small>D.A</small>
                     </div>
                     <span>VIP</span>
@@ -151,7 +151,7 @@
                 <div class="title-promoter-duration">
                     <div class="title-promoter">
                         <div class="title">{{ $item['event_name'] }}</div>
-                        <div class="promoter">By {{ $item['promoter_name'] }}</div>
+                        <div class="promoter">By {{ $item['advertiser_name'] }}</div>
                     </div>
                     <div class="duration">
                         {{ $item['duration'] }}

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-require 'helper.php';
+require dirname(__DIR__) . '\zHelpers\helper.php';
 
 class OfferController extends Controller
 {

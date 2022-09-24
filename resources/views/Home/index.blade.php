@@ -27,7 +27,7 @@
     <div class="popular-event">
         <label for="">
             <span>Popular Events</span>
-            <a href="#">View All</a>
+            <a href="#">See More</a>
         </label>
         <div class="event-list">
             @foreach ($events as $event)
@@ -51,7 +51,7 @@
                     <div class="title-promoter-duration">
                         <div class="title-promoter">
                             <div class="title">{{ $event['event_name'] }}</div>
-                            <div class="promoter">By {{ $event['promoter_name'] }}</div>
+                            <div class="promoter">By {{ $event['advertiser_name'] }}</div>
                         </div>
                         <div class="duration">
                             {{ $event['duration'] }}
