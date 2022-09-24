@@ -25,7 +25,7 @@ return new class extends Migration
 
             $table->string('event_type')->nullable();
             $table->string('place')->nullable();
-
+            
             $table->timestamps();
         });
     }
