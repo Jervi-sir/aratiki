@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Offer;
-use App\Models\Template;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
     public function home() {
         $offers = Offer::all();
+        $categories = Category::all();
 
-        $categories = Template::all();
+        $data['offers'] = [];
+        $data['categories'] = [];
 
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
@@ -21,7 +23,7 @@ class HomeController extends Controller
                 'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
                 'duration' => $offer->duration,
                 'event_name' => $offer->event_name, //[x]
-                'promoter_name' => $offer->promoter_name, //[x]
+                'advertiser_name' => $offer->advertiser_name, //[x]
                 'location' => $offer->location,
                 'price_vip' => $offer->price_vip, //[x]
                 'price_economy' => $offer->price_economy, //[x]
@@ -31,9 +33,9 @@ class HomeController extends Controller
 
         foreach($categories as $index=>$category) {
             $data['categories'][$index] = [
-                'name' => $category->template_name,
+                'name' => $category->name,
                 'type' => $category->type,
-                'url' => '$category->template_name',
+                'url' => '$category->name',
             ];
         }
 

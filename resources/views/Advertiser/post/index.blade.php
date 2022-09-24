@@ -44,8 +44,8 @@
                 required
             >
                 <option value="" disabled selected>select event type</option>
-                @foreach ($types as $item)
-                <option value="{{ $item->id }}">{{ $item->template_name }}</option>
+                @foreach ($categories as $item)
+                <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
                 @endforeach
                 <option value="other">other</option>
 
@@ -228,9 +228,9 @@
                 required
             >
                 <option value="" disabled selected>Select payment</option>
-                <option value="0" >Cash</option>
-                <option value="1" >CCP (old fashion)</option>
-                <option value="2" >Online Payment</option>
+                @foreach ($payments as $payment)
+                <option value="{{ $payment['id'] }}" >{{ $payment['name'] }}</option>
+                @endforeach
             </select>
         </div>
     </div>

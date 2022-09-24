@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Advertiser;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Advertiser;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-
-use App\Http\Controllers\Controller;
 
 class JoinController extends Controller
 {
@@ -28,6 +29,7 @@ class JoinController extends Controller
         if(!$user) {
             $user = new User();
             $user->role_id = Role::where('name', 'advertiser')->first()->id;
+            $user->uuid = Str::uuid();
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
@@ -38,7 +40,9 @@ class JoinController extends Controller
 
         $adv = new Advertiser();
         $adv->user_id = $user->id;
-        $adv->company_name = $request->name;
+        $adv->uuid = Str::uuid();
+
+        $adv->name = $request->name;
         $adv->phone_number = $request->phone_number;
         $adv->details = $request->description;
         //TODO: $adv->images = $request->images;

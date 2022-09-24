@@ -138,7 +138,7 @@
                         ctx.drawImage(imgEle, 0, -(((height * ratio) / 2) - (wanterSize / 2)), wanterSize, height * ratio);
                     }
 
-                    const srcEncoded = ctx.canvas.toDataURL("image/png", 0.5);
+                    const srcEncoded = ctx.canvas.toDataURL("image/png", 0.2);
                     image['source'] = srcEncoded;
                     image['filled'] = true;
 
