@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Advertiser extends Model
 {
@@ -13,8 +15,8 @@ class Advertiser extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function offers() {
-        return $this->hasMany(Offer::class);
+    public function events() {
+        return $this->hasMany(Event::class);
     }
 
 }

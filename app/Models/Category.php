@@ -6,11 +6,11 @@ use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Keyword extends Model
+class Category extends Model
 {
     use HasFactory;
 
     public function events() {
-        return $this->belongsToMany(Event::class, 'offer_keyword');
+        return $this->hasMany(Event::class);
     }
 }

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ticket extends Model
 {
     use HasFactory;
 
-    public function offer() {
-        return $this->belongsTo(Offer::class);
+    public function event() {
+        return $this->belongsTo(Event::class);
     }
 
     public function user() {

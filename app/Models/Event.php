@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Ticket;
 use App\Models\Keyword;
+use App\Models\Category;
+use App\Models\Advertiser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Offer extends Model
+class Event extends Model
 {
     use HasFactory;
 
@@ -14,8 +17,8 @@ class Offer extends Model
         return $this->belongsTo(Advertiser::class);
     }
 
-    public function template() {
-        return $this->belongsTo(Template::class);
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 
     public function tickets() {

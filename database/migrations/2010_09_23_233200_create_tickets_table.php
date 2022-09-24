@@ -13,17 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('advertisers', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid')->unique();
+
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('event_id')->constrained();
 
-            $table->string('company_name');
-            $table->string('phone_number');
-            $table->boolean('is_verified')->default(0);
+            $table->longText('qrcode')->unique();
+            $table->longText('details');
 
-            $table->string('location')->nullable();
-            $table->text('images')->nullable();
-            $table->longText('details')->nullable();
+            $table->string('event_type')->nullable();
+            $table->string('place')->nullable();
+
             $table->timestamps();
         });
     }
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisers');
+        Schema::dropIfExists('tickets');
     }
 };

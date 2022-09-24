@@ -20,34 +20,38 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'role_id' => Role::where('name', 'admin')->first()->id,
+            'uuid' => Str::uuid(),
+            
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
-            'details' => null
         ]);
 
         DB::table('users')->insert([
             'role_id' => Role::where('name', 'advertiser')->first()->id,
+            'uuid' => Str::uuid(),
+            
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
-            'details' => null
         ]);
 
         DB::table('users')->insert([
             'role_id' => Role::where('name', 'client')->first()->id,
+            'uuid' => Str::uuid(),
+            
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
-            'details' => null
         ]);
 
         DB::table('users')->insert([
             'role_id' => Role::where('name', 'client')->first()->id,
+            'uuid' => Str::uuid(),
+            
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
-            'details' => null
         ]);
     }
 }

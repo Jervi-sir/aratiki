@@ -1,36 +1,39 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>200</x><y>659</y><w>170</w><h>70</h></coordinates><panel_attributes>roles
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>709</y><w>170</w><h>60</h></coordinates><panel_attributes>roles
 --
 name: string
 --
-users() hasMany User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>389</y><w>170</w><h>180</h></coordinates><panel_attributes>users
+users() hasMany User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>439</y><w>170</w><h>200</h></coordinates><panel_attributes>users
 --
 role_id: roles
+uuid: string unique
 name: string
 email: string unique
 password: string
 location: string nullable
-images: text nullable
+phone_number: string nullable
 images: longText nullable
 --
 role() belongsTo Role
 advertiser() hasOne Advertiser
 tickets() hasMany Ticket
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>499</y><w>140</w><h>70</h></coordinates><panel_attributes>keywords
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>289</y><w>140</w><h>70</h></coordinates><panel_attributes>keywords
 --
 name: string
 --
-offers() belongsToMany Offer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>109</y><w>170</w><h>170</h></coordinates><panel_attributes>advertisers
+events() belongsToMany Offer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>159</y><w>170</w><h>200</h></coordinates><panel_attributes>advertisers
 --
 user_id: users
-company_name: string
+uuid: string unique
+name: string
 phone_number: string
 is_verified: boolean default(0)
 location: string nullable
 images: string nullable
 details: string nullable
+bank_accounts: longText nullable
 --
 user() belongsTo User
-offers() hasMany Offer
+events() hasMany Offer
 
 
 
@@ -40,14 +43,13 @@ offers() hasMany Offer
 
 
 
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>109</y><w>140</w><h>100</h></coordinates><panel_attributes>templates
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>159</y><w>140</w><h>100</h></coordinates><panel_attributes>categories
 --
-template_name: string
-type: string
-source_code: string
+name: string
+type: string nullable
+source_code: string nullable
 --
-offers() hasMany Offer
+events() hasMany Offer
 
 
 
@@ -56,13 +58,13 @@ offers() hasMany Offer
 
 
 
-
-
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>109</y><w>140</w><h>490</h></coordinates><panel_attributes>offers
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>159</y><w>150</w><h>530</h></coordinates><panel_attributes>events
 --
-advertiser_id: advertisers
-template_id: templates
+user_id: user
+advertiser_id: advertisers  [optional]
+category_id: categories
+payment_id: payment
+uuid: string unique
 event_name: string
 location: string
 map_location: text nullable
@@ -71,16 +73,16 @@ images: longText
 event_starts: dateTime
 event_ends: dateTime
 duration: string
+hasVip: boolean default(0)
 price_vip: string nullalbe
 total_tickets_vip: bigInteger
 tickets_left_vip: bigInteger
 price_economy: string
 total_tickets_economy: bigInteger
 tickets_left_economy:bigInteger 
-payment_type_id: string
 payment_type_name: string
-promoter_name: string
-promoter_details: longText
+advertiser_name: string
+advertiser_details: longText
 phone_number: string
 for_search: longText
 is_verified: boolean
@@ -89,9 +91,10 @@ nb_visited: bigInteger
 votes: bigInteger
 --
 advertiser() belongsTo Advertiser
-template() belongsTo Template
+category() belongsTo Template
 tickets() hasMany Ticket
 keywords() belongsToMany Keyword
+payment()
 
 
 
@@ -105,14 +108,14 @@ keywords() belongsToMany Keyword
 
 
 
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>389</y><w>140</w><h>150</h></coordinates><panel_attributes>tickets
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>479</y><w>140</w><h>170</h></coordinates><panel_attributes>tickets
 --
+uuid: string unique
 user_id: advertisers
-offer_id: templates
+event_id: events
 qrcode: longText unique
 details: longText
-type: string nullable
+event_type: string nullable
 place: string nullable
 --
 offer() belongsTo Offer
@@ -129,17 +132,17 @@ user() belongsTo User
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>109</y><w>140</w><h>200</h></coordinates><panel_attributes>searches
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>159</y><w>140</w><h>200</h></coordinates><panel_attributes>searches
 --
 advertiser_id: advertisers
-offer_id: offers
-company_name: string
-campaign_name: string
-is_active: boolean nullable
-details: longText
+event_id: events
+event_name: string
+event_details: longText
+advertiser_name: string
 advertiser_details: longText
 location: mediumText nullable
 price: string nullable
+is_active: boolean nullable
 --
 advertiser() belongsTo Advertiser
 offer() belongsTo Offer
@@ -153,39 +156,49 @@ offer() belongsTo Offer
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>289</y><w>140</w><h>80</h></coordinates><panel_attributes>offer_keywords
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>439</y><w>140</w><h>60</h></coordinates><panel_attributes>event_keywords
 --
-offer_id: advertisers
+event_id: advertisers
 keyword_id: keywords
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>629</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>199</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>189</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>349</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>209</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>449</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=0..n
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>539</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>539</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>349</y><w>50</w><h>110</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=0..n
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>269</y><w>400</w><h>160</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;10;70;10;70;130;380;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>559</y><w>140</w><h>80</h></coordinates><panel_attributes>payments
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>559</y><w>50</w><h>120</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=1
-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>149</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-
+name: string
+token: string nullable
+--
+events()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>579</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>419</y><w>400</w><h>120</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=0..n
-</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>139</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=1
-</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>269</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>159</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=1
-</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>299</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=0..n
-</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>419</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=0..n
-</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>399</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=1
-</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>359</y><w>50</w><h>160</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=0..n
-</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>219</y><w>400</w><h>160</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=0..n
-</panel_attributes><additional_attributes>10;10;70;10;70;130;380;130</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;90;70;90;70;20;380;20</additional_attributes></element></diagram>
