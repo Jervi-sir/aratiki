@@ -27,7 +27,7 @@ function updateImages($oldImages, $newImages, $event_uuid) {
         //if its base64 means update this image
         if(isBase64($newImages[$i])) {
             //save image in cloud
-            $filepath = saveImage($newImages[$i], $event_uuid);
+            $filepath = saveImage($newImages[$i], $event_uuid, $i);
             //delete old image from cloud if exists
             if($oldImages[$i] != null) {
                 Storage::disk('public')->delete($oldImages[$i]);
@@ -61,23 +61,24 @@ function fillArray($array, $size = 5) {
 
 function uploadBase64Images($imagesBase64, $event_uuid) {
     $savedImages = [];
-    foreach($imagesBase64 as $image) {
+
+    foreach($imagesBase64 as $index=>$image) {
         //? Maybe add Location Wilaya in filename
-        if($image) {
-            $filePath = saveImage($image, $event_uuid);
+        if($image != null) {
+            $filePath = saveImage($image, $event_uuid, $index);
             array_push($savedImages, $filePath);
         }
     }
-
-    return $imagesBase64;
+    return $savedImages;
 }
 
-function saveImage($image, $event_uuid) {
+function saveImage($image, $event_uuid, $index) {
     $file = explode( ',', $image)[1];
     $filename = $event_uuid . '__' . 
-                date("Y_m_d") . '__' . 
-                Carbon::now()->timestamp . 
-                '.png';
+        date("Y_m_d") . '__' . 
+        Carbon::now()->timestamp . 
+        $index .
+        '.png';
     $filePath = $filename;
     Storage::disk('public')->put($filePath, base64_decode($file));
 

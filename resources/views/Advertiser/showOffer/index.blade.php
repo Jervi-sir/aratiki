@@ -57,7 +57,7 @@
         <!-- Title -->
         <div class="event-title">
             <h1>{{ $offer['event_name'] }}</h1>
-            <span>{{ $offer['type'] }}</span>
+            <span>{{ $offer['category'] }}</span>
         </div>
         
         <div class="promoter-phone">
@@ -65,7 +65,7 @@
             <div class="event-promoter">
                 <span>By</span>
                 <img src="../../images/promoter.png" alt="">
-                <span>{{ $offer['promoter_name'] }}</span>
+                <span>{{ $offer['advertiser_name'] }}</span>
             </div>
             <!-- Phone number -->
             <div class="event-phone">
@@ -200,7 +200,7 @@
                 <table class="stats">
                     <tr>
                         <td>Event Type</td>
-                        <td>{{ $offer['type'] }}</td>
+                        <td>{{ $offer['category'] }}</td>
                     </tr>
                     <tr>
                         <td>Payment Type</td>
@@ -223,7 +223,7 @@
             <div class="decor"></div>
         </div>
 
-        <a href="" class="edit-btn">Edit details</a>
+        <a href="{{ route('get.advertiser.editOffer', ['id' => $offer['id']]) }}" class="edit-btn">Edit details</a>
     </div>
 </div>
 @endsection

@@ -20,17 +20,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        //$role = new RoleSeeder();
-        //$user = new UserSeeder();
-        //$advertiser = new AdvertiserSeeder();
-        //$category = new CategorySeeder();
-        //$payment = new PaymentSeeder();
+        $role = new RoleSeeder();
+        $user = new UserSeeder();
+        $advertiser = new AdvertiserSeeder();
+        $category = new CategorySeeder();
+        $payment = new PaymentSeeder();
 
-        //$role->run();
-        //$user->run();
-        //$advertiser->run();
-        //$category->run();
-        //$payment->run();
+        $role->run();
+        $user->run();
+        $advertiser->run();
+        $category->run();
+        $payment->run();
 
     }
 }

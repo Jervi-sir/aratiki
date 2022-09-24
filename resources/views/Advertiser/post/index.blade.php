@@ -33,10 +33,10 @@
     <div x-data="{ state: '', statusType: '' }">
         <div class="input-container">
             <label for="evet-type">
-                Event Type:
+                Event Category:
                 <span class="required">*</span>
             </label>
-            <select name="type" 
+            <select name="category" 
                 id="evet-type"
                 class="input"
                 x-model="state" 
@@ -50,7 +50,7 @@
                 <option value="other">other</option>
 
             </select>
-            <input name="other_type"
+            <input name="other_category"
                 class="input"
                 x-show="state == 'other'"
                 x-model="statusType" 

@@ -7,7 +7,7 @@
 @endsection
 
 @section('body')
-<form action="{{ route('update.advertiser.editOffer', ['id' => $offer['id']]) }}" method="POST" >
+<form action="{{ $offer['url'] }}" method="POST" >
     @csrf
     <!-- Images Input -->
    @include('Advertiser.editOffer.imagesInput')
@@ -31,13 +31,13 @@
         </div>
     </div>
     <!-- Event Type -->
-    <div x-data="{ state: {{ json_encode($offer['type']) }}, statusType: '', gotEdited: false }">
+    <div x-data="{ state: {{ json_encode($offer['category']) }}, statusType: '', gotEdited: false }">
         <div class="input-container">
             <label for="evet-type">
-                Event Type:
+                Event Category:
                 <span class="required">*</span>
             </label>
-            <select name="type" 
+            <select name="category_id" 
                 id="evet-type"
                 class="input"
                 x-model="state" 
@@ -168,17 +168,19 @@
                     x-model="enableVIP"
                     x-bind:class="{ 'green-border': enableVIP }"
                     type="checkbox"
+                    x-bind:disabled="enableVIP"
+                    x-bind:checked="enableVIP"
                 >
             </label>
             <label x-show="enableVIP" for="ticket-vip">
                 Ticket Price for VIP:
                 <span class="required">*</span>
             </label>
-            <div x-show="enableVIP" class="input ticket" x-bind:class="{ 'green-border': stateA }" >
+            <div x-show="enableVIP" class="input ticket">
                 <input name="price_vip"
                     class="price"
                     id="ticket-vip"  
-                    x-model="stateB" 
+                    x-model="stateVip" 
                     @keypress="validatePrice"  
                     type="text" 
                     placeholder="D.A 245"
@@ -188,8 +190,8 @@
                     class="amount"
                     value="{{ json_encode($offer['total_tickets_vip']) }}"
                     type="number" 
-                    min="1"
-                    value="1"
+                    min="{{ $offer['tickets_left_vip'] }}"
+                    value="{{ $offer['total_tickets_vip'] }}"
                 >
             </div>
         </div>
@@ -205,7 +207,7 @@
                 <input name="price_economy"
                     class="price"
                     id="ticket-economy"  
-                    x-model="stateA" 
+                    x-model="stateEconomic" 
                     @keypress="validatePrice"  
                     type="text" 
                     placeholder="D.A 245"
@@ -215,20 +217,20 @@
                     value="{{ json_encode($offer['total_tickets_economy']) }}"
                     class="amount"
                     type="number" 
-                    min="1"
-                    value="1"
+                    min="{{ $offer['total_tickets_economy'] }}"
+                    value="{{ $offer['total_tickets_economy'] }}"
                 >
             </div>
         </div>
     </div>
     <!-- Event Ticket type -->
-    <div x-data="{ state: {{ json_encode($offer['payment_type_name']) }}, gotEdited: false }">
+    <div x-data="{ state: {{ json_encode($offer['payment_id']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="ticket-type">
                 Payout Method (CCP/ BaridiMob):
                 <span class="required">*</span>
             </label>
-            <select name="payment_type" 
+            <select name="payment_id" 
                 id="ticket-type"
                 class="select"
                 x-model="state" 
@@ -238,9 +240,9 @@
                 required
             >
                 <option value="" disabled selected>Select payment</option>
-                <option value="0" >Cash</option>
-                <option value="1" >CCP (old fashion)</option>
-                <option value="2" >Online Payment</option>
+                @foreach ($payments as $payment)
+                <option value="{{ $payment['id'] }}" >{{ $payment['name'] }}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -266,9 +268,8 @@
             required
         >
     </div>
-    {{$offer['price_vip']}}
     <button class="create-button">
-        Create Event
+        Update Event
     </button>
 
 </form>
@@ -276,9 +277,9 @@
 <script>
     function priceValidator() {
         return {
-            enableVIP: {!! json_encode($offer['price_vip']) != NULL ? 'false' : 'true' !!},
-            stateA: {!! json_encode($offer['price_economy']) !!},
-            stateB: '',
+            enableVIP: {!! json_encode($offer['hasVip']) !!},
+            stateEconomic: {!! json_encode($offer['price_economy']) !!},
+            stateVip: {!! json_encode($offer['price_vip']) !!},
             validatePrice(event) {
                 let keyCode = event.keyCode;
                 if ((keyCode < 48 || keyCode > 57) && keyCode != 46) {

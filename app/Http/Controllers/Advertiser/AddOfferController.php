@@ -53,13 +53,14 @@ class AddOfferController extends Controller
         $user = Auth::user();
         $advertiser = $user->advertiser;
         $uuid = Str::uuid();
+
         $offer = new Offer();
         /*--[ foreign keys ]--*/
         $offer->user_id = $user->id;
         $offer->uuid = Str::uuid();
         $offer->uuid_for_images = str_replace('-', '', $uuid);
         $offer->advertiser_id = $advertiser->id;
-        $offer->category_id = getCategoryId($request->type, $request->other_type);
+        $offer->category_id = getCategoryId($request->category, $request->other_type);
         $offer->payment_id = intval($request->payment_type);
 
         /*--[ specific details ]--*/
@@ -73,7 +74,8 @@ class AddOfferController extends Controller
         $offer->event_ends = $request->event_ends;
         $offer->duration = getDateDifferencet($request->event_starts, $request->event_ends);
         /*--[ tickets ]--*/
-        if($request->containVIP) {
+        if($request->containVIP == "on") {
+            $offer->hasVip = true;
             $offer->price_vip = $request->price_vip;
             $offer->total_tickets_vip = intval($request->ticket_vip_amount);
             $offer->tickets_left_vip = intval($request->ticket_vip_amount);
@@ -81,7 +83,7 @@ class AddOfferController extends Controller
         $offer->price_economy = $request->price_economy;
         $offer->total_tickets_economy = intval($request->ticket_economy_amount);
         $offer->tickets_left_economy = intval($request->ticket_economy_amount);
-        $offer->payment_type_name = 'paymentType';
+        $offer->payment_type_name = Payment::find(intval($request->payment_type))->name;
         /*--[ advertiser data ]--*/
         $offer->advertiser_name = $advertiser->name;
         $offer->advertiser_details = $advertiser->details;
