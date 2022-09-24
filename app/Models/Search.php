@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Event;
+use App\Models\Offer;
 use App\Models\Advertiser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +15,7 @@ class Search extends Model
         return $this->belongsTo(Advertiser::class);
     }
 
-    public function event() {
-        return $this->belongsTo(Event::class);
+    public function offer() {
+        return $this->belongsTo(Offer::class);
     }
 }

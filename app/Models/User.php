@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Offer;
 use App\Models\Role;
 use App\Models\Ticket;
 use App\Models\Advertiser;
@@ -21,6 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'email',
         'password',
@@ -57,5 +59,9 @@ class User extends Authenticatable
 
     public function tickets() {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function offers() {
+        return $this->hasMany(Offer::class);
     }
 }

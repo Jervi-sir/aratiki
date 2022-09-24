@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('searches', function (Blueprint $table) {
             $table->id();
             $table->foreignId('advertiser_id')->constrained();
-            $table->foreignId('event_id')->constrained();
-            $table->string('event_name');
-            $table->longText('event_details');
+            $table->foreignId('offer_id')->constrained();
+            $table->string('offer_name');
+            $table->longText('offer_details');
 
             $table->string('advertiser_name');
             $table->longText('advertiser_details');

@@ -13,10 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('event_keywords', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->foreignId('keyword_id')->constrained();
+            $table->string('uuid')->unique();
+
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('offer_id')->constrained();
+
+            $table->longText('qrcode')->unique();
+            $table->longText('details');
+
+            $table->string('event_type')->nullable();
+            $table->string('place')->nullable();
 
             $table->timestamps();
         });
@@ -29,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_keywords');
+        Schema::dropIfExists('tickets');
     }
 };

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
-use Database\Seeders\TemplateSeeder;
+use Database\Seeders\CategorySeeder;
 use Database\Seeders\AdvertiserSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -19,16 +19,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        //$role = new RoleSeeder();
-        //$user = new UserSeeder();
+        $role = new RoleSeeder();
+        $user = new UserSeeder();
 
-        //$advertiser = new AdvertiserSeeder();
-        $template = new TemplateSeeder();
+        $advertiser = new AdvertiserSeeder();
+        $category = new CategorySeeder();
 
-        //$role->run();
-        //$user->run();
-        //$advertiser->run();
-        $template->run();
+        $role->run();
+        $user->run();
+        $advertiser->run();
+        $category->run();
 
     }
 }

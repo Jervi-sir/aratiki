@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
+            $table->string('uuid_for_images')->unique();
 
             /*--[ foreign keys ]--*/
             $table->foreignId('user_id')->constrained();
@@ -71,6 +72,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('offers');
     }
 };

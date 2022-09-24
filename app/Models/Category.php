@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Event;
+use App\Models\Offer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function events() {
-        return $this->hasMany(Event::class);
+    public function offers() {
+        return $this->hasMany(Offer::class);
     }
 }
