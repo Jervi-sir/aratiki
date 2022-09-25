@@ -7,6 +7,7 @@
     <title>
         @yield('title')
     </title>
+    <link rel="icon" href="../../images/Logo_mini.svg" sizes="any" type="image/svg+xml">
 
     @vite('resources/views/_extra/_styles/global.scss')
     @vite('resources/js/app.js')

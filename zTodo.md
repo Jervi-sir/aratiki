@@ -4,14 +4,14 @@
 ### Auth
 - [x] login
 - [x] register
-- [ ] join as advertiser
+- [x] join as advertiser
 - [ ] upgrate do advertiser
 
 ### Advertiser
 - [x] post
 - [x] show offer
 - [x] show offer as advertiser
-- [ ] edit offer
+- [x] edit offer
 - [ ] list all posted offer
 - [ ] delete offer (if no one has purchased the offer)
 
@@ -23,7 +23,7 @@
 - [ ] qrcode
 
 ### Home
-- [ ] home page
+- [x] home page
 - [ ] search
 - [ ] filter
 - [ ] menu
@@ -37,3 +37,8 @@
 
 # Quick fixes
 - rename all return to view correctly
+
+# In menu
+    home, login, register, logout, add event, show my events, show my tickets, show my profile, about us, bookmarks, more, explore, notification, messages, discorver
+https://dribbble.com/shots/16946991-Twitter-Navigation-menu-interaction
+https://dribbble.com/shots/16772270-Navigation-menu-interaction
