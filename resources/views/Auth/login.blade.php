@@ -24,17 +24,19 @@ login
                     placeholder="Email"
                     type="email"
                     name="email"
-                    :value="old('email')"
+                    value="{{ old('email') }}"
                     required
                     autofocus />
         </div>
-        <div class="row">
+        <div x-data="{ show: true }"  class="row">
             <label for="password" ><img src="../../images/password.svg" alt=""></label>
             <input id="password"
-                    placeholder="Password"
-                    type="password"
                     name="password"
+                    :type="show ? 'password' : 'text'"
+                    placeholder="Password"
+                    min="8"
                     required autocomplete="current-password" />
+            <img class="eye" x-bind:src="show == true ? '../../images/show.svg' : '../../images/hide.svg'" x-on:click="show = !show" alt="">
         </div>
         @if (Route::has('password.request'))
         <div class="forgot-password">
