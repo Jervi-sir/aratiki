@@ -103,9 +103,8 @@
             </div>
         </div>
         <!-- Price n tickets -->
-        <form class="buy">
+        <div class="buy">
             <div class="amounts">
-                
                 <div class="price vip">
                     <div>
                         {{ $offer['price_vip'] }} 
@@ -122,8 +121,11 @@
                 </div>
             </div>
 
-            <button class="request">Check The Source</button>
-        </form>
+            <form action="{{ route('user.purchase', ['event_id' => $offer['id']]) }}" method="POST">
+                @csrf
+                <button class="request">Get ticket</button>
+            </form>
+        </div>
     </div>
 </div>
 <div class="more-offers">

@@ -16,8 +16,8 @@ use App\Http\Controllers\Client\UpgradeController as ClientUpgrade;
 
 //Route::middleware(['auth'])->group( function() {});
 Route::controller(ClientPurchase::class)->middleware(['auth'])->group(function() {
-    Route::post('/refund&={offer_id}', 'refund')->name('user.refund');                                      //[]
-    Route::post('/purchase&={offer_id}', 'purchase')->name('user.purchase');
+    Route::post('/refund&={event_id}', 'refund')->name('user.refund');                                      //[]
+    Route::post('/purchase&={event_id}', 'purchase')->name('user.purchase');
 });
 
 Route::controller(ClientTicket::class)->middleware(['auth'])->group(function() {

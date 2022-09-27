@@ -1,6 +1,10 @@
 - [ ] add french language in Lang/
 - [x] add admin panel from old project 
 
+# Right now m doing
+- [ ] purchase economy class 
+
+
 ### Auth
 - [x] login
 - [x] register
@@ -38,8 +42,8 @@
 
 # Quick fixes
 - rename all return to view correctly
-- view password in login register
-- strong or weak password
+- [x] view password in login register
+- [x] strong or weak password
 
 
 # In menu
