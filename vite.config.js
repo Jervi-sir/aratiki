@@ -33,8 +33,7 @@ export default defineConfig({
                 'resources/views/Home/styles.scss',
 
                 //------ [ Auth ]
-                'resources/views/css/register.scss',
-                'resources/views/css/login.scss',
+                'resources/views/Auth/auth.scss',
 
                 //------ [ Script ]
                 'resources/js/app.js',

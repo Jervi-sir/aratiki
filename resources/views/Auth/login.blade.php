@@ -12,13 +12,11 @@ login
         <img src="../../images/logo.svg" alt="" class="logo"/>
         <h1>Login</h1>
         @if ($errors->any())
-            <div {{ $attributes }}>
-                <ul class="errors">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            <ul class="errors">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         @endif
         <div class="row">
             <label for="email"><img src="../../images/email.svg" alt=""></label>
@@ -40,6 +38,9 @@ login
         </div>
         @if (Route::has('password.request'))
         <div class="forgot-password">
+            <a href="{{ route('password.request') }}">
+                {{ __('Forgot your password?') }}
+            </a>
         </div>
         @endif
         <input id="remember_me" type="checkbox" name="remember" checked hidden>

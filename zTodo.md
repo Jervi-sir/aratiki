@@ -26,7 +26,7 @@
 - [x] home page
 - [ ] search
 - [ ] filter
-- [ ] menu
+- [x] menu
 - [ ] show all tags
 
 ### Other
@@ -34,9 +34,13 @@
 - [ ] add bookmark system
 - [ ] add like system
 - [ ] add comment system
+- [ ] responsive
 
 # Quick fixes
 - rename all return to view correctly
+- view password in login register
+- strong or weak password
+
 
 # In menu
     home, login, register, logout, add event, show my events, show my tickets, show my profile, about us, bookmarks, more, explore, notification, messages, discorver

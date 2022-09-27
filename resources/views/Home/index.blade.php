@@ -72,10 +72,8 @@
 
         </div>
     </div>
-    
 
     @guest
-        
     <div class="join-container">
         <div class="create-account">
             <h1>Don’t have an account?</h1>
