@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->text('images')->nullable();
             $table->longText('details')->nullable();
+            
             $table->mediumText('bank_accounts')->nullable();
             $table->timestamps();
         });

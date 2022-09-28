@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('images')->nullable();
             $table->longText('details')->nullable();
 
+            $table->boolean('is_advertiser')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

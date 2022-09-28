@@ -1,11 +1,11 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Client\PurchaseController as ClientPurchase; 
 use App\Http\Controllers\Client\TicketController as ClientTicket;
 use App\Http\Controllers\Client\UpgradeController as ClientUpgrade;
+use App\Http\Controllers\Client\ProfileController as ProfileController;
 
 
 /*
@@ -28,4 +28,9 @@ Route::controller(ClientTicket::class)->middleware(['auth'])->group(function() {
 Route::controller(ClientUpgrade::class)->middleware(['auth'])->group(function() {
     Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[]
     Route::post('upgradeToAdvertiser', 'upgrade')->name('user.upgrade');                                    //[]
+});
+
+Route::controller(ProfileController::class)->middleware(['auth'])->group(function() {
+    Route::get('/editProfile', 'edit')->name('user.edit');                                      //[]
+    Route::post('/editProfile', 'update')->name('user.update');
 });

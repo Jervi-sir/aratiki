@@ -8,7 +8,8 @@
 - [x] login
 - [x] register
 - [x] join as advertiser
-- [ ] upgrate do advertiser
+- [x] upgrate to advertiser
+- [ ] edit profile
 
 ### Advertiser
 - [x] post

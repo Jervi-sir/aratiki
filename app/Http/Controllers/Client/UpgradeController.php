@@ -32,6 +32,9 @@ class UpgradeController extends Controller
     public function upgrade(Request $request) {
         $user = Auth()->user();
         $user->role_id = Role::where('name', 'advertiser')->first()->id;
+        $user->name = $request->name;
+        $user->phone_number = $request->phone_number;
+        $user->details = $request->description;
         $user->save();
 
         $adv = new Advertiser();

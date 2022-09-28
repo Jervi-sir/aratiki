@@ -72,9 +72,9 @@ function uploadBase64Images($imagesBase64, $event_uuid) {
     return $savedImages;
 }
 
-function saveImage($image, $event_uuid, $index) {
+function saveImage($image, $event_uuid, $index, $prefix = '') {
     $file = explode( ',', $image)[1];
-    $filename = $event_uuid . '__' . 
+    $filename = $prefix . str_replace('-', '', $event_uuid) . '__' . 
         date("Y_m_d") . '__' . 
         Carbon::now()->timestamp . 
         $index .

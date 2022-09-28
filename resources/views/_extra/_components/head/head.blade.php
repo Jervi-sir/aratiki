@@ -46,9 +46,13 @@
                 </form>
                 @endauth
             </div>
-            <div class="bottom">
-                <a href="{{ route('user.upgradePage') }}">Upgrade to Advertiser</a>
-            </div>
+            @auth
+                @if (Auth()->user()->role_id !=2)
+                <div class="bottom">
+                    <a href="{{ route('user.upgradePage') }}">Upgrade to Advertiser</a>
+                </div>
+                @endif
+            @endauth
         </div>
     </div>
 </div>

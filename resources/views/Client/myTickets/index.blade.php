@@ -24,7 +24,7 @@
                 <span>{{ $user['total_tickets'] }} tickets</span>
                 <span class="nb-active">({{ $user['active_tickets'] }} active)</span>
             </div>
-            <a href="#" class="edit-btn">
+            <a href="{{ route('user.edit') }}" class="edit-btn">
                 Edit
             </a>
         </div>
