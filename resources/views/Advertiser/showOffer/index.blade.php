@@ -4,7 +4,7 @@
     {{ $offer['event_name'] }} -Edit
 @endsection
 
-@section('styles-head')
+@section('head')
     @vite('resources/views/Offer/show/styles.scss')
     @vite('resources/views/Advertiser/showOffer/styles.scss')
 @endsection

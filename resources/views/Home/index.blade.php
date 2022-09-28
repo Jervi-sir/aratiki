@@ -1,7 +1,7 @@
 @extends('_extra._layouts.master')
 {{-- [done] need to make card to grid kinda --}}
 
-@section('styles-head')
+@section('head')
     @vite('resources/views/Home/styles.scss')
 @endsection
 

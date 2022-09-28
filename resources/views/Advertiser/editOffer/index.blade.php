@@ -1,7 +1,7 @@
 @extends('_extra._layouts.master')
 {{-- [done] --}}
 
-@section('styles-head')
+@section('head')
     @vite('resources/views/Advertiser/post/styles.scss')
     @vite('resources/views/Advertiser/editOffer/styles.scss')
 @endsection

@@ -47,6 +47,7 @@ class PurchaseController extends Controller
             'event_ends' => $offer->event_ends,
             'duration' => $offer->duration,
             'advertiser_id' => $offer->user_id,
+            'price' => $offer->price_economy,
         ]);
         $ticket->save();
 

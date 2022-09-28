@@ -1,7 +1,7 @@
 @extends('_extra._layouts.master')
 {{-- [] --}}
 
-@section('styles-head')
+@section('head')
     @vite('resources/views/Offer/results/styles.scss')
 @endsection
 

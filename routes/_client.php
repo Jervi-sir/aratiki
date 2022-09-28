@@ -22,7 +22,7 @@ Route::controller(ClientPurchase::class)->middleware(['auth'])->group(function()
 
 Route::controller(ClientTicket::class)->middleware(['auth'])->group(function() {
     Route::get('/getMyTickets', 'allMyTickets')->name('user.allTickets');                                   //[]
-    Route::get('/getThisTicket/{qrcode}', 'getThisTicket')->name('user.thisTicket');                        //[]
+    Route::get('/getThisTicket/{id}', 'getThisTicket')->name('user.thisTicket');                        //[]
 });
 
 Route::controller(ClientUpgrade::class)->middleware(['guest'])->group(function() {

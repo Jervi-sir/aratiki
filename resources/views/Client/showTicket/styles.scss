@@ -1,5 +1,4 @@
 .ticket-container {
-    transform: translateY(-50px);
     .top-ticket, .bottom-ticket {
         display: flex;
         flex-direction: column;
@@ -33,10 +32,13 @@
         margin-bottom: 10px;
         font-weight: 500;
         font-size: var(--text-lg);
-        color: #203354;
+        color: var(--color-blue);
     }
     .qrcode {
         width: 200px;
+        padding: 10px;
+        background: var(--color-blue);
+        border-radius: 10px;
         img {
             width: 100%;
         }
