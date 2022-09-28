@@ -18,7 +18,7 @@ class isAdvertiser
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if($user->role->name == 'advertiser' && $user->advertiser->is_verified == 1) {
+        if($user->role->name == 'advertiser') {
             return $next($request);
         }
         return redirect('/');

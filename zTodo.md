@@ -9,14 +9,14 @@
 - [x] register
 - [x] join as advertiser
 - [x] upgrate to advertiser
-- [ ] edit profile
+- [x] edit profile
 
 ### Advertiser
 - [x] post
 - [x] show offer
 - [x] show offer as advertiser
 - [x] edit offer
-- [ ] list all posted offer
+- [x] list all posted offer
 - [ ] delete offer (if no one has purchased the offer)
 
 ### Client
@@ -33,6 +33,7 @@
 - [ ] filter
 - [x] menu
 - [ ] show all tags
+- [ ] images
 
 ### Other
 - [ ] add Vue js
@@ -45,7 +46,7 @@
 - rename all return to view correctly
 - [x] view password in login register
 - [x] strong or weak password
-
+- [ ] add location in user adv
 
 # In menu
     home, login, register, logout, add event, show my events, show my tickets, show my profile, about us, bookmarks, more, explore, notification, messages, discorver

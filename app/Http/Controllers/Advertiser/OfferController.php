@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 require dirname(__DIR__) . '\zHelpers\helper.php';
+require dirname(__DIR__) . '\zHelpers\upload.php';
 
 class OfferController extends Controller
 {
@@ -18,30 +19,46 @@ class OfferController extends Controller
     |   []  get list of all offers
     ----------------------------------------------------------*/
     public function manageOffers() {
-        $offers = Auth::user()->advertiser->offers;
+        $user = Auth()->user();
+        $offers = $user->offers;
+
+        $data['user'] = [
+            'name' => $user->name,
+            'bio' => $user->bio ? $user->bio : 'no Bio',
+            'phone_number' => $user->phone_number,
+            'total_events' => $offers->count(),
+            'active_events' => $offers->count(),
+        ];
+
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
-                'offer_id' => $offer->id,
-                'main_image' => 'thumbnails/' . json_decode($offer->images)[0],
-                'campaign_name' => $offer->campaign_name,
-                'campaign_starts' => $offer->campaign_starts,
-                'campaign_ends' => $offer->campaign_ends,
+                'id' => $offer->id,
+                'event_name' => $offer->event_name, //[x]
+                'location' => $offer->location, //[x]
+                'main_image' => url('/') . '/media/' . json_decode($offer->images)[0],
 
-                'total_tickets' => $offer->total_tickets,
-                'tickets_sold' => $offer->total_tickets - $offer->tickets_left,
-
-                'location' => $offer->location,
-                'phone_number' => $offer->phone_number,
-                'price' => $offer->price,
-
+                'category' => Category::find($offer->category_id)->name, //[x]
+                'is_verified' => $offer->is_verified, //[]
+                'is_active' => $offer->is_active, //[]
+                'created_at' => date('d M Y', strtotime($offer->created_at)), //[]
                 'details' => substr($offer->details, 0, 5) . '...',
 
-                'is_verified' => $offer->is_verified,
-                'is_active' => $offer->is_active,
+                'event_starts' => date('M d, g:i A' ,strtotime($offer->event_starts)), //[x]
+                'event_ends' => date('M d, g:i A' ,strtotime($offer->event_ends)), //[x]
+
+                'total_tickets' => $offer->total_tickets_economy,
+                'tickets_sold' => $offer->total_tickets_economy - $offer->tickets_left_economy,
+                'price_economy' => $offer->price_economy . ' D.A', //[x]
+
+                'url' => route('get.advertiser.offer', ['id' => $offer->id]),
             ];
         }
-
-        return view('tailwind.advertiser.allOffers', ['offers' => $data['offers']]);
+        
+        return view('Advertiser.myOffers.index', 
+        [
+            'user' => $data['user'],
+            'offers' => $data['offers'],
+        ]);
     }
 
     /*--------------------------------------------------------
@@ -49,11 +66,11 @@ class OfferController extends Controller
     ----------------------------------------------------------*/
     public function showOffer($id)  {
 
-        $advertiser = Auth::user()->advertiser;
+        $user = Auth()->user();
         $offer = Offer::find($id);
     
         //if not owner
-        if($offer->advertiser_id != $advertiser->id) {
+        if($offer->user_id != $user->id) {
             return view('showOffer', ['id' => $id]);
         }
     

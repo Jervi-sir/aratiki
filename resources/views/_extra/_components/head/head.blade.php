@@ -27,6 +27,12 @@
                     <img src="../../images/icon_test.svg" alt="">
                     <span>My Tickets</span>
                 </a>
+                @if (Auth()->user()->role->name == 'advertiser')
+                <a class="link" href="{{ route('get.advertiser.allOffers') }}">
+                    <img src="../../images/icon_test.svg" alt="">
+                    <span>My events</span>
+                </a>
+                @endif
                 @endauth
                 @guest
                 <a class="link" href="{{ route('login') }}">
