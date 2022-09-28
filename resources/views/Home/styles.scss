@@ -48,11 +48,14 @@
         font-weight: 600;
         font-size: var(--text-base);
         color: var(--color-true-white);
-        a {
+        button {
             text-decoration: none;
             font-weight: 400;
             font-size: var(--text-xs);
             color: var(--color-true-white);
+            background: transparent;
+            border: none;
+            cursor: pointer;
         }
     }
     .categories-list {
@@ -70,6 +73,7 @@
             background: var(--color-true-white);
             border-radius: 27px;
             border: 1px solid var(--color-blue-light);
+            text-decoration: none;
 
             img {
                 width: 15px;
@@ -82,6 +86,7 @@
             }
         }
     }
+
 }
 
 
@@ -128,6 +133,81 @@
                 font-weight: 600;
                 font-size: var(--text-sm);
                 color: #388A41;
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------
+            Categories-slide
+------------------------------------*/
+.categories-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 175;
+    
+    .bg-box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(32, 51, 84, 0.2);
+        backdrop-filter: blur(2px);
+    }
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 80%;
+        background: var(--color-white);
+        border-radius: 20px;
+        box-shadow: var(--shadow-three);
+        .top {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            .title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--color-blue);
+            }
+            button {
+                background: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+        }
+        .link-list {
+            padding: 20px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            
+            .category {
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                gap: 7px;
+                background: var(--color-true-white);
+                border-radius: 27px;
+                border: 1px solid var(--color-blue-light);
+                text-decoration: none;
+                img {
+                    width: 15px;
+                }
+                span {
+                    font-weight: 500;
+                    font-size: var(--text-xs);
+                    color: var(--color-blue);
+                    white-space: nowrap;
+                }
             }
         }
     }

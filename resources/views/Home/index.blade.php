@@ -9,21 +9,7 @@
 <div class="bg-blue"></div>
 @include('_extra._components.search.search')
 <div class="home-before-search">
-    <div class="categories-container">
-        <label for="">
-            <span>Event Categories</span>
-            <a href="#">View All</a>
-        </label>
-        <div class="categories-list">
-            @foreach ($categories as $category)
-            <div class="category">
-                <img src="../../images/{{ $category['type'] }}.svg" alt="">
-                <span>Music Festival</span>
-            </div>
-            @endforeach
-
-        </div>
-    </div>
+    @include('Home.categories')
     <div class="popular-event">
         <label for="">
             <span>Popular Events</span>

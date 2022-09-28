@@ -32,8 +32,9 @@
 - [ ] search
 - [ ] filter
 - [x] menu
-- [ ] show all tags
+- [x] show all tags
 - [ ] images
+- [ ] show result by categories
 
 ### Other
 - [ ] add Vue js
