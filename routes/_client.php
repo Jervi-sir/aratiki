@@ -25,8 +25,7 @@ Route::controller(ClientTicket::class)->middleware(['auth'])->group(function() {
     Route::get('/getThisTicket/{id}', 'getThisTicket')->name('user.thisTicket');                        //[]
 });
 
-Route::controller(ClientUpgrade::class)->middleware(['guest'])->group(function() {
-    Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[]
+Route::controller(ClientUpgrade::class)->middleware(['auth'])->group(function() {
     Route::get('upgradeToAdvertiser', 'upgradePage')->name('user.upgradePage');                             //[]
     Route::post('upgradeToAdvertiser', 'upgrade')->name('user.upgrade');                                    //[]
 });

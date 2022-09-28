@@ -2,7 +2,6 @@
 - [x] add admin panel from old project 
 
 # Right now m doing
-- [ ] purchase economy class 
 
 
 ### Auth
@@ -20,11 +19,12 @@
 - [ ] delete offer (if no one has purchased the offer)
 
 ### Client
-- [ ] purchase a ticket
-- [ ] show my tickets
+- [x] purchase a ticket
+- [x] show this ticket
+- [x] purchase economy class 
+- [x] qrcode
+- [x] show my tickets
 - [ ] refund my ticket
-- [ ] show this ticket
-- [ ] qrcode
 
 ### Home
 - [x] home page

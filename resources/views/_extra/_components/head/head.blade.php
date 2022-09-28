@@ -22,14 +22,20 @@
                     <img src="../../images/icon_test.svg" alt="">
                     <span>Home</span>
                 </a>
-                <a class="link" href="{{ route('homepage') }}">
+                @auth
+                <a class="link" href="{{ route('user.allTickets') }}">
                     <img src="../../images/icon_test.svg" alt="">
-                    <span>Notification</span>
+                    <span>My Tickets</span>
                 </a>
+                @endauth
                 @guest
                 <a class="link" href="{{ route('login') }}">
                     <img src="../../images/icon_test.svg" alt="">
                     <span>Login</span>
+                </a>
+                <a class="link" href="{{ route('advertiser.join') }}">
+                    <img src="../../images/icon_test.svg" alt="">
+                    <span>Join as Agency</span>
                 </a>
                 @endguest
                 @auth
@@ -39,6 +45,9 @@
                     <a href="javascript:;" onclick="parentNode.submit();">Log Out</a>
                 </form>
                 @endauth
+            </div>
+            <div class="bottom">
+                <a href="{{ route('user.upgradePage') }}">Upgrade to Advertiser</a>
             </div>
         </div>
     </div>

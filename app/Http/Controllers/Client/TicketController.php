@@ -16,7 +16,43 @@ class TicketController extends Controller
         $user = Auth::user();
         $tickets = $user->tickets;
 
-        return view('Client.myTickets.index', ['tickets' => $tickets]);
+        $data['user'] = [
+            'name' => $user->name,
+            'bio' => $user->bio ? $user->bio : 'no Bio',
+            'phone_number' => $user->phone_number,
+            'total_tickets' => $tickets->count(),
+            'active_tickets' => $tickets->count(),
+        ];
+
+        foreach($tickets as $index=>$ticket) {
+            $ticket_details = json_decode($ticket->details);
+
+            $data['tickets'][$index] = [
+                'event_name' => $ticket_details->event_name,
+                'advertiser_name' => $ticket->offer->advertiser->name,
+                'location' => $ticket_details->location,
+
+                'price' => $ticket_details->price . ' D.A',
+                'event_type' => $ticket->event_type,
+
+                'event_day_starts' => date('d', strtotime($ticket_details->event_starts)),
+                'event_month_starts' => date('M', strtotime($ticket_details->event_starts)),
+
+                'event_date_starts' => date('M d', strtotime($ticket_details->event_starts)),
+                'event_time_starts' => date('h:i A', strtotime($ticket_details->event_starts)),
+                'event_date_ends' => date('M d', strtotime($ticket_details->event_ends)),
+                'event_time_ends' => date('h:i A', strtotime($ticket_details->event_ends)),
+
+                'duration' => $ticket_details->duration,
+                'url' => route('user.thisTicket', ['id' => $ticket->id])
+            ];
+        }
+
+        return view('Client.myTickets.index', 
+            [
+                'user' => $data['user'],
+                'tickets' => $data['tickets']
+            ]);
     }
 
 

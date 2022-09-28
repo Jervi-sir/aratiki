@@ -45,7 +45,6 @@ class JoinController extends Controller
         $adv->name = $request->name;
         $adv->phone_number = $request->phone_number;
         $adv->details = $request->description;
-        //TODO: $adv->images = $request->images;
         $adv->save();
 
         session()->flash('hasNotification' , true);
