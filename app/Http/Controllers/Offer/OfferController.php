@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 require dirname(__DIR__) . '\zHelpers\helperDB.php';
+require dirname(__DIR__) . '\zHelpers\upload.php';
 
 class OfferController extends Controller
 {
@@ -35,7 +36,7 @@ class OfferController extends Controller
             'location' => $offer->location, //[x]
 /*[-] */    'map_location' => $offer->map_location, //[x]
             'description' => $offer->description, //[x]
-            'images' => json_decode($offer->images), //[x]
+            'images' => getArrayImageUrl($offer->images), //[x]
 
             'date' => date('M d' ,strtotime($offer->event_starts)), //[x]
             'event_starts' => date('M d, g:i A' ,strtotime($offer->event_starts)), //[x]

@@ -43,7 +43,6 @@
                 overflow: hidden;
                 img {
                     width: 100%;
-
                 }
             }
 
@@ -80,10 +79,16 @@
                 height: 6px;
                 min-width: 6px;
                 flex: 2;
+                cursor: pointer;
 
                 &.active {
                     background: #203354;
                     flex: 1;
+                }
+
+                &:hover {
+                    background: #203354cb;
+                    transition: 0.5s;
                 }
             }
 

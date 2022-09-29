@@ -77,7 +77,7 @@
             <div class="amounts">
                 <div class="price vip">
                     <div>
-                        {{ $offer['price_economy'] }} 
+                        {{ $offer['price_vip'] }} 
                         <small>D.A</small>
                     </div>
                     <span>VIP</span>

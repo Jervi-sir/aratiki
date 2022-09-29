@@ -33,7 +33,7 @@
 - [ ] filter
 - [x] menu
 - [x] show all tags
-- [ ] images
+- [x] images
 - [x] show result by categories
 
 ### Other
