@@ -7,7 +7,7 @@
 
 @section('body')
 <div class="bg-blue"></div>
-@include('_extra._components.search.search')
+@include('_extra._components.search.search', ['value' => ''])
 <div class="home-before-search">
     @include('Home.categories')
     <div class="popular-event">

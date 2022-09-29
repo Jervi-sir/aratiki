@@ -5,6 +5,6 @@
         <button>
             <img src="../../images/search.svg" alt="">
         </button>
-        <input type="text" placeholder="Search any event offer, with specific Location">
+        <input type="text" value="{{ $value }}" placeholder="Search any event offer, with specific Location">
     </div>
 </form>

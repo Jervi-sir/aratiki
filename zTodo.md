@@ -34,7 +34,7 @@
 - [x] menu
 - [x] show all tags
 - [ ] images
-- [ ] show result by categories
+- [x] show result by categories
 
 ### Other
 - [ ] add Vue js

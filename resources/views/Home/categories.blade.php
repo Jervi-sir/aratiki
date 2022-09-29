@@ -4,12 +4,12 @@
         <button @click="open = ! open">View All</button>
     </label>
     <div class="categories-list">
-        @foreach ($categories as $category)
-        <div class="category">
-            <img src="../../images/{{ $category['type'] }}.svg" alt="">
-            <span>{{ $category['name'] }}</span>
-        </div>
-        @endforeach
+        @for ($i = 0; $i < 3; $i++)
+        <a href="{{ $categories[$i]['url'] }}" class="category">
+            <img src="../../images/{{ $categories[$i]['type'] }}.svg" alt="">
+            <span>{{ $categories[$i]['name'] }}</span>
+        </a>
+        @endfor
     </div>
 
     <div class="categories-slide" x-show="open" x-transition>
@@ -26,7 +26,7 @@
             </div>
             <div class="link-list">
                 @foreach ($categories as $category)
-                <a class="category" href="{{ route('homepage') }}">
+                <a class="category" href="{{ $category['url'] }}">
                     <img src="../../images/{{ $category['type'] }}.svg" alt="">
                     <span>{{ $category['name'] }}</span>
                 </a>

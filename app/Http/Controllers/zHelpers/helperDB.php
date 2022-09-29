@@ -23,6 +23,7 @@ function listAllCategories() {
     foreach($payments as $index=>$category) {
         $array[$index] = [
             'id' => $category->id,
+            'url' => route('category.popular', ['category' => $category->id]),
             'name' => $category->name,
             'type' => $category->type,
         ];
