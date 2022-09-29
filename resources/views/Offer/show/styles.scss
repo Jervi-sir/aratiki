@@ -332,3 +332,111 @@
     }
 
 }
+
+
+
+/* ------------------------------------
+            purchase-slide
+------------------------------------*/
+.purchase-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 175;
+    
+    .bg-box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(32, 51, 84, 0.2);
+        backdrop-filter: blur(2px);
+    }
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        background: var(--color-white);
+        border-radius: 20px;
+        box-shadow: var(--shadow-three);
+        padding-bottom: 20px;
+        .top {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            .title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--color-blue);
+            }
+            button {
+                background: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+        }
+        .form {
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            .select-type {
+                h3 {
+                    color: var(--color-blue);
+                }
+                .type {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    label {
+                        color: var(--color-blue);
+                        font-size: var(--text-2xl);
+                        font-weight: 400;
+                    }
+                    span {
+                        margin-left: auto;
+                        font-size: var(--text-lg);
+                        font-weight: 600;
+                    }
+                }
+            }
+            .total {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h3 {
+                    padding-top: 3px;
+                    color: var(--color-blue);
+                    margin: 0;
+                }
+                h2 {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 5px;
+                    font-weight: 400;
+                    margin: 0;
+                }
+            }
+            button {
+                background: var(--color-blue);
+                border-radius: 10px;
+                color: var(--color-white);
+                font-size: var(--text-lg);
+                font-weight: 400;
+                padding: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+
+                &:disabled {
+                    background: var(--color-blue-light);
+
+                }
+            }
+        }
+    }
+}

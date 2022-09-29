@@ -86,10 +86,50 @@
                 </div>
             </div>
 
-            <form action="{{ route('user.purchase', ['event_id' => $offer['id']]) }}" method="POST">
-                @csrf
-                <button class="request">Get ticket</button>
-            </form>
+            <div x-data="{ open: false, selected: 0 }">
+                <div x-show="open" x-transition class="purchase-slide">
+                    <div class="bg-box" @click="open = ! open"></div>
+                    <div class="box">
+                        <div class="top">
+                            <div class="title">
+                                <img src="../../images/Logo_mini.svg" alt="">
+                                <h3>Purchase Ticket</h3>
+                            </div>
+                            <button @click="open = ! open">
+                                <img src="../../images/cancel.svg" alt="">
+                            </button>
+                        </div>
+                        <form class="form" action="{{ route('user.purchase') }}" method="POST">
+                            @csrf
+                            <div class="select-type">
+                                <h3>Select type of ticket</h3>
+                                <input name="offer_id" type="text" value="{{ $offer['id'] }}" hidden>
+                                <div class="type">
+                                    <input name="type" @click="selected = {{ $offer['price_vip'] }} " type="radio" id="vip"  value="vip">
+                                    <label for="vip">VIP</label>
+                                    <span>{{ $offer['price_vip'] }} <small>D.A</small> </span>
+                                </div>
+                                <div class="type">
+                                    <input name="type" @click="selected = {{ $offer['price_economy'] }} " type="radio" id="economy" value="economy">
+                                    <label for="economy">Economy</label>
+                                    <span>{{ $offer['price_economy'] }} <small>D.A</small> </span>
+                                </div>
+                            </div>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>
+                                    <span x-text="selected"></span>
+                                    <small>D.A</small>
+                                </h2>
+                            </div>
+                            <div class="payment-card"> </div>
+                            <button :disabled="selected == 0">Purchase ticket</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <button @click="open = ! open" class="request">Get ticket</button>
+            </div>
         </div>
     </div>
 </div>
@@ -137,13 +177,6 @@
 
         </div>
         @endforeach
-
-    </div>
-
-    <div class="tickets-spinner">
-        <button type="button" class="minus">-</button>
-        <input type="number" name="" id="" value="1">
-        <button type="button" class="plus">+</button>
     </div>
 </div>
 @endsection

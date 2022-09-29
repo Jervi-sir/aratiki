@@ -27,13 +27,16 @@
 - [x] show my tickets
 - [ ] refund my ticket
 
+### Offer
+- [x] images
+- [ ] modal of purchase ticket
+
 ### Home
 - [x] home page
 - [ ] search
 - [ ] filter
 - [x] menu
 - [x] show all tags
-- [x] images
 - [x] show result by categories
 
 ### Other
@@ -42,12 +45,14 @@
 - [ ] add like system
 - [ ] add comment system
 - [ ] responsive
+- [ ] fake purchase card
 
 # Quick fixes
 - rename all return to view correctly
 - [x] view password in login register
 - [x] strong or weak password
 - [ ] add location in user adv
+- [ ] fix type of ticket purchased vip economy
 
 # In menu
     home, login, register, logout, add event, show my events, show my tickets, show my profile, about us, bookmarks, more, explore, notification, messages, discorver

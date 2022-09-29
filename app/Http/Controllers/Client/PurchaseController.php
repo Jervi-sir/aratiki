@@ -9,7 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
 {
@@ -25,8 +25,8 @@ class PurchaseController extends Controller
     /*--------------------------------------------------------
     |   [x]  generate my ticket
     ----------------------------------------------------------*/
-    public function purchase($offer_id,Request $request) {
-        $offer = Offer::find($offer_id);
+    public function purchase(Request $request) {
+        $offer = Offer::find($request->offer_id);
 
         if($offer->tickets_left == 0 || $offer->is_active != 1) {
             //TODO: return error
@@ -37,7 +37,7 @@ class PurchaseController extends Controller
         $ticket = new Ticket();
         $ticket->uuid = Str::uuid();
         $ticket->user_id = $user->id;
-        $ticket->offer_id = $offer_id;
+        $ticket->offer_id = $offer->id;
         $ticket->qrcode = $this->qrcodeGenerate($offer, $user, 2);
         $ticket->event_type = Category::find($offer->category_id)->name;
         $ticket->details = json_encode([
@@ -50,7 +50,6 @@ class PurchaseController extends Controller
             'price' => $offer->price_economy,
         ]);
         $ticket->save();
-
 
         if($offer->tickets_left_economy != 0) {
             $offer->tickets_left_economy--;

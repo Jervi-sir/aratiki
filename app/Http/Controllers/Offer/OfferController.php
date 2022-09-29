@@ -30,6 +30,7 @@ class OfferController extends Controller
 
         $data['offer'] = [
             'id' => $offer->id,
+            'uuid' => $offer->uuid,
             'category' => Category::find($offer->category_id)->name, //[x]
 
             'event_name' => $offer->event_name, //[x]
