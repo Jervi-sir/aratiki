@@ -1,4 +1,4 @@
-@vite('resources/views/_extra/_components/head/head.scss')
+@vite('resources/views/_components/head/head.scss')
 <div x-data="{ open: false }" class="header-container mobile">
     <header>
         <a href="{{ route('homepage') }}" class="logo">
@@ -31,6 +31,10 @@
                 <a class="link" href="{{ route('get.advertiser.allOffers') }}">
                     <img src="../../images/icon_test.svg" alt="">
                     <span>My events</span>
+                </a>
+                <a class="link" href="{{ route('get.advertiser.addOffer') }}">
+                    <img src="../../images/icon_test.svg" alt="">
+                    <span>add event</span>
                 </a>
                 @endif
                 @endauth

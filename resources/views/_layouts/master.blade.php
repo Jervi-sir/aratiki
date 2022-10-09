@@ -9,16 +9,16 @@
     </title>
     <link rel="icon" href="../../images/Logo_mini.svg" sizes="any" type="image/svg+xml">
 
-    @vite('resources/views/_extra/_styles/global.scss')
+    @vite('resources/views/_styles/global.scss')
     @vite('resources/js/app.js')
     @yield('head')
 </head>
 <body>
     <div class="body">
-        @include('_extra/_components/head/head')
+        @include('_components.head.head')
         @yield('body')
     </div>
 
-    @include('_extra/_components/footer/footer')
+    @include('_components.footer.footer')
 </body>
 </html>

@@ -4,6 +4,12 @@ use App\Models\Offer;
 use App\Models\Payment;
 use App\Models\Category;
 
+/*---------
+|   listAllPayments() return list of payment type
+|   listAllCategories() return array of categories
+|   suggestOffers() return random offers default 10 with pagination
+----------*/
+
 
 function listAllPayments() {
     $array = [];

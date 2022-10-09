@@ -1,4 +1,4 @@
-@vite('resources/views/_extra/_components/search/search.scss')
+@vite('resources/views/_components/search/search.scss')
 <form action="{{ route('search') }}" method="GET" class="search-container">
     @csrf
     <div class="search">

@@ -1,4 +1,4 @@
-@extends('_extra._layouts.master')
+@extends('_layouts.master')
 {{-- [done] need to make card to grid kinda --}}
 
 @section('head')
@@ -7,7 +7,7 @@
 
 @section('body')
 <div class="bg-blue"></div>
-@include('_extra._components.search.search', ['value' => ''])
+@include('_components.search.search', ['value' => ''])
 <div class="home-before-search">
     @include('Home.categories')
     <div class="popular-event">

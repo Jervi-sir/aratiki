@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Offer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
-use App\Models\Offer;
+use App\Http\Controllers\Controller;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class HomeController extends Controller

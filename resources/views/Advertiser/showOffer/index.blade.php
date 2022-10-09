@@ -1,4 +1,4 @@
-@extends('_extra._layouts.master')
+@extends('_layouts.master')
 {{-- [done] --}}
 @section('title')
     {{ $offer['event_name'] }} -Edit

@@ -1,4 +1,4 @@
-@extends('_extra/_layouts.master')
+@extends('_layouts.master')
 {{-- [] --}}
 
 @section('head')

@@ -1,4 +1,4 @@
-@extends('_extra._layouts.master')
+@extends('_layouts.master')
 {{-- [] --}}
 
 @section('head')
@@ -7,7 +7,7 @@
 
 @section('body')
 <div class="bg-blue"></div>
-@include('_extra._components.search.search')
+@include('_components.search.search')
 <div class="home-before-search">
     <div class="categories-container">
         <label for="">

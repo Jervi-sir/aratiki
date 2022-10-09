@@ -6,15 +6,15 @@ export default defineConfig({
         laravel({
             input: [
                 //------ [ Global ]
-                'resources/views/_extra/_styles/global.scss',
+                'resources/views/_styles/global.scss',
                 'resources/views/errors/styles.scss',
                 //------ [ Media ]
 
                 //------ [ Components ]
-                'resources/views/_extra/_components/footer/footer.scss',
-                'resources/views/_extra/_components/head/head.scss',
-                'resources/views/_extra/_components/search/search.scss',
-                'resources/views/_extra/_components/success/success.scss',
+                'resources/views/_components/footer/footer.scss',
+                'resources/views/_components/head/head.scss',
+                'resources/views/_components/search/search.scss',
+                'resources/views/_components/success/success.scss',
 
                 //------ [ Advertiser ]
                 'resources/views/Advertiser/post/styles.scss',

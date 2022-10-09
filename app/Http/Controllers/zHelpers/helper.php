@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 /*---------
 |   getDateDifference($start, $end) return string date human readable
@@ -27,27 +28,33 @@ function getDateDifference($start, $end) {
 }
 
 function createKeyword($offer) {
-    $isVIP = $offer->price_vip ? 'vip' : '';
+    $tr = new GoogleTranslate(); // Translates to 'en' from auto-detected language by default
 
-    $keywords = $offer->location . ' ' . 
-        $offer->event_name . ' ' . 
-        $offer->promoter_name . ' ' . 
-        $offer->promoter_details . ' ' . 
-        'economic ' . 
-        $isVIP;
+    $meta_data_from_advertiser = $offer->event_name . ', ' .
+            $offer->location . ', ' .
+            $offer->description . ', ' .
+            $offer->duration . ', ' .
+            $offer->advertiser_name . ', ' .
+            $offer->advertiser_details;
 
-    return Str::of(strtolower($keywords))->replaceMatches('/ {2,}/', ' ')->value;      
+    $ar = $tr->setSource()->setTarget('ar')->translate($meta_data_from_advertiser);
+    $fr = $tr->setSource()->setTarget('fr')->translate($meta_data_from_advertiser);
+    $en = $tr->setSource()->setTarget('en')->translate($meta_data_from_advertiser);
+    $result = strtolower($fr) . ', ' . strtolower($en) . ', ' . strtolower($ar);
+
+    return $result;
+    //return Str::of(strtolower($keywords))->replaceMatches('/ {2,}/', ' ')->value;      
 }
 
-function getCategoryId($templateId, $textIfNew = '') {
+function getCategory($templateId, $textIfNew = '') {
     if($templateId == 'other') {
         $template = new Category();
-        $template->template_name = $textIfNew;
+        $template->name = $textIfNew;
         $template->type = 'other';
         $template->source_code = 'other';
         $template->save();
-        return $template->id;
+        return $template;
     }
 
-    return Category::find($templateId)->id;
+    return Category::find($templateId);
 }

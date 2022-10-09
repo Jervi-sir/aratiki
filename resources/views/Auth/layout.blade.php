@@ -8,7 +8,7 @@
     <title>
         @yield('title')
     </title>
-    @vite('resources/views/_extra/_styles/global.scss')
+    @vite('resources/views/_styles/global.scss')
     @vite('resources/views/Auth/auth.scss')
     @vite('resources/js/app.js')
     @yield('head')

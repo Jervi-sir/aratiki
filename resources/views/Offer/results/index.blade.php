@@ -1,4 +1,4 @@
-@extends('_extra._layouts.master')
+@extends('_layouts.master')
 {{-- [] --}}
 
 @section('head')
@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-@include('_extra._components.search.search', ['value' => $searchedFor])
+@include('_components.search.search', ['value' => $searchedFor])
 
 <div class="bg-blue"></div>
 <div class="results-container">

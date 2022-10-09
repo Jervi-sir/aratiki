@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Advertiser;
 
 use App\Models\Offer;
+use App\Models\Payment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\upload.php';
 require dirname(__DIR__) . '\zHelpers\helperDB.php';
@@ -45,11 +46,13 @@ class AddOfferController extends Controller
         $offer->uuid = Str::uuid();
         $offer->uuid_for_images = str_replace('-', '', $uuid);
         $offer->advertiser_id = $advertiser->id;
-        $offer->category_id = getCategoryId($request->category, $request->other_type);
+        $category = getCategory($request->category, $request->other_category);
+        $offer->category_id = $category->id;
         $offer->payment_id = intval($request->payment_type);
 
         /*--[ specific details ]--*/
         $offer->event_name = $request->event_name;
+        $offer->event_category = $category->name;
         $offer->location = $request->location;
         $offer->map_location = $request->map_location;
         $offer->description = $request->description;
@@ -68,6 +71,8 @@ class AddOfferController extends Controller
         $offer->price_economy = $request->price_economy;
         $offer->total_tickets_economy = intval($request->ticket_economy_amount);
         $offer->tickets_left_economy = intval($request->ticket_economy_amount);
+        //$tickets['economic'] = $request->price_economy;
+        //$offer->tickets = json_encode($tickets);
         $offer->payment_type_name = Payment::find(intval($request->payment_type))->name;
         /*--[ advertiser data ]--*/
         $offer->advertiser_name = $advertiser->name;
@@ -78,5 +83,7 @@ class AddOfferController extends Controller
         $offer->save();
 
         return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);
+        
+        
     }
 }

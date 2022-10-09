@@ -3,16 +3,16 @@
 
 @section('head')
     @vite('resources/views/Advertiser/post/styles.scss')
-    @vite('resources/views/Advertiser/editOffer/styles.scss')
 @endsection
 
 @section('body')
-<form action="{{ $offer['url'] }}" method="POST" >
+<form action="{{ route('post.advertiser.addOffer') }}" method="POST" >
     @csrf
     <!-- Images Input -->
-   @include('Advertiser.editOffer.imagesInput')
+   @include('Advertiser.post.imagesInput')
+
     <!-- Event Names -->
-    <div x-data="{ state: {{ json_encode($offer['event_name']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-name">
                 Event Name:
@@ -21,9 +21,8 @@
             <input name="event_name"
                 id="event-name"
                 class="input"
-                x-model="state"
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @keyup="gotEdited = true"
+                x-model="state" 
+                x-bind:class="{ 'green-border': state }"  
                 type="text" 
                 placeholder="Enter event name"
                 required
@@ -31,18 +30,17 @@
         </div>
     </div>
     <!-- Event Type -->
-    <div x-data="{ state: {{ json_encode($offer['category']) }}, statusType: '', gotEdited: false }">
+    <div x-data="{ state: '', statusType: '' }">
         <div class="input-container">
             <label for="evet-type">
                 Event Category:
                 <span class="required">*</span>
             </label>
-            <select name="category_id" 
+            <select name="category" 
                 id="evet-type"
                 class="input"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @change="gotEdited = true"
+                x-bind:class="{ 'green-border': state }"  
                 required
             >
                 <option value="" disabled selected>select event type</option>
@@ -52,7 +50,7 @@
                 <option value="other">other</option>
 
             </select>
-            <input name="other_type"
+            <input name="other_category"
                 class="input"
                 x-show="state == 'other'"
                 x-model="statusType" 
@@ -64,7 +62,7 @@
         </div>
     </div>
     <!-- Event Date -->
-    <div x-data="{ state: {{ json_encode($offer['event_starts']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-date-start">
                 Event Date Starts:
@@ -74,8 +72,7 @@
                 id="event-date-start"
                 class="input"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @change="gotEdited = true"
+                x-bind:class="{ 'green-border': state }"  
                 type="datetime-local" 
                 placeholder="Select date"
                 required
@@ -83,7 +80,7 @@
         </div>
     </div>
     <!-- Event Date -->
-    <div x-data="{ state: {{ json_encode($offer['event_ends']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-date-end">
                 Event Date Ends:
@@ -93,8 +90,7 @@
                 id="event-date-end"
                 class="input"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @change="gotEdited = true"
+                x-bind:class="{ 'green-border': state }"  
                 type="datetime-local" 
                 placeholder="Select date"
                 required
@@ -102,7 +98,7 @@
         </div>
     </div>
     <!-- Event Location -->
-    <div x-data="{ state: {{ json_encode($offer['location']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-location">
                 Event Location:
@@ -112,8 +108,7 @@
                 id="event-location"
                 class="input"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @keyup="gotEdited = true"
+                x-bind:class="{ 'green-border': state }" 
                 type="text" 
                 placeholder="Enter location"
                 required
@@ -121,7 +116,7 @@
         </div>
     </div>
     <!-- Event Map Location -->
-    <div x-data="{ state: {{ json_encode($offer['map_location']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-map">
                 Event Map location:
@@ -130,8 +125,7 @@
                 id="event-map"
                 class="input"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @keyup="gotEdited = true"
+                x-bind:class="{ 'green-border': state }" 
                 type="text" 
                 placeholder="Enter location"
                 required
@@ -139,7 +133,7 @@
         </div>
     </div>
     <!-- Event About -->
-    <div x-data="{ state: {{ json_encode($offer['description']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-about">
                 About event:
@@ -149,8 +143,7 @@
                 id="event-about" 
                 class="textarea"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @keyup="gotEdited = true"
+                x-bind:class="{ 'green-border': state }" 
                 placeholder="Describe the details"
                 required
             ></textarea>
@@ -158,84 +151,18 @@
     </div>
 
     <hr>
-    <!-- Event Ticket Vip -->
-    <div x-data="priceValidator">
-        <div class="input-container">
-            <label class="enable-vip" for="enable-vip">
-                Enable a VIP ticket:
-                <input name="containVIP"
-                    id="enable-vip"
-                    x-model="enableVIP"
-                    x-bind:class="{ 'green-border': enableVIP }"
-                    type="checkbox"
-                    x-bind:disabled="enableVIP"
-                    x-bind:checked="enableVIP"
-                >
-            </label>
-            <label x-show="enableVIP" for="ticket-vip">
-                Ticket Price for VIP:
-                <span class="required">*</span>
-            </label>
-            <div x-show="enableVIP" class="input ticket">
-                <input name="price_vip"
-                    class="price"
-                    id="ticket-vip"  
-                    x-model="stateVip" 
-                    @keypress="validatePrice"  
-                    type="text" 
-                    placeholder="D.A 245"
-                    x-bind:required="enableVIP"
-                >
-                <input name="ticket_vip_amount"
-                    class="amount"
-                    value="{{ json_encode($offer['total_tickets_vip']) }}"
-                    type="number" 
-                    min="{{ $offer['tickets_left_vip'] }}"
-                    value="{{ $offer['total_tickets_vip'] }}"
-                >
-            </div>
-        </div>
-    </div>
-    <!-- Event Ticket Economy -->
-    <div x-data="priceValidator">
-        <div class="input-container">
-            <label for="ticket-economy">
-                Ticket Price for Economy:
-                <span class="required">*</span>
-            </label>
-            <div class="input ticket" >
-                <input name="price_economy"
-                    class="price"
-                    id="ticket-economy"  
-                    x-model="stateEconomic" 
-                    @keypress="validatePrice"  
-                    type="text" 
-                    placeholder="D.A 245"
-                    required
-                >
-                <input name="ticket_economy_amount"
-                    value="{{ json_encode($offer['total_tickets_economy']) }}"
-                    class="amount"
-                    type="number" 
-                    min="{{ $offer['total_tickets_economy'] }}"
-                    value="{{ $offer['total_tickets_economy'] }}"
-                >
-            </div>
-        </div>
-    </div>
     <!-- Event Ticket type -->
-    <div x-data="{ state: {{ json_encode($offer['payment_id']) }}, gotEdited: false }">
+    <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="ticket-type">
                 Payout Method (CCP/ BaridiMob):
                 <span class="required">*</span>
             </label>
-            <select name="payment_id" 
+            <select name="payment_type" 
                 id="ticket-type"
                 class="select"
                 x-model="state" 
-                :class="gotEdited ? 'orange-border' : 'green-border'"  
-                @change="gotEdited = true"
+                x-bind:class="{ 'green-border': state }"  
                 name="payment_method"
                 required
             >
@@ -246,6 +173,35 @@
             </select>
         </div>
     </div>
+
+    <!-- Event Ticket Economy -->
+    <div x-data="priceValidator">
+        <div class="input-container">
+            <label for="ticket-economy">
+                Ticket Price for Economy:
+                <span class="required">*</span>
+            </label>
+            <div class="input ticket" x-bind:class="{ 'green-border': stateA }" >
+                <input name="price_economy"
+                    class="price"
+                    id="ticket-economy"  
+                    x-model="stateA" 
+                    @keypress="validatePrice"  
+                    type="text" 
+                    placeholder="D.A 245"
+                    required
+                >
+                <input name="ticket_economy_amount"
+                    class="amount"
+                    type="number" 
+                    min="1"
+                    value="1"
+                >
+            </div>
+        </div>
+    </div>
+    
+    <hr>
 
     <!-- Phone number -->
 
@@ -262,14 +218,15 @@
             type="text" 
             placeholder="+213..."
             @keypress="validatePhone"
-            @if ($offer['phone_number'])
-            value="{{ $offer['phone_number'] }}"
+            @if ($phone_number)
+            value="{{$phone_number}}"
             @endif
             required
         >
     </div>
+
     <button class="create-button">
-        Update Event
+        Create Event
     </button>
 
 </form>
@@ -277,9 +234,9 @@
 <script>
     function priceValidator() {
         return {
-            enableVIP: {!! json_encode($offer['hasVip']) !!},
-            stateEconomic: {!! json_encode($offer['price_economy']) !!},
-            stateVip: {!! json_encode($offer['price_vip']) !!},
+            enableVIP: false,
+            stateA: '',
+            stateB: '',
             validatePrice(event) {
                 let keyCode = event.keyCode;
                 if ((keyCode < 48 || keyCode > 57) && keyCode != 46) {
@@ -293,7 +250,7 @@
 <script>
     function phoneNumber() {
         return {
-            state: {!! json_encode($offer['phone_number']) !!},
+            state: {!! json_encode($phone_number) !!},
             validatePhone(event) {
                 let keyCode = event.keyCode;
                 if ((keyCode < 48 || keyCode > 57) && keyCode != 43) {

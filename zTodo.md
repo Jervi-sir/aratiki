@@ -2,6 +2,7 @@
 - [x] add admin panel from old project 
 
 # Right now m doing
+- [ ] search
 
 
 ### Auth
@@ -29,11 +30,12 @@
 
 ### Offer
 - [x] images
-- [ ] modal of purchase ticket
+- [x] modal of purchase ticket
+- [ ] make a page for categories only
+- [ ] verify if linkk contains a category
 
 ### Home
 - [x] home page
-- [ ] search
 - [ ] filter
 - [x] menu
 - [x] show all tags
