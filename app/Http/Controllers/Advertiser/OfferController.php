@@ -30,6 +30,8 @@ class OfferController extends Controller
             'active_events' => $offers->count(),
         ];
 
+        $data['offers'] = [];
+
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'id' => $offer->id,

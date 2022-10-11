@@ -46,7 +46,6 @@ return new class extends Migration
             $table->string('price_economy'); 
             $table->bigInteger('total_tickets_economy'); 
             $table->bigInteger('tickets_left_economy'); 
-            $table->string('payment_type_name'); 
             
             /*--[ ad vertiser data ]--*/
             $table->string('advertiser_name'); 

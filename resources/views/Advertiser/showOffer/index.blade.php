@@ -97,7 +97,7 @@
             <div class="decor"></div>
             <div class="event-status">
                 <div class="vip">
-                    @if ($offer['is_verified'])
+                    @if ($offer['hasVip'])
                     <img src="../../images/vip.svg" alt="">
                     <span class="true">VIP available</span>
                     @else
@@ -115,7 +115,7 @@
                     @endif
                 </div>
                 <div class="verified">
-                    @if ($offer['price_vip'])
+                    @if ($offer['is_verified'])
                     <img src="../../images/verified.svg" alt="">
                     <span class="true">Verified</span>
                     @else
@@ -127,7 +127,7 @@
 
             <div class="total-tickets-stats">
                 <h1>Ticket Status</h1>
-                @if ($offer['price_vip'])
+                @if ($offer['hasVip'])
                 <label for="">VIP Tickets</label>
                 <div class="stats">
                     <div class="amounts">

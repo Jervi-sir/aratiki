@@ -230,4 +230,36 @@
         
         
     }
+
+
+    .not-events {
+        h3 {
+            margin-top: 3rem;
+            font-weight: 300;
+            font-size: var(--text-basic);
+            text-align: center;
+        }
+    }
+
+    .add-event {
+        display: flex;
+        flex-direction: column;
+        a {
+            margin-top: 3rem;
+            padding: 15px 0;
+            background: var(--color-blue);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: var(--text-sm);
+            color: #F8F8F8;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+
+            &.disabled {
+                background: var(--color-blue-light);
+                cursor: default;
+            }
+        }
+    }
 }

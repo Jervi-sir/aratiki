@@ -83,5 +83,23 @@
     </a>
     @endforeach
 
+    @if (count($offers) == 0)
+    <div class="not-events">
+        <h3>No event registered</h3>
+    </div>
+    @endif
+
+    <div class="add-event">
+        @if (count($offers) > 10)
+        <a href="" class="disabled">
+            Add event
+        </a>
+        @else
+        <a href="{{ route('get.advertiser.addOffer') }}">
+            Add event
+        </a>
+        @endif
+    </div>
+
 </div>
 @endsection
