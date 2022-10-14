@@ -3,9 +3,8 @@
 
 # Right now m doing
 - [x] search
-- [ ] map place api google
+- [x] map place api google
 - [ ] purchace a ticket
-- [ ] icon for menu panel
 
 ### Auth
 - [x] login
@@ -34,7 +33,7 @@
 - [x] images
 - [x] modal of purchase ticket
 - [ ] make a page for categories only
-- [ ] verify if linkk contains a category
+- [ ] verify if link contains a category
 
 ### Home
 - [x] home page
@@ -42,6 +41,7 @@
 - [x] menu
 - [x] show all tags
 - [x] show result by categories
+- [x] icons for menu panel
 
 ### Other
 - [ ] add Vue js

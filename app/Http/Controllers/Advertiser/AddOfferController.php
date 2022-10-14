@@ -26,7 +26,7 @@ class AddOfferController extends Controller
         $data['categories'] = listAllCategories();
         $data['payments'] = listAllPayments();
 
-        return view('Advertiser.post.index', 
+        return view('Advertiser.addOffer.index', 
             [
                 'payments' => $data['payments'], 
                 'categories' => $data['categories'], 

@@ -17,7 +17,7 @@ export default defineConfig({
                 'resources/views/_components/success/success.scss',
 
                 //------ [ Advertiser ]
-                'resources/views/Advertiser/post/styles.scss',
+                'resources/views/Advertiser/addOffer/styles.scss',
                 'resources/views/Advertiser/showOffer/styles.scss',
                 'resources/views/Advertiser/editOffer/styles.scss',
 

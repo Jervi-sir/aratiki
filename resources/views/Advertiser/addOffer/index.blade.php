@@ -2,15 +2,15 @@
 {{-- [done] --}}
 
 @section('head')
-    @vite('resources/views/Advertiser/post/styles.scss')
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADqQh5V5qC81Vgu8DzR8aX4V7tzUnsw80&amp;libraries=places"></script>
+    @vite('resources/views/Advertiser/addOffer/styles.scss')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPsDFZ7HBTlFz0qutXmDGr5jWXe8q-qSY&amp;libraries=places"></script>
 @endsection
 
 @section('body')
 <form action="{{ route('post.advertiser.addOffer') }}" method="POST" >
     @csrf
     <!-- Images Input -->
-   @include('Advertiser.post.imagesInput')
+   @include('Advertiser.addOffer.imagesInput')
 
     <!-- Event Names -->
     <div x-data="{ state: '' }">
@@ -130,100 +130,106 @@
                 placeholder="Enter location"
                 required
             >
-            <input class="w-full bg-gray-200 text-gray-700 appearance-none rounded border-2 border-gray-300 py-2 px-4" type="text" id="address"/>
 
         </div>
     </div>
     <script>
         // Prepare location info object.
-var locationInfo = {
-  geo: null,
-  country: null,
-  state: null,
-  city: null,
-  postalCode: null,
-  street: null,
-  streetNumber: null,
-  reset: function() {
-    this.geo = null;
-    this.country = null;
-    this.state = null;
-    this.city = null;
-    this.postalCode = null;
-    this.street = null;
-    this.streetNumber = null;
-  }
-};
+        var locationInfo = {
+        geo: null,
+        country: null,
+        state: null,
+        city: null,
+        postalCode: null,
+        street: null,
+        streetNumber: null,
+            reset: function() {
+                this.geo = null;
+                this.country = null;
+                this.state = null;
+                this.city = null;
+                this.postalCode = null;
+                this.street = null;
+                this.streetNumber = null;
+            }
+        };
 
-googleAutocomplete = {
-  autocompleteField: function(fieldId) {
-    (autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById(fieldId)
-    )),
-      { types: ["geocode"] };
-    google.maps.event.addListener(autocomplete, "place_changed", function() {
-      // Segment results into usable parts.
-      var place = autocomplete.getPlace(),
-        address = place.address_components,
-        lat = place.geometry.location.lat(),
-        lng = place.geometry.location.lng();
+        googleAutocomplete = {
+            autocompleteField: function(fieldId) {
+                (
+                    autocomplete = new google.maps.places.Autocomplete(
+                        document.getElementById(fieldId),
+                        {componentRestrictions: {country: "dz"}}
+                    )
+                ),
+                { types: ["geocode"] };
+                google.maps.event.addListener(autocomplete, "place_changed", function() {
+                    // Segment results into usable parts.
+                    var place = autocomplete.getPlace(),
+                        address = place.address_components,
+                        lat = place.geometry.location.lat(),
+                        lng = place.geometry.location.lng();
 
-      // Reset location object.
-      locationInfo.reset();
+                    document.getElementById('event-map').value = lat + ', ' + lng;
+                    // Reset location object.
+                    //locationInfo.reset();
 
-      // Save the individual address components.
-      locationInfo.geo = [lat, lng];
-      for (var i = 0; i < address.length; i++) {
-        var component = address[i].types[0];
-        switch (component) {
-          case "country":
-            locationInfo.country = address[i]["long_name"];
-            break;
-          case "administrative_area_level_1":
-            locationInfo.state = address[i]["long_name"];
-            break;
-          case "locality":
-            locationInfo.city = address[i]["long_name"];
-            break;
-          case "postal_code":
-            locationInfo.postalCode = address[i]["long_name"];
-            break;
-          case "route":
-            locationInfo.street = address[i]["long_name"];
-            break;
-          case "street_number":
-            locationInfo.streetNumber = address[i]["long_name"];
-            break;
-          default:
-            break;
-        }
-      }
+                    // Save the individual address components.
+                    //locationInfo.geo = [lat, lng];
 
-      // Preview map.
-      var src =
-          "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&center=" +
-          lat +
-          "," +
-          lng +
-          "&zoom=14&size=480x125&maptype=roadmap&sensor=false",
-        img = document.createElement("img");
+                    /*
+                    for (var i = 0; i < address.length; i++) {
+                        var component = address[i].types[0];
+                        switch (component) {
+                        case "country":
+                            locationInfo.country = address[i]["long_name"];
+                            break;
+                        case "administrative_area_level_1":
+                            locationInfo.state = address[i]["long_name"];
+                            break;
+                        case "locality":
+                            locationInfo.city = address[i]["long_name"];
+                            break;
+                        case "postal_code":
+                            locationInfo.postalCode = address[i]["long_name"];
+                            break;
+                        case "route":
+                            locationInfo.street = address[i]["long_name"];
+                            break;
+                        case "street_number":
+                            locationInfo.streetNumber = address[i]["long_name"];
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+                    */
+                    /*
+                    // Preview map.
+                    var src =
+                        "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&center=" +
+                        lat +
+                        "," +
+                        lng +
+                        "&zoom=14&size=480x125&maptype=roadmap&sensor=false",
+                        img = document.createElement("img");
 
-      img.src = src;
-      img.className = "absolute top-0 left-0 z-20";
-      document.getElementById("js-preview-map").appendChild(img);
+                    img.src = src;
+                    img.className = "absolute top-0 left-0 z-20";
+                    document.getElementById("js-preview-map").appendChild(img);
 
-      // Preview JSON output.
-      document.getElementById("js-preview-json").innerHTML = JSON.stringify(
-        locationInfo,
-        null,
-        4
-      );
-    });
-  }
-};
+                    // Preview JSON output.
+                    document.getElementById("js-preview-json").innerHTML = JSON.stringify(
+                        locationInfo,
+                        null,
+                        4
+                    );
+                    */
+                });
+            }
+        };
 
-// Attach listener to address input field.
-googleAutocomplete.autocompleteField("address");
+        googleAutocomplete.autocompleteField("event-location");
     </script>
     <!-- Event Map Location -->
     <div x-data="{ state: '' }">
@@ -238,7 +244,7 @@ googleAutocomplete.autocompleteField("address");
                 x-bind:class="{ 'green-border': state }" 
                 type="text" 
                 placeholder="Enter location"
-                required
+                disabled
             >
         </div>
     </div>
