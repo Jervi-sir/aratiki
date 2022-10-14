@@ -75,6 +75,7 @@
             display: flex;
             justify-content: space-between;
             padding: 20px 40px;
+            
             button {
                 background: transparent;
                 border: none;
@@ -93,13 +94,16 @@
                 text-decoration: none;
                 gap: 30px;
                 padding: 0;
-                span,  a {
+                span, a {
                     text-decoration: none;
                     font-weight: 600;
                     font-size: var(--text-xl);
                     color: var(--color-blue);
                     background: transparent;
                     border: none;
+                }
+                img {
+                    width: 35px;
                 }
                 &:hover {
                     background-color: var(--color-background-light-one);

@@ -2,7 +2,17 @@
 <div x-data="{ open: false }" class="header-container mobile">
     <header>
         <a href="{{ route('homepage') }}" class="logo">
-            <img src="../../images/Logo.svg" alt="">
+            @auth
+                @if (Auth()->user()->role->name == 'advertiser')
+                <img src="../../images/Logo_pro.svg" alt="aratiki">
+                @else 
+                <img src="../../images/Logo_pro.svg" alt="aratiki">
+                @endif
+            @endauth
+
+            @guest
+                <img src="../../images/Logo.svg" alt="aratiki">
+            @endguest
         </a>
         <button class="hamburger" @click="open = ! open">
             <img src="../../images/Hamburger.svg" alt="">
@@ -19,39 +29,39 @@
             </div>
             <div class="link-list">
                 <a class="link" href="{{ route('homepage') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/home.svg" alt="">
                     <span>Home</span>
                 </a>
                 @auth
                 <a class="link" href="{{ route('user.allTickets') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/tickets.svg" alt="">
                     <span>My Tickets</span>
                 </a>
                 @if (Auth()->user()->role->name == 'advertiser')
                 <a class="link" href="{{ route('get.advertiser.allOffers') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/events.svg" alt="">
                     <span>My events</span>
                 </a>
                 <a class="link" href="{{ route('get.advertiser.addOffer') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/add_event.svg" alt="">
                     <span>add event</span>
                 </a>
                 @endif
                 @endauth
                 @guest
                 <a class="link" href="{{ route('login') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/logs.svg" alt="">
                     <span>Login</span>
                 </a>
                 <a class="link" href="{{ route('advertiser.join') }}">
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/advertiser.svg" alt="">
                     <span>Join as Agency</span>
                 </a>
                 @endguest
                 @auth
                 <form class="link" method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <img src="../../images/icon_test.svg" alt="">
+                    <img src="../../images/logout.svg" alt="">
                     <a href="javascript:;" onclick="parentNode.submit();">Log Out</a>
                 </form>
                 @endauth

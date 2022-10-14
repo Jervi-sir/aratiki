@@ -4,8 +4,8 @@
 # Right now m doing
 - [x] search
 - [ ] map place api google
-
-
+- [ ] purchace a ticket
+- [ ] icon for menu panel
 
 ### Auth
 - [x] login
