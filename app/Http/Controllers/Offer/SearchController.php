@@ -16,33 +16,32 @@ class SearchController extends Controller
     ----------------------------------------------------------*/
     public function search(Request $request)
     {
-        $keyword = $request->keyword;
-        $search = Search::where('advertiser_name' , 'like', '%' . $keyword . '%')
-                        ->orWhere('event_name', 'like', '%' . $keyword . '%')
-                        ->orWhere('details', 'like', '%' . $keyword . '%')
-                        ->orWhere('advertiser_details', 'like', '%' . $keyword . '%')
-                        ->orWhere('location', 'like', '%' . $keyword . '%')
-                        ->orWhere('price', 'like', '%' . $keyword . '%')
-                        ->get();
-
-        $offers = Offer::all();
+        // Split the terms by word.
+        $terms = explode(" ", $request->keywords);
+        $offers = Offer::query()
+            ->Where(function ($query) use ($terms) {
+                foreach ($terms as $term) {
+                    $query->where('for_search', 'like', '%' . $term . '%');
+                }
+            })
+            ->get();
 
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
-                'date' => $offer->event_starts,
+                'image' => '/media/' . json_decode($offer->images)[0],
+                'date' => date('M d' ,strtotime($offer->event_starts)), 
                 'duration' => $offer->duration,
-                'name' => $offer->event_name,
-                'advertiser_name' => $offer->advertiser_name,
+                'event_name' => $offer->event_name, 
+                'advertiser_name' => $offer->advertiser_name, 
                 'location' => $offer->location,
-                'price' => $offer->price,
+                'hasVip' => $offer->hasVip, 
+                'price_economy' => $offer->price_economy, 
                 'url' => route('showOffer', ['id' => $offer->id]),
             ];
         }
 
         dd($data['offers']);
-
         return view('search.search', ['events' => $data['offers']]);
-        return view('result');
     }
 
     public function popularByCategories($category) {
