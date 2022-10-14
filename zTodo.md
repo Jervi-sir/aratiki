@@ -2,7 +2,9 @@
 - [x] add admin panel from old project 
 
 # Right now m doing
-- [ ] search
+- [x] search
+- [ ] map place api google
+
 
 
 ### Auth

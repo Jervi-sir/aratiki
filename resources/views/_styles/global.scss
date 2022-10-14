@@ -105,6 +105,8 @@ main {
 
 }
 
+
+
 *::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -158,6 +160,10 @@ main {
 }
 
 @media only screen and (min-width: 1000px) {
+    .body {
+        width: 700px;
+        margin: 0 auto;
+    }
     main {
         position: relative;
         display: flex;

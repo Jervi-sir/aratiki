@@ -1,6 +1,5 @@
 @vite('resources/views/_components/search/search.scss')
-<form action="{{ route('search') }}" method="POST" class="search-container">
-    @csrf
+<form action="{{ route('search.form') }}" method="GET" class="search-container">
     <div class="search">
         <button>
             <img src="../../images/search.svg" alt="">

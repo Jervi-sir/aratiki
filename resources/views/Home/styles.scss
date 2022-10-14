@@ -6,8 +6,8 @@
 }
 .popular-event {
     padding-left: var(--margin-body);
+    padding-right: var(--margin-body);
     label {
-        padding-right: var(--margin-body);
         margin-top: 25px;
         margin-bottom: 15px;
         display: flex;
@@ -31,8 +31,27 @@
         padding-bottom: 5px;
 
         @import '../../views/_styles/card.scss';
+        &.after-search {
+            flex-direction: column;
+            .card {
+                width: auto;
+                .image {
+                    .preview {
+                        height: 300px;
+                    }
+                }
+                .location-price {
+                    .location {
+                        font-size: var(--text-lg);
+                    }
+                    .price {
+                        font-weight: 800;
+                        font-size: var(--text-2xl);
+                    }
+                }
+            }
+        }
     }
-
 }
 
 
@@ -209,6 +228,15 @@
                     white-space: nowrap;
                 }
             }
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    //@import 'media.scss';
+    .categories-slide {
+        .box {
+            width: 600px;
         }
     }
 }

@@ -31,6 +31,7 @@ export default defineConfig({
 
                 //------ [ Home ]
                 'resources/views/Home/styles.scss',
+                'resources/views/Home/search.scss',
 
                 //------ [ Auth ]
                 'resources/views/Auth/auth.scss',

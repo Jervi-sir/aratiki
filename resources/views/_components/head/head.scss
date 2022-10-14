@@ -101,14 +101,21 @@
                     background: transparent;
                     border: none;
                 }
+                &:hover {
+                    background-color: var(--color-background-light-one);
+                    transition: 0.2s;
+                    border-radius: 7px;
+                }
             }
         }
     }
 }
 
-
 @media only screen and (min-width: 1000px) {
-    @import 'media.scss';
-    
+    //@import 'media.scss';
+    .menu-slide {
+        .box {
+            width: 600px;
+        }
+    }
 }
-

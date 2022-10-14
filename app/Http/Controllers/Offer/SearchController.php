@@ -5,19 +5,16 @@ namespace App\Http\Controllers\Offer;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Offer;
-use App\Models\Search;
 use Illuminate\Http\Request;
-
 
 class SearchController extends Controller
 {
     /*--------------------------------------------------------
     |   []  Search
     ----------------------------------------------------------*/
-    public function search(Request $request)
-    {
-        // Split the terms by word.
+    public function search(Request $request) {
         $terms = explode(" ", $request->keywords);
+        $data['keywords'] = $request->keywords;
         $offers = Offer::query()
             ->Where(function ($query) use ($terms) {
                 foreach ($terms as $term) {
@@ -26,6 +23,7 @@ class SearchController extends Controller
             })
             ->get();
 
+        $data['count'] = '0';
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],
@@ -38,16 +36,23 @@ class SearchController extends Controller
                 'price_economy' => $offer->price_economy, 
                 'url' => route('showOffer', ['id' => $offer->id]),
             ];
+            $data['count'] = $index + 1;
         }
 
-        dd($data['offers']);
-        return view('search.search', ['events' => $data['offers']]);
+        return view('Home.search', 
+        [
+            'events' => $data['offers'],
+            'keywords' => $data['keywords'],
+            'count' => $data['count'],
+        ]);
     }
 
     public function popularByCategories($category) {
         $offers = Offer::where('category_id', $category)->get();
-
+        $categoryName = Category::find($category)->name;
         $data['offers'] = [];
+
+        $data['count'] = '0';
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],
@@ -57,16 +62,18 @@ class SearchController extends Controller
                 'advertiser_name' => $offer->advertiser_name, 
                 'location' => $offer->location,
                 'hasVip' => $offer->hasVip, 
-                'price_economy' => $offer->price_economy . ' D.A', 
+                'price_economy' => $offer->price_economy, 
                 'url' => route('showOffer', ['id' => $offer->id]),
             ];
+            $data['count'] = $index + 1;
         }
 
         $searchedFor = 'Popular ' . Category::find($category)->name;
-        return view('Offer.results.index',
+        return view('Home.search',
         [
             'events' => $data['offers'],
-            'searchedFor' => $searchedFor
+            'keywords' => $categoryName,
+            'count' => $data['count'],
         ]);
     }
 

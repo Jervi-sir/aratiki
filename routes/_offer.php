@@ -23,7 +23,8 @@ Route::controller(HomeController::class)->group(function() {
 |--------------------------
 */
 Route::controller(SearchOffers::class)->group(function() {
-    Route::post('search&=', 'search')->name('search');                   //[]
+    Route::get('search_', 'search')->name('search.form');                   //[]
+    Route::get('search&={keywords}', 'searchUrl')->name('search.url');                   //[]
     Route::get('popular&={category}', 'popularByCategories')->name('category.popular');
 });
 

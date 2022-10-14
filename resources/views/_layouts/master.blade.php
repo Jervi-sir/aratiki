@@ -16,6 +16,7 @@
 <body>
     <div class="body">
         @include('_components.head.head')
+        <div class="bg-blue"></div>
         @yield('body')
     </div>
 
