@@ -12,8 +12,8 @@
 <div class="home-before-search">
     <div class="popular-event">
         <label for="">
-            <span>Results</span>
-            <span>{{ $count }} <small>found</small> </span>
+            <span>{{ __('home.results') }}</span>
+            <span>{{ $count }} <small>{{ __('home.found') }}</small> </span>
         </label>
         <div class="event-list after-search">
             @foreach ($events as $event)
@@ -21,11 +21,11 @@
                 <div class="image">
                     @auth
                     <div class="bookmark">
-                        <img src="../../images/bookmark.svg" alt="">
+                        <img src="../../images/bookmark.svg" alt="aratiki search">
                     </div>
                     @endauth
                     <a class="preview" href="{{ $event['url'] }}">
-                        <img src="{{ env('APP.ENV') .  $event['image'] }}" alt="">
+                        <img src="{{ env('APP.ENV') .  $event['image'] }}" alt="aratiki search">
                     </a>
                     <div class="date-container">
                         <div class="date">
@@ -37,7 +37,7 @@
                     <div class="title-promoter-duration">
                         <div class="title-promoter">
                             <div class="title">{{ $event['event_name'] }}</div>
-                            <div class="promoter">By {{ $event['advertiser_name'] }}</div>
+                            <div class="promoter">{{ __('home.by') }} {{ $event['advertiser_name'] }}</div>
                         </div>
                         <div class="duration">
                             {{ $event['duration'] }}
@@ -55,7 +55,11 @@
                 </div>
             </div>
             @endforeach
-
+            @if ($count <= 0)
+            <div class="not-events">
+                <h3>{{ __('home.no_event_found') }}</h3>
+            </div>
+            @endif
         </div>
     </div>
     

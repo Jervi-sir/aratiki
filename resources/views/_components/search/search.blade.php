@@ -2,8 +2,8 @@
 <form action="{{ route('search.form') }}" method="GET" class="search-container">
     <div class="search">
         <button>
-            <img src="../../images/search.svg" alt="">
+            <img src="../../images/search.svg" alt="aratiki search">
         </button>
-        <input type="text" name="keywords" value="{{ $value }}" placeholder="Search any event offer, with specific Location">
+        <input type="text" name="keywords" value="{{ $value }}" placeholder="{{ __('search_placeholder') }}">
     </div>
 </form>

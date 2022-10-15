@@ -1,5 +1,4 @@
-@extends('auth.layout')
-{{-- [] --}}
+@extends('_layouts.auth')
 
 @section('title')
 Become an Advertiser
@@ -13,8 +12,8 @@ Become an Advertiser
 <div class="body-login">
     <form method="POST" action="{{ route('post.advertiser.join') }}">
         @csrf
-        <img src="../../images/logo.svg" alt="" class="logo"/>
-        <h1>Become an Advertiser</h1>
+        <img src="../../images/logo.svg" alt="aratiki" class="logo"/>
+        <h1>{{ __('auth.become_advertiser') }}</h1>
         @if ($errors->any())
             <div {{ $attributes }}>
                 <ul class="errors">
@@ -25,9 +24,9 @@ Become an Advertiser
             </div>
         @endif
         <div class="row">
-            <label for="name"><img src="../../images/business.svg" alt=""></label>
+            <label for="name"><img src="../../images/business.svg" alt="aratiki"></label>
             <input id="name"
-                    placeholder="Name of your Comapny"
+                    placeholder="{{ __('auth.name_company') }}"
                     type="text"
                     name="name"
                     :value="old('name')"
@@ -36,9 +35,9 @@ Become an Advertiser
         </div>
 
         <div class="row">
-            <label for="email"><img src="../../images/email.svg" alt=""></label>
+            <label for="email"><img src="../../images/email.svg" alt="aratiki"></label>
             <input id="email"
-                    placeholder="Email"
+                    placeholder="{{ __('auth.email') }}"
                     type="email"
                     @guest
                     name="email"
@@ -53,26 +52,26 @@ Become an Advertiser
         </div>
         @guest
         <div class="row">
-            <label for="password" ><img src="../../images/password.svg" alt=""></label>
+            <label for="password" ><img src="../../images/password.svg" alt="aratiki"></label>
             <input id="password"
-                    placeholder="Password"
+                    placeholder="{{ __('auth.passowrd') }}"
                     type="password"
                     name="password"
                     required autocomplete="current-password" />
         </div>
         <div class="row">
-            <label><img src="../../images/password.svg" alt=""></label>
+            <label><img src="../../images/password.svg" alt="aratiki"></label>
             <input type="password"
-                        placeholder="Confirm password"
+                        placeholder="{{ __('auth.confirm_passowrd') }}"
                         type="password"
                         name="password_confirmation"
                         required />
         </div>
         @endguest
         <div x-data="phoneNumber" class="row">
-            <label for="phone_number"><img src="../../images/phone_number.svg" alt=""></label>
+            <label for="phone_number"><img src="../../images/phone_number.svg" alt="aratiki"></label>
             <input id="phone_number"
-                    placeholder="Phone number"
+                    placeholder="{{ __('auth.phone_number') }}"
                     type="text"
                     name="phone_number"
                     required
@@ -80,9 +79,9 @@ Become an Advertiser
                     @keypress="validatePhone($event)" />
         </div>
         <div class="row">
-            <label for="description"><img src="../../images/info.svg" alt=""></label>
+            <label for="description"><img src="../../images/info.svg" alt="aratiki"></label>
             <input id="description"
-                    placeholder="Quick Description"
+                    placeholder="{{ __('auth.quick_description') }}"
                     type="text"
                     name="description"
                     :value="old('description')"
@@ -90,12 +89,13 @@ Become an Advertiser
                     autofocus />
         </div>
 
-        <button type="submit">Become an Advertiser</button>
+        <button type="submit">{{ __('auth.become_advertiser') }}</button>
     </form>
 </div>
 <div class="register">
     <a href="{{ route('home') }}">
-        <span>Go back to</span> <strong>Home</strong>
+        <span>{{ __('auth.go_back_to') }}</span> 
+        <strong>{{ __('auth.home') }}</strong>
     </a>
 </div>
 <script>

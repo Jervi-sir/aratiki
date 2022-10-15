@@ -3,11 +3,11 @@
         <!-- preview -->
         <div x-show="preview['0']['source']" class="preview">
             <button type="button" class="remove" @click="removeImage(0)">
-                    <img src="../../images/remove.svg" alt="">
+                    <img src="../../images/remove.svg" alt="aratiki edit profile">
             </button>
             <div class="preview-image-container">
                 <div class="preview-image">
-                    <img :src="preview['0']['source']" alt="">
+                    <img :src="preview['0']['source']" alt="aratiki edit profile">
                 </div>
             </div>
         </div>

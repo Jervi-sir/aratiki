@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
-require dirname(__DIR__) . '\zHelpers\helperDB.php';
+require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\upload.php';
 
 class OfferController extends Controller
@@ -35,7 +35,7 @@ class OfferController extends Controller
 
             'event_name' => $offer->event_name, //[x]
             'location' => $offer->location, //[x]
-/*[-] */    'map_location' => $offer->map_location, //[x]
+            'map_location' => $offer->map_location, //[x]
             'description' => $offer->description, //[x]
             'images' => getArrayImageUrl($offer->images), //[x]
 
@@ -44,15 +44,15 @@ class OfferController extends Controller
             'event_ends' => date('M d, g:i A' ,strtotime($offer->event_ends)), //[x]
             'duration' => $offer->duration, //[x]
 
-/*[-] */    'hasVip' => $offer->hasVip, //[x]
+            'hasVip' => $offer->hasVip, //[x]
             'price_vip' => $offer->price_vip, //[x]
-/*[-] */    'tickets_left_vip' => $offer->tickets_left_vip, //[x]
+            'tickets_left_vip' => $offer->tickets_left_vip, //[x]
             'price_economy' => $offer->price_economy, //[x]
-/*[-] */    'tickets_left_economy' => $offer->tickets_left_economy, //[x]
-/*[-] */    'payment_type_name' => $offer->payment_type_name, //[]
+            'tickets_left_economy' => $offer->tickets_left_economy, //[x]
+            'payment_type_name' => $offer->payment_type_name, //[]
 
             'advertiser_name' => $offer->advertiser_name, //[x]
-/*[-] */    'advertiser_details' => $offer->advertiser_details, //[]
+            'advertiser_details' => $offer->advertiser_details, //[]
             'phone_number' => $offer->phone_number, //[]
         ];
         

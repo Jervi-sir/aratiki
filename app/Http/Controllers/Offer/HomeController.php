@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-require dirname(__DIR__) . '\zHelpers\helperDB.php';
+require dirname(__DIR__) . '\zHelpers\helper.php';
 
 class HomeController extends Controller
 {
@@ -18,8 +18,8 @@ class HomeController extends Controller
         $offers = Offer::all();
 
         $data['categories'] = listAllCategories();
+        
         $data['offers'] = [];
-
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],

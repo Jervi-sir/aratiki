@@ -11,14 +11,14 @@
 <div class="home-before-search">
     <div class="categories-container">
         <label for="">
-            <span>Event Categories</span>
-            <a href="#">View All</a>
+            <span>{{ __('home.event_categories')}}</span>
+            <a href="#">{{ __('home.view_all') }}</a>
         </label>
         <div class="categories-list">
             @foreach ($categories as $category)
             <div class="category">
                 <img src="../../images/{{ $category['type'] }}.svg" alt="">
-                <span>Music Festival</span>
+                <span>{{ $category->name }}</span>
             </div>
             @endforeach
 

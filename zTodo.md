@@ -2,9 +2,8 @@
 - [x] add admin panel from old project 
 
 # Right now m doing
-- [x] search
-- [x] map place api google
 - [ ] purchace a ticket
+- [x] optimize lang and code
 
 ### Auth
 - [x] login
@@ -19,6 +18,7 @@
 - [x] show offer as advertiser
 - [x] edit offer
 - [x] list all posted offer
+- [x] map place api google
 - [ ] delete offer (if no one has purchased the offer)
 
 ### Client
@@ -37,14 +37,14 @@
 
 ### Home
 - [x] home page
-- [ ] filter
 - [x] menu
 - [x] show all tags
 - [x] show result by categories
 - [x] icons for menu panel
+- [x] search
+- [ ] filter
 
 ### Other
-- [ ] add Vue js
 - [ ] add bookmark system
 - [ ] add like system
 - [ ] add comment system
@@ -55,8 +55,8 @@
 - rename all return to view correctly
 - [x] view password in login register
 - [x] strong or weak password
-- [ ] add location in user adv
-- [ ] fix type of ticket purchased vip economy
+- [x] add location in user adv
+- [x] fix type of ticket purchased vip economy
 
 # In menu
     home, login, register, logout, add event, show my events, show my tickets, show my profile, about us, bookmarks, more, explore, notification, messages, discorver

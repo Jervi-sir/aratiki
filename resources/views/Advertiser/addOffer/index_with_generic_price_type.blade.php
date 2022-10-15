@@ -1,5 +1,4 @@
 @extends('_layouts.master')
-{{-- [done] --}}
 
 @section('head')
     @vite('resources/views/Advertiser/post/styles.scss')
@@ -15,7 +14,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-name">
-                Event Name:
+                {{ __ ('advertiser.event_name')}}:
                 <span class="required">*</span>
             </label>
             <input name="event_name"
@@ -33,7 +32,7 @@
     <div x-data="{ state: '', statusType: '' }">
         <div class="input-container">
             <label for="evet-type">
-                Event Category:
+                {{ __ ('advertiser.event_category')}}:
                 <span class="required">*</span>
             </label>
             <select name="category" 
@@ -43,11 +42,11 @@
                 x-bind:class="{ 'green-border': state }"  
                 required
             >
-                <option value="" disabled selected>select event type</option>
+                <option value="" disabled selected>{{ __('advertiser.select_event_type') }}</option>
                 @foreach ($categories as $item)
                 <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
                 @endforeach
-                <option value="other">other</option>
+                <option value="other">{{ __('advertiser.other') }}</option>
 
             </select>
             <input name="other_category"
@@ -65,7 +64,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-date-start">
-                Event Date Starts:
+                {{ __('advertiser.event_date_start') }}:
                 <span class="required">*</span>
             </label>
             <input name="event_starts"
@@ -83,7 +82,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-date-end">
-                Event Date Ends:
+                {{ __('advertiser.event_date_end') }}:
                 <span class="required">*</span>
             </label>
             <input name="event_ends" 
@@ -101,7 +100,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-location">
-                Event Location:
+                {{ __('advertiser.event_location') }}:
                 <span class="required">*</span>
             </label>
             <input name="location" 
@@ -119,7 +118,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-map">
-                Event Map location:
+                {{ __('advertiser.event_map_location') }}:
             </label>
             <input name="map_location" 
                 id="event-map"
@@ -136,7 +135,7 @@
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="event-about">
-                About event:
+                {{ __('advertiser.about_event') }}:
                 <span class="required">*</span>
             </label>
             <textarea name="description" 
@@ -149,13 +148,12 @@
             ></textarea>
         </div>
     </div>
-
     <hr>
     <!-- Event Ticket type -->
     <div x-data="{ state: '' }">
         <div class="input-container">
             <label for="ticket-type">
-                Payout Method (CCP/ BaridiMob):
+                {{ __('advertiser.payment_method') }}:
                 <span class="required">*</span>
             </label>
             <select name="payment_type" 
@@ -166,19 +164,18 @@
                 name="payment_method"
                 required
             >
-                <option value="" disabled selected>Select payment</option>
+                <option value="" disabled selected>{{ __('advertiser.select_payment') }}</option>
                 @foreach ($payments as $payment)
                 <option value="{{ $payment['id'] }}" >{{ $payment['name'] }}</option>
                 @endforeach
             </select>
         </div>
     </div>
-
     <!-- Event Ticket Economy -->
     <div x-data="priceValidator">
         <div class="input-container">
             <label for="ticket-economy">
-                Ticket Price for Economy:
+                {{ __('advertiser.ticket_price_economy') }}:
                 <span class="required">*</span>
             </label>
             <div class="input ticket" x-bind:class="{ 'green-border': stateA }" >
@@ -200,14 +197,11 @@
             </div>
         </div>
     </div>
-    
     <hr>
-
     <!-- Phone number -->
-
     <div x-data="phoneNumber" class="input-container">
         <label for="phone-number">
-            Phone number so we Confirm creation:
+            {{ __('advertiser.phone_number_confimr') }}:
             <span class="required">*</span>
         </label>
         <input name="phone_number"
@@ -226,9 +220,8 @@
     </div>
 
     <button class="create-button">
-        Create Event
+        {{ __('create_event') }}
     </button>
-
 </form>
 
 <script>
@@ -245,9 +238,7 @@
             },
         }
     }
-</script>
 
-<script>
     function phoneNumber() {
         return {
             state: {!! json_encode($phone_number) !!},

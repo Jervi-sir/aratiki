@@ -2,29 +2,29 @@
 <footer>
     <div class="top-container">
         <div class="left">
-            <a href="#">Mobile App</a>
-            <a href="#">Community</a>
-            <a href="#">About Us</a>
+            <a href="#">{{ __('_components.mobile_app') }}</a>
+            <a href="#">{{ __('_components.community') }}</a>
+            <a href="#">{{ __('_components.about_us') }}</a>
         </div>
         <div class="logo">
-            <img src="../../images/logo_blue.svg" alt="">
+            <img src="../../images/logo_blue.svg" alt="aratiki logo">
         </div>
         <div class="right">
-            <a href="#">Help</a>
-            <a href="#">Privacy</a>
-            <a href="#">Become advertiser</a>
+            <a href="#">{{ __('_components.help') }}</a>
+            <a href="#">{{ __('_components.privacy') }}</a>
+            <a href="#">{{ __('_components.become_advertiser') }}</a>
         </div>
     </div>
     <div class="social-container">
         <div class="social-list">
-            <a href="#"><img src="../../images/social.svg" alt=""></a>
-            <a href="#"><img src="../../images/social.svg" alt=""></a>
-            <a href="#"><img src="../../images/social.svg" alt=""></a>
-            <a href="#"><img src="../../images/social.svg" alt=""></a>
+            <a href="#"><img src="../../images/social.svg" alt="aratiki social"></a>
+            <a href="#"><img src="../../images/social.svg" alt="aratiki social"></a>
+            <a href="#"><img src="../../images/social.svg" alt="aratiki social"></a>
+            <a href="#"><img src="../../images/social.svg" alt="aratiki social"></a>
         </div>
     </div>
     <div class="bottom-container">
-        <span>All rights reserved to</span>
+        <span>{{ __('_components.copyrights') }}</span>
         <span>©</span>
         <span>ارا تيكي</span>
     </div>

@@ -232,6 +232,17 @@
     }
 }
 
+
+.not-events {
+    h3 {
+        margin-top: 3rem;
+        font-weight: 400;
+        font-size: var(--text-basic);
+        color: var(--color-true-white);
+        text-align: center;
+    }
+}
+
 @media only screen and (min-width: 1000px) {
     //@import 'media.scss';
     .categories-slide {

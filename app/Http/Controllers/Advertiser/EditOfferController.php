@@ -10,7 +10,6 @@ use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 require dirname(__DIR__) . '\zHelpers\upload.php';
 require dirname(__DIR__) . '\zHelpers\helper.php';
-require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class EditOfferController extends Controller
 {
@@ -72,7 +71,7 @@ class EditOfferController extends Controller
             //TODO: redirect to 404
         }
         
-        $offer->category_id = getCategoryId($request->category_id, $request->other_type);
+        $offer->category_id = getCategory($request->category_id, $request->other_type)->id;
         /*--[ specific details ]--*/
         $offer->event_name = $request->event_name;
         $offer->location = $request->location;

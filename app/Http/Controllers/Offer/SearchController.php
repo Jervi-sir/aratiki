@@ -22,8 +22,9 @@ class SearchController extends Controller
                 }
             })
             ->get();
+        $data['count'] = 0;
 
-        $data['count'] = '0';
+        $data['offers'] = [];
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],
@@ -50,9 +51,9 @@ class SearchController extends Controller
     public function popularByCategories($category) {
         $offers = Offer::where('category_id', $category)->get();
         $categoryName = Category::find($category)->name;
-        $data['offers'] = [];
 
         $data['count'] = '0';
+        $data['offers'] = [];
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'image' => '/media/' . json_decode($offer->images)[0],

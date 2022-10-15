@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('_layouts.auth')
 {{-- [done] --}}
 
 @section('title')
@@ -6,6 +6,7 @@ register
 @endsection
 
 @section('head')
+<!-- password meter -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js" integrity="sha512-TZlMGFY9xKj38t/5m2FzJ+RM/aD5alMHDe26p0mYUMoCF5G7ibfHUQILq0qQPV3wlsnCwL+TPRNK4vIWGLOkUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
 
@@ -15,7 +16,7 @@ register
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <img src="../../images/logo.svg" alt="" class="logo"/>
-        <h1>Register</h1>
+        <h1>{{ __('auth.register') }}</h1>
         @if ($errors->any())
         <ul class="errors">
             @foreach ($errors->all() as $error)
@@ -29,7 +30,7 @@ register
                         name="name"
                         value="{{ old('name') }}"
                         type="text"
-                        placeholder="Name"
+                        placeholder="{{ __('auth.name') }}"
                         required
                         autofocus />
         </div>
@@ -39,13 +40,13 @@ register
                         type="email"
                         name="email"
                         value="{{ old('email') }}"
-                        placeholder="Email"
+                        placeholder="{{ __('auth.email') }}"
                         required />
         </div>
         <div x-data="phoneNumber" class="row">
             <label><img src="../../images/phone_white.svg" alt=""></label>
             <input type="text"
-                    placeholder="Phone number"
+                    placeholder="{{ __('auth.phone_number') }}"
                     name="phone_number"
                     value="{{ old('phone_number') }}"
                     @keypress="validatePhone"
@@ -58,7 +59,7 @@ register
                         name="password"
                         min="8"
                         :type="show ? 'password' : 'text'"
-                        placeholder="Password"
+                        placeholder="{{ __('auth.password') }}"
                         x-model="password"
                         @keyup="calculate"
                         autocomplete="new-password"
@@ -66,17 +67,22 @@ register
                     <img class="eye" x-bind:src="show == true ? '../../images/show.svg' : '../../images/hide.svg'" x-on:click="show = !show" alt="">
             </div>
             <div class="strength">
-                <div class="level" x-bind:class="{ valid: contains_lovercase }">Lowercase</div>
-                <div class="level" x-bind:class="{ valid: contains_number }">Number</div>
-                <div class="level" x-bind:class="{ valid: contains_uppercase }">Uppercase</div>
+                <div class="level" x-bind:class="{ valid: contains_lovercase }">{{ __('auth.lowercase') }}</div>
+                <div class="level" x-bind:class="{ valid: contains_number }">{{ __('auth.number') }}</div>
+                <div class="level" x-bind:class="{ valid: contains_uppercase }">{{ __('auth.uppercase') }}</div>
             </div>
         </div>
-        <button type="submit">Create Your Account</button>
+        <button type="submit">{{ __('auth.create_account') }}</button>
     </form>
 </div>
 <div class="register">
     <a href="{{ route('login') }}">
-        <span>Already have an account in AraTicket?</span> <strong>Login</strong>
+        <span>
+            {{ __('auth.already_have_account') }}
+        </span> 
+        <strong>
+            {{ __('auth.login') }}
+        </strong>
     </a>
 </div>
 
@@ -142,8 +148,5 @@ register
             }
         }
     }
-    
-    
-        
 </script>
 @endsection

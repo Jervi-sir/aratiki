@@ -1,14 +1,14 @@
 <div x-data="changeImages" class="images">
     <div class="main-images">
         <div class="location">
-            <img src="../../images/flag.svg" alt="">
+            <img src="../../images/flag.svg" alt="aratiki flag">
             <span>{{ 'media/' . $offer['location'] }}</span>
         </div>
         <div class="bookmark">
-            <img src="../../images/bookmark.svg" alt="">
+            <img src="../../images/bookmark.svg" alt="aratiki bookmark">
         </div>
         <div class="preview">
-            <img :src="main_img" alt="">
+            <img :src="main_img" alt="aratiki preview">
         </div>
         <div class="nav-images">
             <div class="left">
@@ -28,7 +28,7 @@
     <div class="secondary-images">
         @foreach ($offer['images'] as $item)
         <div class="thumbnail">
-            <img src="{{ $item }}" alt="">
+            <img src="{{ $item }}" alt="aratiki thumbnail">
         </div>
         @endforeach
     </div>

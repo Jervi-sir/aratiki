@@ -10,9 +10,9 @@ Update to Advertiser
 <div class="body-login">
     <form method="POST" action="{{ route('user.upgrade') }}">
         @csrf
-        <img src="../../images/logo.svg" alt="" class="logo"/>
-        <h1>Join Us</h1>
-        <h6>become an Advertiser</h6>
+        <img src="../../images/logo.svg" alt="aratiki" class="logo"/>
+        <h1>{{ __('client.join_us') }}</h1>
+        <h6>{{ __('client.become_advertiser') }}</h6>
         @if ($errors->any())
             <ul class="errors">
                 @foreach ($errors->all() as $error)
@@ -21,19 +21,19 @@ Update to Advertiser
             </ul>
         @endif
         <div class="row">
-            <label for="name" ><img src="../../images/user_.svg" alt=""></label>
+            <label for="name" ><img src="../../images/user_.svg" alt="aratiki"></label>
             <input id="name"
                         name="name"
                         value="{{ $user['name'] }}"
                         type="text"
-                        placeholder="Name"
+                        placeholder="{{ __('client.name') }}"
                         required
                         autofocus />
         </div>
         <div class="row">
-            <label for="email"><img src="../../images/email.svg" alt=""></label>
+            <label for="email"><img src="../../images/email.svg" alt="aratiki"></label>
             <input id="email"
-                    placeholder="Email"
+                    placeholder="{{ __('client.email') }}"
                     type="email"
                     name="email"
                     value="{{ $user['email'] }}"
@@ -41,26 +41,26 @@ Update to Advertiser
                     autofocus />
         </div>
         <div x-data="phoneNumber" class="row">
-            <label><img src="../../images/phone_white.svg" alt=""></label>
+            <label><img src="../../images/phone_white.svg" alt="aratiki"></label>
             <input type="text"
-                    placeholder="Phone number"
+                    placeholder="{{ __('client.phone_number') }}"
                     name="phone_number"
                     value="{{ $user['phone_number'] }}"
                     @keypress="validatePhone"
                     required />
         </div>
         <div class="row">
-            <label for="description"><img src="../../images/info.svg" alt=""></label>
+            <label for="description"><img src="../../images/info.svg" alt="aratiki"></label>
             <input id="description"
                     name="description"
-                    placeholder="Quick Description"
+                    placeholder="{{ __('client.quick_description') }}"
                     type="text"
                     value="{{ $user['description'] }}"
                     required
                     autofocus />
         </div>
         <input id="remember_me" type="checkbox" name="remember" checked hidden>
-        <button type="submit">Become an Advertiser</button>
+        <button type="submit">{{ __('client.become_advertiser') }}</button>
     </form>
 </div>
 

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Advertiser;
 
-use DateTime;
-
 use App\Models\Offer;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -31,14 +29,13 @@ class OfferController extends Controller
         ];
 
         $data['offers'] = [];
-
         foreach($offers as $index=>$offer) {
             $data['offers'][$index] = [
                 'id' => $offer->id,
                 'event_name' => $offer->event_name, //[x]
                 'location' => $offer->location, //[x]
                 'main_image' => url('/') . '/media/' . json_decode($offer->images)[0],
-
+                'event_category' => $offer->event_category,
                 'category' => Category::find($offer->category_id)->name, //[x]
                 'is_verified' => $offer->is_verified, //[]
                 'is_active' => $offer->is_active, //[]
@@ -90,7 +87,6 @@ class OfferController extends Controller
             'event_starts' => date('M d, g:i A' ,strtotime($offer->event_starts)), //[x]
             'event_ends' => date('M d, g:i A' ,strtotime($offer->event_ends)), //[x]
             'duration' => $offer->duration, //[x]
-
 
             'hasVip' => $offer->hasVip, //[x]
             'price_vip' => $offer->price_vip, //[x]

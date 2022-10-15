@@ -12,8 +12,8 @@
     @include('Home.categories')
     <div class="popular-event">
         <label for="">
-            <span>Popular Events</span>
-            <a href="#">See More</a>
+            <span>{{ __('home.popular_event') }}</span>
+            <a href="#">{{ __('home.see_more') }}</a>
         </label>
         <div class="event-list">
             @foreach ($events as $event)
@@ -21,11 +21,11 @@
                 <div class="image">
                     @auth
                     <div class="bookmark">
-                        <img src="../../images/bookmark.svg" alt="">
+                        <img src="../../images/bookmark.svg" alt="aratiki bookmark">
                     </div>
                     @endauth
                     <a class="preview" href="{{ $event['url'] }}">
-                        <img src="{{ env('APP.ENV') .  $event['image'] }}" alt="">
+                        <img src="{{ env('APP.ENV') .  $event['image'] }}" alt="aratiki preview">
                     </a>
                     <div class="date-container">
                         <div class="date">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="location-price">
                         <div class="location">
-                            <img src="../../images/location.svg" alt="">
+                            <img src="../../images/location.svg" alt="aratiki location">
                             <span>{{ $event['location'] }}</span>
                         </div>
                         <div class="price">
@@ -55,22 +55,23 @@
                 </div>
             </div>
             @endforeach
-
         </div>
     </div>
 
     @guest
     <div class="join-container">
         <div class="create-account">
-            <h1>Don’t have an account?</h1>
+            <h1>{{ __('home.dont_have_account') }}</h1>
             <span>Join Us!</span>
-            <a href="{{ route('register') }}">Create Your Account</a>
+            <a href="{{ route('register') }}">{{ __('home.create_account') }}</a>
         </div>
         <div class="advertiser-account">
-            <h1>Wanna promote your event?</h1>
-            <a href="{{ route('advertiser.join') }}">Fill Your Request</a>
+            <h1>{{ __('home.become_advertiser') }}</h1>
+            <a href="{{ route('advertiser.join') }}">{{ __('home.fill_request') }}</a>
             <span>
-                For <strong>FREE</strong> since its all about helping people to reach out to you
+                {{ __('home.for') }} 
+                <strong>{{ __('home.free') }}</strong> 
+                {{ __('home.become_advertiser_text') }}
             </span>
         </div>
     </div>

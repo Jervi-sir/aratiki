@@ -24,9 +24,9 @@ class TicketController extends Controller
             'active_tickets' => $tickets->count(),
         ];
 
+        $data['tickets'] = [];
         foreach($tickets as $index=>$ticket) {
             $ticket_details = json_decode($ticket->details);
-
             $data['tickets'][$index] = [
                 'event_name' => $ticket_details->event_name,
                 'advertiser_name' => $ticket->offer->advertiser->name,

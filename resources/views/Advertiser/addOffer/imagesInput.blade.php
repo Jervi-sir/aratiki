@@ -8,13 +8,15 @@
             </button>
             <div class="preview-image-container">
                 <div class="preview-image">
-                    <img :src="preview['0']['source']" alt="">
+                    <img :src="preview['0']['source']" alt="aratiki events">
                 </div>
             </div>
         </div>
         <label for="main-img">
             <span class="plus">+</span>
-            <span class="text">Add Cover Photos</span>
+            <span class="text">
+                {{ __('advertiser.add_cover_photo')}}
+            </span>
         </label>
     </div>
 
@@ -22,11 +24,11 @@
         <div class="optional-img">
             <div x-show="preview['1']['filled']" class="preview">
                 <button type="button" class="remove" @click="removeImage(1)">
-                        <img src="../../images/remove.svg" alt="">
+                        <img src="../../images/remove.svg" alt="aratiki events">
                 </button>
                 <div class="preview-image-container">
                     <div class="preview-image">
-                        <img :src="preview['1']['source']" alt="">
+                        <img :src="preview['1']['source']" alt="aratiki events">
                     </div>
                 </div>
             </div>
@@ -37,11 +39,11 @@
         <div class="optional-img">
             <div x-show="preview['2']['filled']" class="preview">
                 <button type="button" class="remove" @click="removeImage(2)">
-                        <img src="../../images/remove.svg" alt="">
+                        <img src="../../images/remove.svg" alt="aratiki events">
                 </button>
                 <div class="preview-image-container">
                     <div class="preview-image">
-                        <img :src="preview['2']['source']" alt="">
+                        <img :src="preview['2']['source']" alt="aratiki events">
                     </div>
                 </div>
             </div>
@@ -52,11 +54,11 @@
         <div class="optional-img">
             <div x-show="preview['3']['filled']" class="preview">
                 <button type="button" class="remove" @click="removeImage(3)">
-                        <img src="../../images/remove.svg" alt="">
+                        <img src="../../images/remove.svg" alt="aratiki events">
                 </button>
                 <div class="preview-image-container">
                     <div class="preview-image">
-                        <img :src="preview['3']['source']" alt="">
+                        <img :src="preview['3']['source']" alt="aratiki events">
                     </div>
                 </div>
             </div>
@@ -67,11 +69,11 @@
         <div class="optional-img">
             <div x-show="preview['4']['filled']" class="preview">
                 <button type="button" class="remove" @click="removeImage(4)">
-                        <img src="../../images/remove.svg" alt="">
+                        <img src="../../images/remove.svg" alt="aratiki events">
                 </button>
                 <div class="preview-image-container">
                     <div class="preview-image">
-                        <img :src="preview['4']['source']" alt="">
+                        <img :src="preview['4']['source']" alt="aratiki events">
                     </div>
                 </div>
             </div>
@@ -143,11 +145,7 @@
                     image['filled'] = true;
 
                 }
-
             },
-
         }
     }
-
-
 </script>

@@ -1,7 +1,7 @@
 @extends('_layouts.master')
 {{-- [done] --}}
 @section('title')
-    {{ $offer['event_name'] }} -Edit
+    {{ $offer['event_name'] }} - {{ __('advertiser.edit') }}
 @endsection
 
 @section('head')
@@ -15,7 +15,7 @@
     <!-- Right Container -->
     <div class="right-container">
         <!-- Images -->
-        @include('Advertiser.showOffer.images')
+        @include('Advertiser.showOffer.images', ['event_name' => $offer['event_name']])
     </div>
     <!-- Left Container -->
     <div class="left-container">
@@ -28,13 +28,13 @@
         <div class="promoter-phone">
             <!-- Promoter -->
             <div class="event-promoter">
-                <span>By</span>
-                <img src="../../images/promoter.png" alt="">
+                <span>{{ __('advertiser.by') }}</span>
+                <img src="../../images/promoter.png" alt="{{ $offer['advertiser_name'] }}">
                 <span>{{ $offer['advertiser_name'] }}</span>
             </div>
             <!-- Phone number -->
             <div class="event-phone">
-                <img src="../../images/phone_number.svg" alt="">
+                <img src="../../images/phone_number.svg" alt="aratiki promoter number">
                 <div class="separator"></div>
                 <span>{{ $offer['phone_number'] }}</span>
             </div>
@@ -47,27 +47,28 @@
         
         <!-- About -->
         <div class="event-about">
-            <label for="">About</label>
+            <label for="">{{ __('advertiser.about') }}</label>
             <p>{{ $offer['description'] }}</p>
         </div>
         <!-- Timeline -->
         <div class="event-timeline">
-            <label for="">Timeline Event</label>
+            <label for="">{{ __('advertiser.timeline_event') }}</label>
             <div class="timeline">
                 <div class="left">
-                    Opening Event
+                    {{ __('advertiser.opening_event') }}
                 </div>
                 <div class="right">
-                    <img src="../../images/clock.svg" alt="">
+                    <img src="../../images/clock.svg" alt="aratiki clock">
                     <span>{{ $offer['event_starts'] }}</span>
                 </div>
             </div>
             <div class="timeline">
                 <div class="left">
-                    Ending Event
+                    
+                    {{ __('advertiser.ending_event') }}
                 </div>
                 <div class="right">
-                    <img src="../../images/clock.svg" alt="">
+                    <img src="../../images/clock.svg" alt="aratiki clock">
                     <span>{{ $offer['event_ends'] }}</span>
                 </div>
             </div>
@@ -80,14 +81,14 @@
                         {{ $offer['price_vip'] }} 
                         <small>D.A</small>
                     </div>
-                    <span>VIP</span>
+                    <span>{{ __('advertiser.vip') }}</span>
                 </div>
                 <div class="price economy">
                     <div>
                         {{ $offer['price_economy'] }} 
                         <small>D.A</small>
                     </div>
-                    <span>Economic</span>
+                    <span>{{ __('advertiser.economic') }}</span>
                 </div>
             </div>
         </div>
@@ -98,45 +99,45 @@
             <div class="event-status">
                 <div class="vip">
                     @if ($offer['hasVip'])
-                    <img src="../../images/vip.svg" alt="">
-                    <span class="true">VIP available</span>
+                    <img src="../../images/vip.svg" alt="aratiki VIP">
+                    <span class="true">{{ __('advertiser.vip_available') }}</span>
                     @else
-                    <img src="../../images/not_vip.svg" alt="">
-                    <span class="false">no VIP available</span>
+                    <img src="../../images/not_vip.svg" alt="aratiki no VIP">
+                    <span class="false">{{ __('advertiser.no_vip_available') }}</span>
                     @endif
                 </div>
                 <div class="active">
                     @if ($offer['is_active'])
-                    <img src="../../images/active.svg" alt="">
-                    <span class="true">Active</span>
+                    <img src="../../images/active.svg" alt="aratiki Active">
+                    <span class="true">{{ __('advertiser.active') }}</span>
                     @else
-                    <img src="../../images/not_active.svg" alt="">
-                    <span class="false">not Active</span>
+                    <img src="../../images/not_active.svg" alt="aratiki not Active">
+                    <span class="false">{{ __('advertiser.not_active') }}</span>
                     @endif
                 </div>
                 <div class="verified">
                     @if ($offer['is_verified'])
-                    <img src="../../images/verified.svg" alt="">
-                    <span class="true">Verified</span>
+                    <img src="../../images/verified.svg" alt="aratiki Verified">
+                    <span class="true">{{ __('advertiser.verified') }}</span>
                     @else
-                    <img src="../../images/not_verified.svg" alt="">
-                    <span class="false">not Verified</span>
+                    <img src="../../images/not_verified.svg" alt="aratiki not Verified">
+                    <span class="false">{{ __('advertiser.not_verified') }}</span>
                     @endif
                 </div>
             </div>
 
             <div class="total-tickets-stats">
-                <h1>Ticket Status</h1>
+                <h1>{{ __('advertiser.ticket_status') }}</h1>
                 @if ($offer['hasVip'])
-                <label for="">VIP Tickets</label>
+                <label for="">{{ __('advertiser.vip_tickets') }}</label>
                 <div class="stats">
                     <div class="amounts">
                         <p>
-                            <span>Total</span>
+                            <span>{{ __('advertiser.total') }}</span>
                             <span class="number">{{ $offer['total_tickets_vip'] }}</span>
                         </p>
                         <p>
-                            <span>Lefts</span>
+                            <span>{{ __('advertiser.lefts') }}</span>
                             <span class="number">{{ $offer['tickets_left_vip'] }}</span>
                         </p>
                     </div>
@@ -144,15 +145,15 @@
                 </div>
                 @endif
 
-                <label for="">Economic Tickets</label>
+                <label for="">{{ __('advertiser.economic_tickets') }}</label>
                 <div class="stats">
                     <div class="amounts">
                         <p>
-                            <span>Total</span>
+                            <span>{{ __('advertiser.total') }}</span>
                             <span class="number">{{ $offer['total_tickets_economy'] }}</span>
                         </p>
                         <p>
-                            <span>Lefts</span>
+                            <span>{{ __('advertiser.lefts') }}</span>
                             <span class="number">{{ $offer['tickets_left_economy'] }}</span>
                         </p>
                     </div>
@@ -161,26 +162,26 @@
             </div>
 
             <div class="other-stats">
-                <h1>Other Stats</h1>
+                <h1>{{ __('advertiser.other_stats') }}</h1>
                 <table class="stats">
                     <tr>
-                        <td>Event Type</td>
+                        <td>{{ __('advertiser.event_type') }}</td>
                         <td>{{ $offer['category'] }}</td>
                     </tr>
                     <tr>
-                        <td>Payment Type</td>
+                        <td>{{ __('advertiser.payment_type') }}</td>
                         <td>{{ $offer['payment_type_name'] }}</td>
                     </tr>
                     <tr>
-                        <td>Total Visited</td>
+                        <td>{{ __('advertiser.total_visited') }}</td>
                         <td>{{ $offer['nb_visited'] }}</td>
                     </tr>
                     <tr>
-                        <td>Phone Number</td>
+                        <td>{{ __('advertiser.phone_number') }}</td>
                         <td>{{ $offer['phone_number'] }}</td>
                     </tr>
                     <tr>
-                        <td>Date Creation</td>
+                        <td>{{ __('advertiser.date_creation') }}</td>
                         <td>{{ $offer['created_at'] }}</td>
                     </tr>
                 </table>
@@ -188,7 +189,9 @@
             <div class="decor"></div>
         </div>
 
-        <a href="{{ route('get.advertiser.editOffer', ['id' => $offer['id']]) }}" class="edit-btn">Edit details</a>
+        <a href="{{ route('get.advertiser.editOffer', ['id' => $offer['id']]) }}" class="edit-btn">
+            {{ __('advertiser.edit_details') }}
+        </a>
     </div>
 </div>
 @endsection

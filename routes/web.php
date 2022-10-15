@@ -1,54 +1,37 @@
 <?php
 
-use App\Models\Offer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-/*
-|--------------------------
+/*--------------------------
 |   Adverrtiser
-|--------------------------
-*/
+--------------------------*/
 require __DIR__.'/_advertiser.php';
 
-/*
-|--------------------------
+/*--------------------------
 |   Client
-|--------------------------
-*/
+--------------------------*/
 require __DIR__.'/_client.php';
 
-/*
-|--------------------------
+/*--------------------------
 |   Offer
-|--------------------------
-*/
+--------------------------*/
 require __DIR__.'/_offer.php';
 
-/*
-|--------------------------
+/*--------------------------
 |   Auth
-|--------------------------
-*/
+--------------------------*/
 require __DIR__.'/auth.php';
 
-/*
-|--------------------------
+/*--------------------------
 |   Admin
-|--------------------------
-*/
+--------------------------*/
 Route::controller(AdminController::class)->group(function() {
     Route::get('admin/addTemplate', [AdminController::class, 'addTemplatePage'])->name('admin.addTemplatePage');                    //[]
     Route::post('admin/addTemplate', [AdminController::class, 'addTemplate'])->name('admin.addTemplate');                           //[]

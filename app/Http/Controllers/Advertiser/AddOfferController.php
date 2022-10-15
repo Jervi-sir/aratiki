@@ -8,10 +8,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Stichoza\GoogleTranslate\GoogleTranslate;
+
 require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\upload.php';
-require dirname(__DIR__) . '\zHelpers\helperDB.php';
 
 class AddOfferController extends Controller
 {
@@ -83,7 +82,5 @@ class AddOfferController extends Controller
         $offer->save();
 
         return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);
-        
-        
     }
 }

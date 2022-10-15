@@ -24,13 +24,13 @@
         <div class="promoter-phone">
             <!-- Promoter -->
             <div class="event-promoter">
-                <span>By</span>
-                <img src="../../images/promoter.png" alt="">
+                <span>{{ __('offer.by') }}</span>
+                <img src="../../images/promoter.png" alt="aratiki promoter">
                 <span>{{ $offer['advertiser_name'] }}</span>
             </div>
             <!-- Phone number -->
             <div class="event-phone">
-                <img src="../../images/phone_number.svg" alt="">
+                <img src="../../images/phone_number.svg" alt="aratiki phone number">
                 <div class="separator"></div>
                 <span>{{ $offer['phone_number'] }}</span>
             </div>
@@ -42,27 +42,27 @@
         </div>
         <!-- About -->
         <div class="event-about">
-            <label for="">About</label>
+            <label for="">{{ __('offer.about') }}</label>
             <p>{{ $offer['description'] }}</p>
         </div>
         <!-- Timeline -->
         <div class="event-timeline">
-            <label for="">Timeline Event</label>
+            <label for="">{{ __('offer.timeline_event') }}</label>
             <div class="timeline">
                 <div class="left">
-                    Opening Event
+                    {{ __('offer.opening_event') }}
                 </div>
                 <div class="right">
-                    <img src="../../images/clock.svg" alt="">
+                    <img src="../../images/clock.svg" alt="aratiki clock">
                     <span>{{ $offer['event_starts'] }}</span>
                 </div>
             </div>
             <div class="timeline">
                 <div class="left">
-                    Ending Event
+                    {{ __('offer.ending_event') }}
                 </div>
                 <div class="right">
-                    <img src="../../images/clock.svg" alt="">
+                    <img src="../../images/clock.svg" alt="aratiki clock">
                     <span>{{ $offer['event_ends'] }}</span>
                 </div>
             </div>
@@ -75,14 +75,14 @@
                         {{ $offer['price_vip'] }} 
                         <small>D.A</small>
                     </div>
-                    <span>VIP</span>
+                    <span>{{ __('offer.vip') }}</span>
                 </div>
                 <div class="price economy">
                     <div>
                         {{ $offer['price_economy'] }} 
                         <small>D.A</small>
                     </div>
-                    <span>Economic</span>
+                    <span>{{ __('offer.economic') }}</span>
                 </div>
             </div>
 
@@ -92,11 +92,11 @@
                     <div class="box">
                         <div class="top">
                             <div class="title">
-                                <img src="../../images/Logo_mini.svg" alt="">
-                                <h3>Purchase Ticket</h3>
+                                <img src="../../images/Logo_mini.svg" alt="aratiki Logo">
+                                <h3>{{ __('offer.purchase_ticket') }}</h3>
                             </div>
                             <button @click="open = ! open">
-                                <img src="../../images/cancel.svg" alt="">
+                                <img src="../../images/cancel.svg" alt="aratiki cancel">
                             </button>
                         </div>
                         <form class="form" action="{{ route('user.purchase') }}" method="POST">
@@ -106,46 +106,46 @@
                                 <input name="offer_id" type="text" value="{{ $offer['id'] }}" hidden>
                                 <div class="type">
                                     <input name="type" @click="selected = {{ $offer['price_vip'] }} " type="radio" id="vip"  value="vip">
-                                    <label for="vip">VIP</label>
+                                    <label for="vip">{{ __('offer.vip') }}</label>
                                     <span>{{ $offer['price_vip'] }} <small>D.A</small> </span>
                                 </div>
                                 <div class="type">
                                     <input name="type" @click="selected = {{ $offer['price_economy'] }} " type="radio" id="economy" value="economy">
-                                    <label for="economy">Economy</label>
+                                    <label for="economy">{{ __('offer.economy') }}</label>
                                     <span>{{ $offer['price_economy'] }} <small>D.A</small> </span>
                                 </div>
                             </div>
                             <div class="total">
-                                <h3>Total</h3>
+                                <h3>{{ __('offer.total') }}</h3>
                                 <h2>
                                     <span x-text="selected"></span>
                                     <small>D.A</small>
                                 </h2>
                             </div>
                             <div class="payment-card"> </div>
-                            <button :disabled="selected == 0">Purchase ticket</button>
+                            <button :disabled="selected == 0">{{ __('offer.purchase_ticket') }}</button>
                         </form>
                     </div>
                     
                 </div>
-                <button @click="open = ! open" class="request">Get ticket</button>
+                <button @click="open = ! open" class="request">{{ __('offer.get_ticket') }}</button>
             </div>
         </div>
     </div>
 </div>
 <div class="more-offers">
-    <label for="">More Events</label>
+    <label for="">{{ __('offer.more_events') }}</label>
     <div class="offer-list">
         @foreach ($suggestions as $item)
         <div class="card">
             <div class="image">
                 @auth
                 <div class="bookmark">
-                    <img src="../../images/bookmark.svg" alt="">
+                    <img src="../../images/bookmark.svg" alt="aratiki bookmark">
                 </div>
                 @endauth
                 <a class="preview" href="{{ $item['url'] }}">
-                    <img src="{{ env('APP.ENV') .  $item['image'] }}" alt="">
+                    <img src="{{ env('APP.ENV') .  $item['image'] }}" alt="aratiki preview">
                 </a>
                 <div class="date-container">
                     <div class="date">
@@ -158,7 +158,7 @@
                 <div class="title-promoter-duration">
                     <div class="title-promoter">
                         <div class="title">{{ $item['event_name'] }}</div>
-                        <div class="promoter">By {{ $item['advertiser_name'] }}</div>
+                        <div class="promoter">{{ __('offer.by') }} {{ $item['advertiser_name'] }}</div>
                     </div>
                     <div class="duration">
                         {{ $item['duration'] }}
@@ -166,7 +166,7 @@
                 </div>
                 <div class="location-price">
                     <div class="location">
-                        <img src="../../images/location.svg" alt="">
+                        <img src="../../images/location.svg" alt="aratiki location">
                         <span>{{ $item['location'] }}</span>
                     </div>
                     <div class="price">

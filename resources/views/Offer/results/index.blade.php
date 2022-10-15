@@ -11,10 +11,10 @@
 <div class="bg-blue"></div>
 <div class="results-container">
     <label for="">
-        <div class="nb-result">{{ count($events) }} Found</div>
+        <div class="nb-result">{{ count($events) }} {{ __('offer.found') }}</div>
         <div class="filter">
-            <span>Sort</span>
-            <img src="../../images/filter.svg" alt="">
+            <span>{{ __('offer.sort') }}</span>
+            <img src="../../images/filter.svg" alt="aratiki filter">
         </div>
     </label>
 
@@ -23,10 +23,10 @@
         <div class="card">
             <a href="{{ $event['url'] }}" class="image">
                 <div class="bookmark">
-                    <img src="../../images/bookmark.svg" alt="">
+                    <img src="../../images/bookmark.svg" alt="aratiki filter">
                 </div>
                 <div class="preview">
-                    <img src="{{ $event['image'] }}" alt="">
+                    <img src="{{ $event['image'] }}" alt="aratiki filter">
                 </div>
                 <div class="date-container">
                     <div class="date">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="location-price">
                     <div class="location">
-                        <img src="../../images/location.svg" alt="">
+                        <img src="../../images/location.svg" alt="aratiki location">
                         <span>{{ $event['location'] }}</span>
                     </div>
                     <div class="price">

@@ -12,13 +12,13 @@
 @section('body')
 <div class="ticket-container">
     <div class="top-ticket">
-        <h2 class="action">Show at Boarding Gate</h2>
+        <h2 class="action">{{ __('client.show_qr') }}</h2>
         <div class="qrcode" id="qrcode"></div>
         <h3 class="price">{{ $ticket['price'] }}</h3>
     </div>
 
     <div class="cut">
-        <img src="../../images/cut.svg" alt="">
+        <img src="../../images/cut.svg" alt="aratiki">
     </div>
     <div class="bottom-ticket">
         <h1 class="title">{{ $ticket['event_name'] }}</h1>
@@ -30,7 +30,7 @@
                 <span class="date">{{ $ticket['event_date_starts'] }}</span>
             </div>
             <div class="arrow">
-                <img src="../../images/arrow.svg" alt="">
+                <img src="../../images/arrow.svg" alt="aratiki">
             </div>
 
             <div class="end">

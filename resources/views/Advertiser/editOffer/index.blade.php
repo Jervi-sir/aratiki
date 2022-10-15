@@ -4,6 +4,7 @@
 @section('head')
     @vite('resources/views/Advertiser/post/styles.scss')
     @vite('resources/views/Advertiser/editOffer/styles.scss')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPsDFZ7HBTlFz0qutXmDGr5jWXe8q-qSY&amp;libraries=places"></script>
 @endsection
 
 @section('body')
@@ -15,7 +16,7 @@
     <div x-data="{ state: {{ json_encode($offer['event_name']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-name">
-                Event Name:
+                {{ __('advertiser.event_name') }}:
                 <span class="required">*</span>
             </label>
             <input name="event_name"
@@ -25,7 +26,7 @@
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @keyup="gotEdited = true"
                 type="text" 
-                placeholder="Enter event name"
+                placeholder="{{ __('advertiser.enter_event_name') }}"
                 required
             >
         </div>
@@ -34,7 +35,7 @@
     <div x-data="{ state: {{ json_encode($offer['category']) }}, statusType: '', gotEdited: false }">
         <div class="input-container">
             <label for="evet-type">
-                Event Category:
+                {{ __('advertiser.event_category') }}:
                 <span class="required">*</span>
             </label>
             <select name="category_id" 
@@ -58,7 +59,7 @@
                 x-model="statusType" 
                 x-bind:class="{ 'green-border': statusType }"  
                 type="text" 
-                placeholder="Enter new Type"
+                placeholder="{{ __('advertiser.enter_event_type') }}"
                 x-bind:required="state == 'other'"
             >
         </div>
@@ -67,7 +68,7 @@
     <div x-data="{ state: {{ json_encode($offer['event_starts']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-date-start">
-                Event Date Starts:
+                {{ __('advertiser.event_date_start') }}:
                 <span class="required">*</span>
             </label>
             <input name="event_starts"
@@ -77,7 +78,7 @@
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @change="gotEdited = true"
                 type="datetime-local" 
-                placeholder="Select date"
+                placeholder="{{ __('advertiser.select_date') }}"
                 required
             >
         </div>
@@ -86,7 +87,7 @@
     <div x-data="{ state: {{ json_encode($offer['event_ends']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-date-end">
-                Event Date Ends:
+                {{ __('advertiser.event_date_end') }}:
                 <span class="required">*</span>
             </label>
             <input name="event_ends" 
@@ -96,7 +97,7 @@
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @change="gotEdited = true"
                 type="datetime-local" 
-                placeholder="Select date"
+                placeholder="{{ __('advertiser.select_date') }}"
                 required
             >
         </div>
@@ -105,7 +106,7 @@
     <div x-data="{ state: {{ json_encode($offer['location']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-location">
-                Event Location:
+                {{ __('advertiser.event_location') }}:
                 <span class="required">*</span>
             </label>
             <input name="location" 
@@ -115,7 +116,7 @@
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @keyup="gotEdited = true"
                 type="text" 
-                placeholder="Enter location"
+                placeholder="{{ __('advertiser.enter_location') }}"
                 required
             >
         </div>
@@ -124,7 +125,7 @@
     <div x-data="{ state: {{ json_encode($offer['map_location']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-map">
-                Event Map location:
+                {{ __('advertiser.event_map_location') }}:
             </label>
             <input name="map_location" 
                 id="event-map"
@@ -133,7 +134,7 @@
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @keyup="gotEdited = true"
                 type="text" 
-                placeholder="Enter location"
+                placeholder="{{ __('advertiser.enter_location') }}"
                 required
             >
         </div>
@@ -142,7 +143,7 @@
     <div x-data="{ state: {{ json_encode($offer['description']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="event-about">
-                About event:
+                {{ __('advertiser.about_event') }}:
                 <span class="required">*</span>
             </label>
             <textarea name="description" 
@@ -151,18 +152,17 @@
                 x-model="state" 
                 :class="gotEdited ? 'orange-border' : 'green-border'"  
                 @keyup="gotEdited = true"
-                placeholder="Describe the details"
+                placeholder="{{ __('advertiser.details') }}"
                 required
             ></textarea>
         </div>
     </div>
-
     <hr>
     <!-- Event Ticket Vip -->
     <div x-data="priceValidator">
         <div class="input-container">
             <label class="enable-vip" for="enable-vip">
-                Enable a VIP ticket:
+                {{ __('advertiser.enable_vip') }}:
                 <input name="containVIP"
                     id="enable-vip"
                     x-model="enableVIP"
@@ -173,7 +173,7 @@
                 >
             </label>
             <label x-show="enableVIP" for="ticket-vip">
-                Ticket Price for VIP:
+                {{ __('advertiser.ticket_price_vip') }}:
                 <span class="required">*</span>
             </label>
             <div x-show="enableVIP" class="input ticket">
@@ -200,7 +200,7 @@
     <div x-data="priceValidator">
         <div class="input-container">
             <label for="ticket-economy">
-                Ticket Price for Economy:
+                {{ __('advertiser.ticket_price_economy') }}:
                 <span class="required">*</span>
             </label>
             <div class="input ticket" >
@@ -227,7 +227,7 @@
     <div x-data="{ state: {{ json_encode($offer['payment_id']) }}, gotEdited: false }">
         <div class="input-container">
             <label for="ticket-type">
-                Payout Method (CCP/ BaridiMob):
+                {{ __('advertiser.payment_method') }}:
                 <span class="required">*</span>
             </label>
             <select name="payment_id" 
@@ -246,12 +246,10 @@
             </select>
         </div>
     </div>
-
     <!-- Phone number -->
-
     <div x-data="phoneNumber" class="input-container">
         <label for="phone-number">
-            Phone number so we Confirm creation:
+            {{ __('advertiser.phone_number_confimr') }}:
             <span class="required">*</span>
         </label>
         <input name="phone_number"
@@ -268,13 +266,30 @@
             required
         >
     </div>
-    <button class="create-button">
-        Update Event
-    </button>
 
+    <button class="create-button">
+        {{ __('advertiser.update_event') }}
+    </button>
 </form>
 
 <script>
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var dateTime = date + 'T00:00:00';
+    console.log(dateTime);
+    document.getElementById('event-date-start').min = dateTime;
+    document.getElementById('event-date-end').min = dateTime;
+
+    function datePicker() {
+        return {
+            stateA: '',
+            stateB: '',
+            setupStartDate() {
+                document.getElementById('event-date-end').min = this.stateA;
+            },
+        }
+    }
+
     function priceValidator() {
         return {
             enableVIP: {!! json_encode($offer['hasVip']) !!},
@@ -288,9 +303,7 @@
             },
         }
     }
-</script>
 
-<script>
     function phoneNumber() {
         return {
             state: {!! json_encode($offer['phone_number']) !!},
@@ -302,5 +315,28 @@
             },
         }
     }
+
+    googleAutocomplete = {
+        autocompleteField: function(fieldId) {
+            (
+                autocomplete = new google.maps.places.Autocomplete(
+                    document.getElementById(fieldId),
+                    {componentRestrictions: {country: "dz"}}
+                )
+            ),
+            { types: ["geocode"] };
+            google.maps.event.addListener(autocomplete, "place_changed", function() {
+                // Segment results into usable parts.
+                var place = autocomplete.getPlace(),
+                    address = place.address_components,
+                    lat = place.geometry.location.lat(),
+                    lng = place.geometry.location.lng();
+
+                document.getElementById('event-map').value = lat + ', ' + lng;
+            });
+        }
+    };
+
+    googleAutocomplete.autocompleteField("event-location");
 </script>
 @endsection

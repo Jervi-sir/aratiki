@@ -15,17 +15,17 @@
                 <div class="bio">{{ $user['bio'] }}</div>
             </div>
             <div class="right">
-                <img src="../../images/promoter.png" alt="">
+                <img src="../../images/promoter.png" alt="aratiki">
             </div>
         </div>
         <div class="total-n-edit">
             <div class="total-tickets">
-                <span>total tickets:</span>
-                <span>{{ $user['total_tickets'] }} tickets</span>
-                <span class="nb-active">({{ $user['active_tickets'] }} active)</span>
+                <span>{{ __('client.total tickets') }}:</span>
+                <span>{{ $user['total_tickets'] }} {{ __('client.tickets') }}</span>
+                <span class="nb-active">({{ $user['active_tickets'] }} {{ __('client.active') }})</span>
             </div>
             <a href="{{ route('user.edit') }}" class="edit-btn">
-                Edit
+                {{ __('client.edit') }}
             </a>
         </div>
     </div>
@@ -33,8 +33,8 @@
 
 <div class="ticket-list">
     <label for="">
-        <span>My  Tickets</span>
-        <span class="nb-active">{{ $user['active_tickets'] }} active</span>
+        <span>{{ __('client.my_tickets') }}</span>
+        <span class="nb-active">{{ $user['active_tickets'] }} {{ __('client.active') }}</span>
     </label>
     @foreach ($tickets as $ticket)
     <a href="{{ $ticket['url'] }}" class="ticket">

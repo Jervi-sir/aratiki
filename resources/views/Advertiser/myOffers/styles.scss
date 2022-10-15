@@ -79,7 +79,7 @@
         padding: 0 20px;
         font-weight: 600;
         font-size: var(--text-base);
-        color: #000000;
+        color: var(--color-true-white);
         margin-bottom: 10px;
         .nb-active {
             font-weight: 400;
@@ -224,19 +224,15 @@
                 color: var(--color-blue);
             }
         }
-        
-
-        
-        
-        
     }
 
 
     .not-events {
         h3 {
             margin-top: 3rem;
-            font-weight: 300;
+            font-weight: 400;
             font-size: var(--text-basic);
+            color: var(--color-blue);
             text-align: center;
         }
     }

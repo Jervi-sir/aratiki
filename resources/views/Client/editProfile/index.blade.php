@@ -10,12 +10,11 @@
     @csrf
     <!-- Images Input -->
    @include('Client.editProfile.imageInput')
-
     <!-- Event Names -->
     <div x-data="{ state: false }">
         <div class="input-container">
             <label for="user-name">
-                username:
+                {{ __('client.username') }}:
                 <span class="required">*</span>
             </label>
             <input name="user_name"
@@ -25,16 +24,16 @@
                 x-bind:class="{ 'green-border': state }"  
                 value="{{ $user['name'] }}"
                 @keyup="state=true"
-                placeholder="Enter username"
+                placeholder="{{ __('client.enter_username') }}"
                 required
             >
         </div>
     </div>
     <!-- Event Email -->
-    <div >
+    <div>
         <div class="input-container">
             <label for="event-email">
-                Email:
+                {{ __('client.email') }}:
                 <span class="required">*</span>
             </label>
             <input 
@@ -42,36 +41,33 @@
                 class="input"
                 value="{{ $user['email'] }}"
                 type="text" 
-                placeholder="Enter event name"
+                placeholder="{{ __('client.enter_event_name') }}"
                 disabled
             >
         </div>
     </div>
-    
     <!-- Event About -->
     <div x-data="{ state: false }">
         <div class="input-container">
             <label for="event-about">
-                Bio:
+                {{ __('client.bio') }}:
                 <span class="required">*</span>
-            </label>
+            </label> 
             <textarea name="description" 
                 id="event-about" 
                 class="textarea"
                 x-bind:class="{ 'green-border': state }" 
                 @keyup="state=true"
-                placeholder="Describe the details"
+                placeholder="{{ __('client.describe_datails') }}"
                 required
             >{{ $user['bio'] }}</textarea>
         </div>
     </div>
-
     <hr>
-
     <!-- Phone number -->
     <div x-data="phoneNumber" class="input-container">
         <label for="phone-number">
-            Phone number so we Confirm creation:
+            {{ __('client.phone_number_confirmation') }}:
             <span class="required">*</span>
         </label>
         <input name="phone_number"
@@ -89,9 +85,8 @@
     </div>
 
     <button class="create-button">
-        Update profile
+        {{ __('client.update_profile') }}
     </button>
-
 </form>
 
 <script>
