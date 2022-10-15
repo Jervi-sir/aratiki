@@ -15,7 +15,9 @@ register
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
-        <img src="../../images/logo.svg" alt="" class="logo"/>
+        <a href="{{ route('home') }}">
+            <img src="../../images/logo.svg" alt="" class="logo"/>
+        </a>
         <h1>{{ __('auth.register') }}</h1>
         @if ($errors->any())
         <ul class="errors">

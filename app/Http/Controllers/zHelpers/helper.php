@@ -83,7 +83,7 @@ function listAllCategories() {
             'id' => $category->id,
             'url' => route('category.popular', ['category' => $category->id]),
             'name' => $category->name,
-            'type' => $category->type,
+            'code_name' => $category->code_name,
         ];
     }
     return $array;

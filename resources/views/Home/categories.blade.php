@@ -6,8 +6,8 @@
     <div class="categories-list">
         @for ($i = 0; $i < 3; $i++)
         <a href="{{ $categories[$i]['url'] }}" class="category">
-            <img src="../../images/{{ $categories[$i]['type'] }}.svg" alt="aratiki, {{ $categories[$i]['type'] }}">
-            <span>{{ $categories[$i]['name'] }}</span>
+            <img src="../../images/{{ $categories[$i]['code_name'] }}.svg" alt="aratiki, {{ __('categories' . $categories[$i]['code_name']) }}">
+            <span>{{ __('categories.' . $categories[$i]['code_name']) }}</span>
         </a>
         @endfor
     </div>
@@ -27,8 +27,8 @@
             <div class="link-list">
                 @foreach ($categories as $category)
                 <a class="category" href="{{ $category['url'] }}">
-                    <img src="../../images/{{ $category['type'] }}.svg" alt="aratiki, {{ $category['type'] }}">
-                    <span>{{ $category['name'] }}</span>
+                    <img src="../../images/{{ $category['code_name'] }}.svg" alt="aratiki, {{ $category['code_name'] }}">
+                    <span>{{ __('categories.' . $category['code_name']) }}</span>
                 </a>
                 @endforeach
             </div>

@@ -16,15 +16,15 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'name' => 'music event',
-            'type' => 'music',
+            'code_name' => 'music_event',
         ]);
         DB::table('categories')->insert([
             'name' => 'art event',
-            'type' => 'art',
+            'code_name' => 'art_event',
         ]);
         DB::table('categories')->insert([
             'name' => 'computer event',
-            'type' => 'computer',
+            'code_name' => 'computer_event',
         ]);
     }
 }

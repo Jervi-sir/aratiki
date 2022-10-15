@@ -4,6 +4,6 @@
         <button>
             <img src="../../images/search.svg" alt="aratiki search">
         </button>
-        <input type="text" name="keywords" value="{{ $value }}" placeholder="{{ __('search_placeholder') }}">
+        <input type="text" name="keywords" value="{{ $value }}" placeholder="{{ __('_components.search_placeholder') }}">
     </div>
 </form>

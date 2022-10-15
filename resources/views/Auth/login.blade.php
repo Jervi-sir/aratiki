@@ -8,7 +8,9 @@ login
 <div class="body-login">
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <img src="../../images/logo.svg" alt="aratiki" class="logo"/>
+        <a href="{{ route('home') }}">
+            <img src="../../images/logo.svg" alt="aratiki" class="logo"/>
+        </a>
         <h1>{{ __('auth.login') }}</h1>
         @if ($errors->any())
             <ul class="errors">
