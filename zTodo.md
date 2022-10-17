@@ -52,7 +52,7 @@
 - [ ] fake purchase card
 
 # Quick fixes
-- rename all return to view correctly
+- [x] rename all return to view correctly
 - [x] view password in login register
 - [x] strong or weak password
 - [x] add location in user adv

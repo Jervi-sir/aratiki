@@ -14,6 +14,8 @@
     @yield('head')
 </head>
 <body>
+    @include('_components.info.infoHelper')
+
     <div class="body">
         @include('_components.head.head')
         <div class="bg-blue"></div>

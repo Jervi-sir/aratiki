@@ -159,6 +159,50 @@ main {
     }
 }
 
+
+
+/* ------------------------------------
+            info helper
+------------------------------------*/
+.shake {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    padding: 0;
+    box-shadow: var(--shadow-two);
+    animation-name: shake;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        //transform: translate(0, 0);
+        transform: rotate(0deg);
+        scale: 1.01;
+    }
+    5% {
+        //transform: translate(3px, 0);
+        transform: rotate(5deg);
+        scale: 1.01;
+    }
+    10% {
+        //transform: translate(-3px, 0);
+        transform: rotate(-5deg);
+        scale: 1.1;
+    }
+    15% {
+        //transform: translate(0, 0);
+        transform: rotate(0deg);
+        scale: 1;
+    }
+
+}
+
 @media only screen and (min-width: 1000px) {
     .body {
         width: 700px;

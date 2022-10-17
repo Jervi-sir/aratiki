@@ -43,6 +43,7 @@ export default defineConfig({
             refresh: [
                 'app/Http/Controllers/**',
                 'routes/**',
+                'lang/**',
                 'resources/views/**',
             ],
 
