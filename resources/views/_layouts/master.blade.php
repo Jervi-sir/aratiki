@@ -14,7 +14,7 @@
     @yield('head')
 </head>
 <body>
-    @include('_components.info.infoHelper')
+    @include('_components.info.info')
 
     <div class="body">
         @include('_components.head.head')

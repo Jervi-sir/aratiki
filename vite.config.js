@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/views/_components/head/head.scss',
                 'resources/views/_components/search/search.scss',
                 'resources/views/_components/success/success.scss',
+                'resources/views/_components/info/info.scss',
 
                 //------ [ Advertiser ]
                 'resources/views/Advertiser/addOffer/styles.scss',

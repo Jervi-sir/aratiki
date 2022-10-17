@@ -164,19 +164,32 @@ main {
 /* ------------------------------------
             info helper
 ------------------------------------*/
-.shake {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    background-color: transparent;
-    border: none;
-    border-radius: 100%;
-    padding: 0;
-    box-shadow: var(--shadow-two);
-    animation-name: shake;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.helper-contaier {
+    .shake {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+        background-color: transparent;
+        border: none;
+        border-radius: 100%;
+        padding: 0;
+        box-shadow: var(--shadow-two);
+        animation-name: shake;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        img {
+            width: 45px;
+            cursor: pointer;
+    
+            &:hover {
+                filter: invert(0.01);
+                scale: 1.15;
+                transition: 0.5s;
+
+            }
+        }
+    }
 }
 
 @keyframes shake {
@@ -200,8 +213,8 @@ main {
         transform: rotate(0deg);
         scale: 1;
     }
-
 }
+/* ------------------------------------ */
 
 @media only screen and (min-width: 1000px) {
     .body {

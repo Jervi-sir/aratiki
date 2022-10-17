@@ -50,4 +50,16 @@ return [
     ----------*/
     'event_registered' => 'Event Requested!',
     'call_to_confirm' => 'We will call for confirmation',
+
+    /*----------
+    info
+    ----------*/
+    'about_app_title' => 'About aratiki',
+    'about_app_details' => 'Make getting Ticket easy, secured, well organized. considering as early adopted to ',
+    'purchase_title' => 'How to buy a ticket',
+    'purchase_details' => '',
+    'purchase_title' => 'How to buy a ticket',
+    'purchase_details' => '',
+    'become_advertiser_title' => 'Become an advertiser',
+    'become_advertiser_details' => 'with aratiki platform you can create your own event, and manage them direcly, we made sure to make the process fluid and secured, plus some easy online payment method',
 ];
