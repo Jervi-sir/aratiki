@@ -87,7 +87,7 @@
             </div>
 
             <div x-data="{ open: false, selected: 0 }">
-                <div x-show="open" x-transition class="purchase-slide">
+                <div x-show="open" x-transition class="purchase-slide" style="display:none">
                     <div class="bg-box" @click="open = ! open"></div>
                     <div class="box">
                         <div class="top">
@@ -106,13 +106,17 @@
                                 <input name="offer_id" type="text" value="{{ $offer['id'] }}" hidden>
                                 <div class="type">
                                     <input name="type" @click="selected = {{ $offer['price_vip'] }} " type="radio" id="vip"  value="vip">
-                                    <label for="vip">{{ __('offer.vip') }}</label>
-                                    <span>{{ $offer['price_vip'] }} <small>D.A</small> </span>
+                                    <label for="vip">
+                                        <span class="type-name">{{ __('offer.vip') }}</span>
+                                        <span class="type-price">{{ $offer['price_vip'] }} <small>D.A</small> </span>
+                                    </label>
                                 </div>
                                 <div class="type">
-                                    <input name="type" @click="selected = {{ $offer['price_economy'] }} " type="radio" id="economy" value="economy">
-                                    <label for="economy">{{ __('offer.economy') }}</label>
-                                    <span>{{ $offer['price_economy'] }} <small>D.A</small> </span>
+                                    <input name="type" @click="selected = {{ $offer['price_economy'] }} " type="radio" id="economic" value="economic">
+                                    <label for="economic">
+                                        <span class="type-name"">{{ __('offer.economy') }}</span>
+                                        <span class="type-price">{{ $offer['price_economy'] }} <small>D.A</small> </span>
+                                    </label>
                                 </div>
                             </div>
                             <div class="total">
@@ -123,7 +127,15 @@
                                 </h2>
                             </div>
                             <div class="payment-card"> </div>
-                            <button :disabled="selected == 0">{{ __('offer.purchase_ticket') }}</button>
+                            <div class="process-purchase">
+                                @auth
+                                <button :disabled="selected == 0">{{ __('offer.purchase_ticket') }}</button>
+                                @endauth
+                                @guest
+                                <button >{{ __('home.login') }}</button>
+                                <span>to continue purchase</span>
+                                @endguest
+                            </div>
                         </form>
                     </div>
                     

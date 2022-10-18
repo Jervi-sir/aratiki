@@ -15,8 +15,18 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        try {
+            $previous_url = $request->session()->get('_previous')['url'];
+            if (strpos($previous_url, 'register') == false
+                &&strpos($previous_url, 'login') == false ) {
+                $request->session()->push('previous_url', $previous_url);
+            }
+        } catch(\Exception $e){
+            //
+        }
+
         return view('Auth.login');
     }
 
@@ -31,6 +41,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        //if there is url in session
+        if ($request->session()->exists('previous_url')) {
+            $url = $request->session()->get('previous_url', 'default')[0];
+            return redirect()->away($url);
+        }
 
         return redirect()->intended();
         //return redirect()->intended(RouteServiceProvider::HOME);

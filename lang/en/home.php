@@ -12,6 +12,7 @@ return [
     ----------*/
     'event_categories' => 'Event Categories',
     'view_all' => 'View All',
+    'login' => 'Login',
 
     /*----------
     categories

@@ -20,8 +20,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('offer_id')->constrained();
 
+            $table->string('ticket_type');
+            $table->string('ticket_price');
             $table->longText('qrcode')->unique();
-            $table->longText('details');
+            $table->longText('details')->nullable();
 
             $table->string('event_type')->nullable();
             $table->string('place')->nullable();

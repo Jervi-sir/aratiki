@@ -2,8 +2,9 @@
 - [x] add admin panel from old project 
 
 # Right now m doing
-- [ ] purchace a ticket
 - [x] optimize lang and code
+- [ ] toastr after login
+- [ ] toastr after purchase
 
 ### Auth
 - [x] login
@@ -27,6 +28,7 @@
 - [x] purchase economy class 
 - [x] qrcode
 - [x] show my tickets
+- [x] purchace a ticket
 - [ ] refund my ticket
 
 ### Offer

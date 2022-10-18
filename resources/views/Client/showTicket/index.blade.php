@@ -12,9 +12,9 @@
 @section('body')
 <div class="ticket-container">
     <div class="top-ticket">
-        <h2 class="action">{{ __('client.show_qr') }}</h2>
+        <h2 class="action">{{ __('client.whom_to_show_qr') }}</h2>
         <div class="qrcode" id="qrcode"></div>
-        <h3 class="price">{{ $ticket['price'] }}</h3>
+        <h3 class="price">{{ $ticket['ticket_price'] }} D.A</h3>
     </div>
 
     <div class="cut">
@@ -23,7 +23,10 @@
     <div class="bottom-ticket">
         <h1 class="title">{{ $ticket['event_name'] }}</h1>
         <h5 class="promoter">By {{ $ticket['advertiser_name'] }}</h5>
-        <h4 class="location">{{ $ticket['location'] }}</h4>
+        <h4 class="location">
+            <img src="../../images/location.svg" alt="aratiki">
+            <span>{{ $ticket['location'] }}</span>
+        </h4>
         <div class="timeline">
             <div class="start">
                 <span class="hours">{{ $ticket['event_time_starts'] }}</span>
@@ -38,8 +41,17 @@
                 <span class="date">{{ $ticket['event_date_ends'] }}</span>
             </div>
         </div>
+        @if ($ticket['ticket_type'] == 'vip')
+            <h3>{{ __('client.vip') }}</h3>
+        @else
+            <h3>{{ __('client.economic') }}</h3>
+        @endif
+        <small>{{ __('client.ticket') }}</small>
     </div>
+</div>
 
+<div class="home">
+    <a href="{{ route('home') }}">Discover more events</a>
 </div>
 
 <script type="text/javascript">

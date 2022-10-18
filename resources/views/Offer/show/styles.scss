@@ -393,16 +393,27 @@
                     display: flex;
                     align-items: center;
                     gap: 5px;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                    input {
+                        margin: 0;
+                    }
                     label {
-                        color: var(--color-blue);
-                        font-size: var(--text-2xl);
-                        font-weight: 400;
+                        display: flex;
+                        justify-content: space-between;
+                        flex: 1;
+                        .type-name {
+                            color: var(--color-blue);
+                            font-size: var(--text-lg);
+                            font-weight: 400;
+                        }
+                        .type-price {
+                            margin-left: auto;
+                            font-size: var(--text-lg);
+                            font-weight: 600;
+                        }
                     }
-                    span {
-                        margin-left: auto;
-                        font-size: var(--text-lg);
-                        font-weight: 600;
-                    }
+
                 }
             }
             .total {
@@ -422,19 +433,30 @@
                     margin: 0;
                 }
             }
-            button {
-                background: var(--color-blue);
-                border-radius: 10px;
-                color: var(--color-white);
-                font-size: var(--text-lg);
-                font-weight: 400;
-                padding: 10px;
-                cursor: pointer;
-                transition: 0.3s;
-
-                &:disabled {
-                    background: var(--color-blue-light);
-
+            .process-purchase {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                button {
+                    background: var(--color-blue);
+                    border-radius: 10px;
+                    border: 1px solid var(--color-white);
+                    color: var(--color-white);
+                    font-size: var(--text-lg);
+                    font-weight: 400;
+                    padding: 10px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    text-decoration: none;
+                    text-align: center;
+                    &:disabled {
+                        background: var(--color-blue-light);
+                    }
+                }
+                span {
+                    color: var(--color-blue);
+                    font-weight: 500;
+                    font-size: var(--text-sm);
                 }
             }
         }

@@ -1,7 +1,7 @@
 @vite('resources/views/_components/info/info.scss')
 <div x-data="{ open: false }"  class="helper-contaier"> 
 	<div class="shake" @click="open = ! open">
-		<img src="images/info_helper.svg" alt="aratiki helper">
+		<img src="../../images/info_helper.svg" alt="aratiki helper">
 	</div>
 	<div class="menu-slide" x-show="open" x-transition style="display: none">
         <div class="bg-box" @click="open = ! open"></div>
@@ -20,7 +20,7 @@
                   <div class="title">
                     {{ __('_components.about_app_title') }}
                   </div>
-                  <img src="images/arrow_down.svg" class="icon" alt="">
+                  <img src="../../images/arrow_down.svg" class="icon" alt="">
                 </summary>
                 <div class="details-info">
                   {{ __('_components.about_app_details') }}

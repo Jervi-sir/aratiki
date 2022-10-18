@@ -26,19 +26,35 @@ class PurchaseController extends Controller
     |   [x]  generate my ticket
     ----------------------------------------------------------*/
     public function purchase(Request $request) {
+        if($request->type != 'vip' || $request->type != 'economic') {
+            //TODO: return error
+        }
+
         $offer = Offer::find($request->offer_id);
 
         if($offer->tickets_left == 0 || $offer->is_active != 1) {
             //TODO: return error
         }
 
+        //ticket type
+        if($request->type == 'vip') {
+            $ticket_type = 'vip';
+            $ticket_price = $offer->price_vip;
+        }
+        if($request->type == 'economic') {
+            $ticket_type = 'economic';
+            $ticket_price = $offer->price_economy;
+        }
+        
         $user = Auth::user();
 
         $ticket = new Ticket();
         $ticket->uuid = Str::uuid();
         $ticket->user_id = $user->id;
         $ticket->offer_id = $offer->id;
-        $ticket->qrcode = $this->qrcodeGenerate($offer, $user, 2);
+        $ticket->ticket_type = $ticket_type;
+        $ticket->ticket_price = $ticket_price;
+        $ticket->qrcode = $this->qrcodeGenerate($offer, $user);
         $ticket->event_type = Category::find($offer->category_id)->name;
         $ticket->details = json_encode([
             'event_name' => $offer->event_name,
@@ -47,29 +63,38 @@ class PurchaseController extends Controller
             'event_ends' => $offer->event_ends,
             'duration' => $offer->duration,
             'advertiser_id' => $offer->user_id,
-            'price' => $offer->price_economy,
+            'type' => $ticket_type,
+            'price' => $ticket_price,
         ]);
         $ticket->save();
 
+        // vip decrease offer tickets
+        if($offer->tickets_left_vip != 0) {
+            $offer->tickets_left_vip--;
+        }
+        // economic decrease offer tickets
         if($offer->tickets_left_economy != 0) {
             $offer->tickets_left_economy--;
         }
-        if($offer->tickets_left_economy == 0) {
+        //event states
+        if($offer->tickets_left_vip == 0
+            && $offer->tickets_left_economy == 0) {
             $offer->is_active = 0;
         }
         $offer->save();
 
-        return back();
+        return redirect()->route('user.thisTicket', ['id' => $ticket->id]);
     }
 
-    private function qrcodeGenerate($offer, $user, $place) {
-        $qrcode = 'name' . $user->name . '&' .
-            'festival' . $offer->id . '&' .
-            'source' . $offer->advertiser()->first()->id . '&' .
-            'secret_code' . Str::random(16) . '&' .
-            'date' . Carbon::now()->format('Y-m-d') . '&' .
+    private function qrcodeGenerate($offer, $user, $place = 0) {
+        $qrcode = 'qrcode&='.
+            'name' . $user->name . '&=' .
+            'event' . $offer->id . '&=' .
+            'advertiser' . $offer->advertiser()->first()->id . '&=' .
+            'publiccode' . Str::random(16) . '&=' .
+            'purchasedate' . Carbon::now()->format('Y-m-d') . '&=' .
             'place' . $place;
 
-        return $qrcode;
+        return str_replace(' ', '_', $qrcode);
     }
 }

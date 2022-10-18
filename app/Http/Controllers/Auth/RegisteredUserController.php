@@ -53,6 +53,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        //if there is url in session
+        if ($request->session()->exists('previous_url')) {
+            $url = $request->session()->get('previous_url', 'default')[0];
+            return redirect()->away($url);
+        }
+
         return redirect(RouteServiceProvider::HOME);
     }
 }

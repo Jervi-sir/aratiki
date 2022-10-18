@@ -61,7 +61,6 @@ class TicketController extends Controller
     ----------------------------------------------------------*/
     public function getThisTicket($ticket_id)
     {
-
         //TODO: generate whole ticket in server
         $user = Auth::user();
         $tickets = $user->tickets;
@@ -72,15 +71,18 @@ class TicketController extends Controller
             dd(404);
             //TODO:
         }
+
         $ticket_details = json_decode($ticket->details);
         $data['ticket'] = [
             'qrcode' => $ticket->qrcode,
             'event_type' => $ticket->event_type,
+            'ticket_type' => $ticket->ticket_type,
+            'ticket_price' => $ticket->ticket_price,
+            
             'advertiser_name' => $ticket->offer->advertiser->name,
             'purchased_date' => date('d M Y', strtotime($ticket->created_at)),
             'purchased_time' => date('h:i a', strtotime($ticket->created_at)),
 
-            'price' => $ticket_details->price . ' D.A',
             'event_name' => $ticket_details->event_name,
             'location' => $ticket_details->location,
 

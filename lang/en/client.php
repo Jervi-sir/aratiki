@@ -31,7 +31,7 @@ return [
     /*----------
     show ticket
     ----------*/
-    'show_qr' => 'Show at Boarding Gate',
+    'whom_to_show_qr' => 'Show at Boarding Gate',
 
     /*----------
     upgrade
@@ -41,5 +41,8 @@ return [
     'name' => 'Name',
     'phone_number' => 'Phone number',
     'quick_description' => 'Quick Description',
+    'vip' => 'VIP',
+    'economic' => 'Economic',
+    'ticket' => 'Ticket',
 
 ];

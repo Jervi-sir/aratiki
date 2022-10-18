@@ -6,7 +6,7 @@
                 @if (Auth()->user()->role->name == 'advertiser')
                 <img src="../../images/Logo_pro.svg" alt="aratiki">
                 @else 
-                <img src="../../images/Logo_pro.svg" alt="aratiki">
+                <img src="../../images/Logo.svg" alt="aratiki">
                 @endif
             @endauth
 
