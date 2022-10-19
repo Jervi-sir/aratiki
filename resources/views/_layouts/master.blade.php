@@ -23,5 +23,7 @@
     </div>
 
     @include('_components.footer.footer')
+    @include('_components.notification.success')
+    
 </body>
 </html>

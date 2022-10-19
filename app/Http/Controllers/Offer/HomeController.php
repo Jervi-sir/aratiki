@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 require dirname(__DIR__) . '\zHelpers\helper.php';
+require dirname(__DIR__) . '\zHelpers\notification.php';
 
 class HomeController extends Controller
 {
@@ -34,6 +35,7 @@ class HomeController extends Controller
             ];
         }
 
+        notify($type = 'announce', $title = 'welcome Jervi', $message = '');
         return view('Home.index', 
             [
                 'events' => $data['offers'],

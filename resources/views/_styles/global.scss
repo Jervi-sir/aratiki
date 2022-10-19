@@ -4,8 +4,10 @@
 
 :root {
     //font family
-    --font-primary: 'Inter', sans-serif;
-
+    --font-primary: 'Inter', Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    --font-secondary: -apple-system;
+    --font-third: Segoe UI;
+    --font-forth: Helvetica Neue;
 
     //background
     --color-background-one: #203354;
