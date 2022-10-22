@@ -24,13 +24,23 @@ function notify_center(string $title, string $message) {
   return true;
 }
 
-function push_notification(string $title, string $details = '', string $url = '') {
+/**
+  * Return a Notification.
+  *
+  * types: announce, reminder, purchased_ticket, success, 
+*/
+
+function push_notification(string $type, string $title, string $details = '', string $url = '') {
   $user = Auth()->user();
   $user_notifications = json_decode($user->notifications);
   $new_notification = [
+    'type'    => $type,
     'url'     => $url,
     'title'   => $title,
     'details' => $details,
+    'writtenDate' => date('h:i | d M'),
+    'date' => date('d-m-y h:i:s'),
+    'notVisited' => true,
   ];
   array_unshift($user_notifications, $new_notification);
   $user->notifications = json_encode($user_notifications);

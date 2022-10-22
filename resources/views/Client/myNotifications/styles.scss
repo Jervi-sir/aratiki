@@ -1,0 +1,147 @@
+.profile-container {
+  background-color: #203354;
+  padding-bottom: 20px;
+  .profile-card {
+      padding: 20px;
+      width: 80%;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .details {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .left {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              .username {
+                  font-weight: 600;
+                  font-size: var(--text-base);
+                  color: #000000;
+              }
+              .phone {
+                  font-weight: 400;
+                  font-size: var(--text-xs);
+                  color: #000000;
+              }
+              .bio {
+                  font-weight: 400;
+                  font-size: var(--text-xs);
+                  color: #000000;
+              }
+          }
+
+          .right {
+              width: 80px;
+              img {
+                  width: 100%;
+              }
+          }
+      }
+
+      .total-n-edit {
+          display: flex;
+          justify-content: space-between;
+          .total-tickets {
+              font-weight: 400;
+              font-size: var(--text-xs);
+              color: #000000;
+              .nb-active {
+                  font-weight: 400;
+                  font-size: calc(var(--text-xs) - 0.20rem);
+                  color: #000000;
+              }
+          }
+
+          .edit-btn {
+              width: 80px;
+              text-align: center;
+              font-weight: 400;
+              font-size: var(--text-sm);
+              color: #558A20;
+          }
+      }
+  }
+}
+
+
+.notification-list {
+  padding: 0 30px;
+  margin-top: 20px;
+  label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--color-true-white);
+
+      .nb-active {
+          font-weight: 400;
+          font-size: var(--text-xs);
+      }
+  }
+
+  .no-notifications {
+    color: var(--color-blue);
+    text-align: center;
+    margin-top: 6rem;
+  }
+
+  .notification-row {
+      flex: 1;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      background: #FFFFFF;
+      box-shadow: var(--shadow-one);
+      border-radius: 10px;
+      padding: 10px 20px;
+      gap: 15px;
+      text-decoration: none;
+
+      .left {
+        img {
+          width: 40px;
+        }
+      }
+      .middle {
+        .title {
+          font-weight: 600;
+          font-size: var(--text-lg);
+          color: var(--color-blue);
+        }
+        .details {
+          font-weight: 400;
+          font-size: var(--text-sm);
+          color: var(--color-blue);
+          opacity: 0.8;
+        }
+      }
+      .right {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .visited {
+          display: flex;
+          flex-direction: row-reverse;
+          
+        }
+        .date {
+          font-weight: 400;
+          font-size: var(--text-xs);
+          color: #203354;
+        }
+      }
+
+  }
+}
+

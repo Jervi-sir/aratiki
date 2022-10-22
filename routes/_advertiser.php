@@ -34,3 +34,4 @@ Route::controller(OfferController::class)->middleware(['auth'])->group(function(
     Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[x]
 });
 
+

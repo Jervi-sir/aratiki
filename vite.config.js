@@ -27,6 +27,7 @@ export default defineConfig({
                 //------ [ Client ]
                 'resources/views/Client/myTickets/styles.scss',
                 'resources/views/Client/showTicket/styles.scss',
+                'resources/views/Client/myNotifications/styles.scss',
 
                 //------ [ Offer ]
                 'resources/views/Offer/results/styles.scss',

@@ -82,7 +82,12 @@ class AddOfferController extends Controller
         $offer->for_search = createKeyword($offer);
         $offer->save();
 
-        push_notification($title = 'Event has been added successfully', $url = "/advertiser/showOffer/" . $offer->id);
+        push_notification(
+            $type = 'announce', 
+            $title = 'Event has been added successfully', 
+            $details = 'details5',
+            $url = "/advertiser/showOffer/" . $offer->id
+        );
 
         notify_center(__('_components.event_registered'), __('_components.call_to_confirm'));
         return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);

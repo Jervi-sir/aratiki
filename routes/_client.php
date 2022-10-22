@@ -38,4 +38,5 @@ Route::controller(ProfileController::class)->middleware(['auth'])->group(functio
 
 Route::controller(NotificationController::class)->middleware(['auth'])->group(function() {
     Route::get('/notifications', 'allMyNotifications')->name('user.notifications');
+    Route::get('/viewNotification%={index}%={redirect}', 'viewNotification')->name('user.notificationredirect');
 });

@@ -7,6 +7,13 @@ return [
     | Advertiser Language Lines
     |--------------------------------------------------------------------------
     */
+
+    /*----------
+    notifications
+    ----------*/
+    'mynotifications' => 'My Notifications',
+    'notifications' => 'Notifications',
+    'no_notifications' => 'You have no notifications so far',
     /*----------
     edit profile
     ----------*/

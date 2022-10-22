@@ -15,7 +15,6 @@ class HomeController extends Controller
     |   [x]  get list of all offers
     ----------------------------------------------------------*/
     public function home() {
-        
         $offers = Offer::all();
 
         $data['categories'] = listAllCategories();

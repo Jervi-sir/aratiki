@@ -33,7 +33,7 @@
                     <span>{{ __('_components.home') }}</span>
                 </a>
                 @auth
-                <a class="link" href="{{ route('user.allTickets') }}">
+                <a class="link" href="{{ route('user.notifications') }}">
                     <img src="../../images/notification.svg" alt="aratiki tickets">
                     <span>{{ __('_components.notifications') }}</span>
                 </a>

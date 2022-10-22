@@ -84,6 +84,13 @@ class PurchaseController extends Controller
         }
         $offer->save();
 
+        push_notification(
+            $type = 'purchased_ticket', 
+            $title = 'Ticket Purchased', 
+            $details = 'You have purchased a ticket successfully ✔️',
+            $url = "/getThisTicket/" . $ticket->id
+        );
+
         notify_center(__('_components.ticket_purchased'), ' ');
 
         return redirect()->route('user.thisTicket', ['id' => $ticket->id]);

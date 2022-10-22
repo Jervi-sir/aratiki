@@ -3,7 +3,6 @@
 - [x] optimize lang and code
 
 # Right now m doing
-- [ ] messagery system
 - [ ] helper icon for each page
 - [ ] advertiser page with current events 
 - [ ] integrate logic of events showing, and activation
@@ -33,6 +32,7 @@
 - [x] show my tickets
 - [x] purchace a ticket
 - [x] toastr after purchase
+- [x] messagery system
 - [ ] refund my ticket
 
 ### Offer
