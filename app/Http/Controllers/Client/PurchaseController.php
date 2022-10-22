@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+require dirname(__DIR__) . '\zHelpers\notification.php';
 
 class PurchaseController extends Controller
 {
@@ -82,6 +83,8 @@ class PurchaseController extends Controller
             $offer->is_active = 0;
         }
         $offer->save();
+
+        notify_center(__('_components.ticket_purchased'), ' ');
 
         return redirect()->route('user.thisTicket', ['id' => $ticket->id]);
     }

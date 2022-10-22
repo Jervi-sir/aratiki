@@ -3,8 +3,11 @@
 
 # Right now m doing
 - [x] optimize lang and code
-- [ ] toastr after login
-- [ ] toastr after purchase
+- [x] toastr after login
+- [x] toastr after purchase
+- [ ] helper for each page
+- [ ] advertiser page with current events 
+- [ ] messagery system
 
 ### Auth
 - [x] login

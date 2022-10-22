@@ -170,4 +170,18 @@
     padding: 10px;
     text-align: center;
     cursor: pointer;
+
+    &:hover {
+        background: var(--color-secondary);
+        transition: 0.5s;
+    }
+
+    &.guest {
+        background: var(--color-background-light-one);
+        color: var(--color-blue);
+        &:hover {
+            background: var(--color-blue-light);
+            transition: 0.5s;
+        }
+    }
 }

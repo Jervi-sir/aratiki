@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 
+require dirname(__DIR__) . '\zHelpers\notification.php';
+
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -52,6 +55,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        notify_bottom($title = 'welcome ' . Auth()->user()->name , $message = '');
 
         //if there is url in session
         if ($request->session()->exists('previous_url')) {

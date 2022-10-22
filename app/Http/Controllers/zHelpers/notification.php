@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Session;
   * @return 
   */
 
-function notify(string $type, string $title, string $message)
-{
-    Session::flash('notify.message', $message);
-    Session::flash('notify.type', $type);
-    Session::flash('notify.title', $title);
+function notify_bottom(string $title, string $message) {
+    Session::put('notify_bottom_message', $message);
+    Session::put('notify_bottom_title', $title);
     return true;
+}
 
+function notify_center(string $title, string $message) {
+  Session::put('notify_center_message', $message);
+  Session::put('notify_center_title', $title);
+  return true;
 }

@@ -46,10 +46,17 @@ return [
     'search_placeholder' => 'Search any event offer, with specific Location',
     
     /*----------
-    search
+    event added successfully
     ----------*/
-    'event_registered' => 'Event Requested!',
+    'event_registered' => 'Event added!',
     'call_to_confirm' => 'We will call for confirmation',
+
+    /*----------
+    purchased ticket successfully
+    ----------*/
+    'ticket_purchased' => 'you have purchased a Ticket Successfully',
+    'ticket_purchased_message' => '',
+
 
     /*----------
     info

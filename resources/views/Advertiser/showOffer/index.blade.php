@@ -11,6 +11,9 @@
 
 @section('body')
 <div class="bg-blue"></div>
+
+@include('_components.notification.center_notification')
+
 <div class="offer-container">
     <!-- Right Container -->
     <div class="right-container">
@@ -192,6 +195,11 @@
         <a href="{{ route('get.advertiser.editOffer', ['id' => $offer['id']]) }}" class="edit-btn">
             {{ __('advertiser.edit_details') }}
         </a>
+
+        <a href="{{ route('showOffer', ['id' => $offer['id']]) }}" class="edit-btn guest">
+            {{ __('advertiser.show_as_guest') }}
+        </a>
+
     </div>
 </div>
 @endsection

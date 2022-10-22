@@ -75,5 +75,5 @@ return [
     'phone_number' => 'Phone Number',
     'date_creation' => 'Date Creation',
     'edit_details' => 'Edit details',
-
+    'show_as_guest' => 'Show as Guest',
 ];

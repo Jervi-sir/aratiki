@@ -10,6 +10,9 @@
 @endsection
 
 @section('body')
+
+@include('_components.notification.center_notification')
+
 <div class="ticket-container">
     <div class="top-ticket">
         <h2 class="action">{{ __('client.whom_to_show_qr') }}</h2>

@@ -14,9 +14,10 @@ export default defineConfig({
                 'resources/views/_components/footer/footer.scss',
                 'resources/views/_components/head/head.scss',
                 'resources/views/_components/search/search.scss',
-                'resources/views/_components/success/success.scss',
+
                 'resources/views/_components/info/info.scss',
-                'resources/views/_components/notification/notification.scss',
+                'resources/views/_components/notification/bottom_notification.scss',
+                'resources/views/_components/notification/center_notification.scss',
                 
                 //------ [ Advertiser ]
                 'resources/views/Advertiser/addOffer/styles.scss',

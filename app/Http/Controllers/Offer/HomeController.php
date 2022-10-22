@@ -6,6 +6,7 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\notification.php';
@@ -15,7 +16,8 @@ class HomeController extends Controller
     /*--------------------------------------------------------
     |   [x]  get list of all offers
     ----------------------------------------------------------*/
-    public function home() {
+    public function home(Request $request) {
+
         $offers = Offer::all();
 
         $data['categories'] = listAllCategories();
@@ -35,7 +37,8 @@ class HomeController extends Controller
             ];
         }
 
-        notify($type = 'announce', $title = 'welcome Jervi', $message = '');
+
+        //notify($type = 'announce', $title = 'welcome back', $message = '');
         return view('Home.index', 
             [
                 'events' => $data['offers'],

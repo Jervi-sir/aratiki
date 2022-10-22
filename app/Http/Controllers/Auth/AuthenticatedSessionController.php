@@ -8,6 +8,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+require dirname(__DIR__) . '\zHelpers\notification.php';
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -20,7 +22,7 @@ class AuthenticatedSessionController extends Controller
         try {
             $previous_url = $request->session()->get('_previous')['url'];
             if (strpos($previous_url, 'register') == false
-                &&strpos($previous_url, 'login') == false ) {
+                && strpos($previous_url, 'login') == false ) {
                 $request->session()->push('previous_url', $previous_url);
             }
         } catch(\Exception $e){
@@ -41,6 +43,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        notify_bottom($title = 'welcome ' . Auth()->user()->name , $message = '');
+
         //if there is url in session
         if ($request->session()->exists('previous_url')) {
             $url = $request->session()->get('previous_url', 'default')[0];

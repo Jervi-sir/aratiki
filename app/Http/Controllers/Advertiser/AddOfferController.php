@@ -8,9 +8,11 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\upload.php';
+require dirname(__DIR__) . '\zHelpers\notification.php';
 
 class AddOfferController extends Controller
 {
@@ -18,7 +20,6 @@ class AddOfferController extends Controller
     |   [done]  Add Offer
     ----------------------------------------------------------*/
     public function addOfferPage() {
-       
         $data['categories'] = [];
         $data['phone_number'] = Auth::user()->advertiser->phone_number;
         
@@ -81,6 +82,7 @@ class AddOfferController extends Controller
         $offer->for_search = createKeyword($offer);
         $offer->save();
 
+        notify_center(__('_components.event_registered'), __('_components.call_to_confirm'));
         return redirect()->route('get.advertiser.offer', ['id' => $offer->id]);
     }
 }
