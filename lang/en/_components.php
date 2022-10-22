@@ -39,6 +39,7 @@ return [
     'contact_us' => 'Contact Us',
     'register' => 'Register',
     'welcome' => 'Welcome',
+    'notifications' => 'Notifications',
 
     /*----------
     search

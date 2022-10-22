@@ -1,13 +1,12 @@
 - [ ] add french language in Lang/
 - [x] add admin panel from old project 
+- [x] optimize lang and code
 
 # Right now m doing
-- [x] optimize lang and code
-- [x] toastr after login
-- [x] toastr after purchase
-- [ ] helper for each page
-- [ ] advertiser page with current events 
 - [ ] messagery system
+- [ ] helper icon for each page
+- [ ] advertiser page with current events 
+- [ ] integrate logic of events showing, and activation
 
 ### Auth
 - [x] login
@@ -15,6 +14,7 @@
 - [x] join as advertiser
 - [x] upgrate to advertiser
 - [x] edit profile
+- [x] toastr after login
 
 ### Advertiser
 - [x] post
@@ -32,6 +32,7 @@
 - [x] qrcode
 - [x] show my tickets
 - [x] purchace a ticket
+- [x] toastr after purchase
 - [ ] refund my ticket
 
 ### Offer

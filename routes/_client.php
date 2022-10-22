@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\PurchaseController as ClientPurchase;
 use App\Http\Controllers\Client\TicketController as ClientTicket;
 use App\Http\Controllers\Client\UpgradeController as ClientUpgrade;
 use App\Http\Controllers\Client\ProfileController as ProfileController;
+use App\Http\Controllers\Client\NotificationController as NotificationController;
 
 
 /*
@@ -33,4 +34,8 @@ Route::controller(ClientUpgrade::class)->middleware(['auth'])->group(function() 
 Route::controller(ProfileController::class)->middleware(['auth'])->group(function() {
     Route::get('/editProfile', 'edit')->name('user.edit');
     Route::post('/editProfile', 'update')->name('user.update');
+});
+
+Route::controller(NotificationController::class)->middleware(['auth'])->group(function() {
+    Route::get('/notifications', 'allMyNotifications')->name('user.notifications');
 });

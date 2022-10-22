@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Offer;
 
 use App\Models\Offer;
-use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
-use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Facades\Auth;
+
 require dirname(__DIR__) . '\zHelpers\helper.php';
 require dirname(__DIR__) . '\zHelpers\notification.php';
 
@@ -16,8 +14,8 @@ class HomeController extends Controller
     /*--------------------------------------------------------
     |   [x]  get list of all offers
     ----------------------------------------------------------*/
-    public function home(Request $request) {
-
+    public function home() {
+        
         $offers = Offer::all();
 
         $data['categories'] = listAllCategories();
@@ -36,7 +34,6 @@ class HomeController extends Controller
                 'url' => route('showOffer', ['id' => $offer->id]),
             ];
         }
-
 
         //notify($type = 'announce', $title = 'welcome back', $message = '');
         return view('Home.index', 

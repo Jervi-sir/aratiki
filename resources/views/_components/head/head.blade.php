@@ -34,6 +34,10 @@
                 </a>
                 @auth
                 <a class="link" href="{{ route('user.allTickets') }}">
+                    <img src="../../images/notification.svg" alt="aratiki tickets">
+                    <span>{{ __('_components.notifications') }}</span>
+                </a>
+                <a class="link" href="{{ route('user.allTickets') }}">
                     <img src="../../images/tickets.svg" alt="aratiki tickets">
                     <span>{{ __('_components.my_tickets') }}</span>
                 </a>
