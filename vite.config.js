@@ -8,13 +8,11 @@ export default defineConfig({
                 //------ [ Global ]
                 'resources/views/_styles/global.scss',
                 'resources/views/errors/styles.scss',
-                //------ [ Media ]
 
                 //------ [ Components ]
                 'resources/views/_components/footer/footer.scss',
                 'resources/views/_components/head/head.scss',
                 'resources/views/_components/search/search.scss',
-
                 'resources/views/_components/info/info.scss',
                 'resources/views/_components/notification/bottom_notification.scss',
                 'resources/views/_components/notification/center_notification.scss',
@@ -23,6 +21,7 @@ export default defineConfig({
                 'resources/views/Advertiser/addOffer/styles.scss',
                 'resources/views/Advertiser/showOffer/styles.scss',
                 'resources/views/Advertiser/editOffer/styles.scss',
+                'resources/views/Advertiser/showProfile/styles.scss',
 
                 //------ [ Client ]
                 'resources/views/Client/myTickets/styles.scss',

@@ -51,6 +51,7 @@ class OfferController extends Controller
             'tickets_left_economy' => $offer->tickets_left_economy, //[x]
             'payment_type_name' => $offer->payment_type_name, //[]
 
+            'adverrtiser_id' => $offer->advertiser->id,
             'advertiser_name' => $offer->advertiser_name, //[x]
             'advertiser_details' => $offer->advertiser_details, //[]
             'phone_number' => $offer->phone_number, //[]

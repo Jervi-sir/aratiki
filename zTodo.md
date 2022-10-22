@@ -4,7 +4,6 @@
 
 # Right now m doing
 - [ ] helper icon for each page
-- [ ] advertiser page with current events 
 - [ ] integrate logic of events showing, and activation
 
 ### Auth
@@ -22,6 +21,7 @@
 - [x] edit offer
 - [x] list all posted offer
 - [x] map place api google
+- [x] advertiser page with current events 
 - [ ] delete offer (if no one has purchased the offer)
 
 ### Client

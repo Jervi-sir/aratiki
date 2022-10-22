@@ -7,6 +7,7 @@ use App\Http\Controllers\Advertiser\JoinController as AdvertoserJoin;
 use App\Http\Controllers\Advertiser\OfferController as OfferController;
 use App\Http\Controllers\Advertiser\AddOfferController as AddOffer;
 use App\Http\Controllers\Advertiser\EditOfferController as EditOffer;
+use App\Http\Controllers\Advertiser\ProfileController as ProfileController;
 
 /*
 |--------------------------
@@ -32,6 +33,10 @@ Route::controller(EditOffer::class)->middleware(['auth'])->group(function() {
 Route::controller(OfferController::class)->middleware(['auth'])->group(function() {
     Route::get('/advertiser/allMyOffers', 'manageOffers')->name('get.advertiser.allOffers');            //[]
     Route::get('/advertiser/showOffer/{id}', 'showOffer')->name('get.advertiser.offer');                //[x]
+});
+
+Route::controller(ProfileController::class)->group(function() {
+    Route::get('/advertiser/showProfile/{id}', 'showProfile')->name('show.advertiser.profile');                //[x]
 });
 
 

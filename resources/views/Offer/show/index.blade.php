@@ -23,11 +23,11 @@
 
         <div class="promoter-phone">
             <!-- Promoter -->
-            <div class="event-promoter">
+            <a href="{{ route('show.advertiser.profile', ['id' => $offer['adverrtiser_id']]) }}" class="event-promoter">
                 <span>{{ __('offer.by') }}</span>
                 <img src="../../images/promoter.png" alt="aratiki promoter">
                 <span>{{ $offer['advertiser_name'] }}</span>
-            </div>
+            </a>
             <!-- Phone number -->
             <div class="event-phone">
                 <img src="../../images/phone_number.svg" alt="aratiki phone number">

@@ -84,8 +84,8 @@
     @endforeach
 
     @if (count($offers) == 0)
-    <div class="not-events">
-        <h3>{{ __('no_events') }}</h3>
+    <div class="no-events">
+        <h3>{{ __('advertiser.no_events') }}</h3>
     </div>
     @endif
 
