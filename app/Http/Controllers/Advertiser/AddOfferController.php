@@ -21,6 +21,7 @@ class AddOfferController extends Controller
     ----------------------------------------------------------*/
     public function addOfferPage() {
         $data['categories'] = [];
+        
         $data['phone_number'] = Auth::user()->advertiser->phone_number;
         
         $data['categories'] = listAllCategories();
